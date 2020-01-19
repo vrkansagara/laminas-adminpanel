@@ -19,16 +19,13 @@
 
   <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="stylesheet" href="assets/css/normalize.css">
-  <link rel="stylesheet" href="assets/css/skeleton.css">
-  <link rel="stylesheet" href="assets/css/interpreter.css">
+  <link rel="stylesheet" href="assets/dist/app.min.css">
 
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
 
-  <script type="text/javascript" src="assets/js/MochiKit.js"></script>
-  <script type="text/javascript" src="assets/js/interpreter.js"></script>
+  <script type="text/javascript" src="assets/dist/app.min.js" defer></script>
 </head>
 <body>
 
@@ -44,18 +41,20 @@
   </div>
 
   <div class="container">
-    <form id="interpreter_form" autocomplete="off">
-      <div id="interpreter_area">
-        <div id="interpreter_output"></div>
-      </div>
-      <div id="oneline">
-        <input id="interpreter_text" name="input_text" type="text" class="textbox" size="100" />
-      </div>
-      <div id="multiline">
-        <textarea id="interpreter_textarea" name="input_textarea" type="text" class="textbox" cols="97" rows="10"></textarea>
-        <br />
-      </div>
-    </form>
+    <div class="row one-half column">
+      <form id="interpreter_form" autocomplete="off">
+        <div id="interpreter_area">
+          <div id="interpreter_output"></div>
+        </div>
+        <div id="oneline">
+          <input id="interpreter_text" name="input_text" type="text" class="textbox" size="100" />
+        </div>
+        <div id="multiline">
+          <textarea id="interpreter_textarea" name="input_textarea" type="text" class="textbox" cols="97" rows="10"></textarea>
+          <br />
+        </div>
+      </form>
+    </div>
   </div>
 
 <!-- End Document
