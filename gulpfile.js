@@ -1,5 +1,6 @@
 "use strict";
 
+const browserSync = require('browser-sync').create();
 var gulp = require('gulp');
 var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
@@ -9,7 +10,6 @@ const sass = require('gulp-sass');
 // var rename = require("gulp-rename");
 // var del = require('del');
 // var zip = require('gulp-zip');
-const browserSync = require('browser-sync').create();
 
 
 var version = '1.0.0';
