@@ -4,23 +4,19 @@ const browserSync = require('browser-sync').create();
 var gulp = require('gulp');
 var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
-var minifyCSS = require('gulp-csso');
+var cleanCSS = require('gulp-clean-css');
+var sourcemaps = require('gulp-sourcemaps');
 const sass = require('gulp-sass');
 // var merge = require("merge-stream");
 // var rename = require("gulp-rename");
 // var del = require('del');
 // var zip = require('gulp-zip');
 
-
-var version = '1.0.0';
 var root = 'assets/';
-var buildRoot = root + 'dist/';
 var paths = {
-    distRoot: buildRoot,
+    distRoot: root + 'dist'
 };
-
-
-var commonJSBundle = [
+var jSBundle = [
     root + 'js/vendor/MochiKit/MochiKit.js',
     root + 'js/vendor/MochiKit/Base.js',
     root + 'js/vendor/MochiKit/Iter.js',
@@ -40,18 +36,7 @@ var commonJSBundle = [
     root + 'js/vendor/MochiKit/Sortable.js',
     root + 'js/interpreter.js',
 ];
-
-function js() {
-    return gulp.src(commonJSBundle)
-        .pipe(concat('app.min.js'))
-        .pipe(uglify())
-        .pipe(gulp.dest(paths.distRoot))
-        .pipe(browserSync.stream())
-        ;
-}
-
-//::CSS
-var assetCssBundle = [
+var cssBundle = [
     root + 'css/normalize.css',
     root + 'css/skeleton.css',
     root + 'css/interpreter.css',
@@ -59,12 +44,36 @@ var assetCssBundle = [
     root + 'src/css/scss/**/*.scss'
 ];
 
-//compile scss into css
-function style() {
-    return gulp.src(assetCssBundle)
-        .pipe(sass().on('error', sass.logError))
+function js() {
+    return gulp.src(jSBundle)
+        .pipe(concat('app.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest(paths.distRoot))
+        .pipe(browserSync.stream())
+        ;
+}
+
+function css() {
+    return gulp.src(cssBundle)
+        .pipe(sass({
+                compass: true,
+                bundleExec: true,
+                sourcemap: true,
+                sourcemapPath: '../src/sass'
+            })
+                .on('error', sass.logError)
+        )
         .pipe(concat('app.min.css'))
-        .pipe(minifyCSS())
+        .pipe(cleanCSS({
+                debug: true,
+                compatibility: 'ie8'
+            },
+            (details) => {
+                console.log(`${details.name}: ${details.stats.originalSize}`);
+                console.log(`${details.name}: ${details.stats.minifiedSize}`);
+            }
+        ))
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest(paths.distRoot))
         .pipe(browserSync.stream())
         ;
@@ -77,8 +86,8 @@ function watch() {
             index: "index.html"
         }
     });
-    gulp.watch('assets/css/**/*.css', style);
-    gulp.watch('assets/css/**/*.scss', style);
+    gulp.watch('assets/css/**/*.css', css);
+    gulp.watch('assets/css/**/*.scss', css);
     gulp.watch('assets/js/**/*.js', js);
 
     gulp.watch('./*.html').on('change', browserSync.reload);
@@ -87,6 +96,6 @@ function watch() {
     gulp.watch('./assets/js/**/*.js').on('change', browserSync.reload);
 }
 
-exports.style = style;
+exports.css = css;
 exports.js = js;
 exports.watch = watch;
