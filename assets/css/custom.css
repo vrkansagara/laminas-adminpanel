@@ -1,0 +1,9 @@
+.container {
+    max-width: 800px;
+    outline: 1px solid red ;
+}
+
+.header {
+    margin-top: 6rem;
+    text-align: center;
+}
