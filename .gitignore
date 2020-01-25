@@ -1,2 +1,10 @@
 node_modules/
 .idea
+.code-*
+.project
+.settings/
+git
+.svn
+.hg
+.CVS
+.DS_Store

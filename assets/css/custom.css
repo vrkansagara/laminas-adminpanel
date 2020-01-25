@@ -1,9 +1,21 @@
 .container {
-    max-width: 800px;
-    /* outline: 1px solid red ; */
+  max-width: 800px;
+  outline: 1px solid red;
+}
+.header {
+  margin-top: 6rem;
+  text-align: center;
+}
+.js-editor {
+  display: block;
+}
+.row {
+  outline: 1px solid green;
 }
 
-.header {
-    margin-top: 6rem;
-    text-align: center;
+.column {
+  outline: 4px solid blue;
+}
+.columns {
+  outline: 4px solid pink;
 }
