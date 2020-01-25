@@ -4,8 +4,14 @@ node_modules/
 .project
 .settings/
 git
-
 .svn
 .hg
 .CVS
 .DS_Store
+.vagrant/
+vendor/
+config/development.config.php
+data/cache/*
+!data/cache/.gitkeep
+phpunit.xml
+.phpunit.result.cache
