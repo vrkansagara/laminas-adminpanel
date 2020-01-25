@@ -12,7 +12,7 @@ const sass = require("gulp-sass");
 // var del = require('del');
 // var zip = require('gulp-zip');
 
-var root = "assets/";
+var root = "public/assets/";
 var paths = {
   distRoot: root + "dist"
 };

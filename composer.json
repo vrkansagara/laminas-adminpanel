@@ -1,0 +1,53 @@
+{
+  "name": "vrkansagara/laminas-adminpanel",
+  "description": "Laminas Admin Panel",
+  "type": "project",
+  "keywords": [
+    "laminas",
+    "admin",
+    "panel"
+  ],
+  "homepage": "https://vrkansagara.in/",
+  "license": "BSD-3-Clause",
+  "authors": [
+    {
+      "name": "Vallabh Kansagara",
+      "email": "vrkansagara@gmail.com",
+      "homepage": "https://vrkansagara.in/"
+    }
+  ],
+  "support": {
+    "email": "vrkansagara@gmail.com",
+    "issues": "https://github.com/vrkansagara/laminas-adminpanel/issues",
+    "source": "https://github.com/vrkansagara/laminas-adminpanel"
+  },
+  "require": {
+    "php": "^7.3",
+    "laminas/laminas-component-installer": "^1.0 || ^2.1",
+    "laminas/laminas-development-mode": "^3.2",
+    "laminas/laminas-mvc": "^3.1.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Application\\": "module/Application/src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "ApplicationTest\\": "module/Application/test/"
+    }
+  },
+  "scripts": {
+    "cs-check": "phpcs",
+    "cs-fix": "phpcbf",
+    "development-disable": "laminas-development-mode disable",
+    "development-enable": "laminas-development-mode enable",
+    "development-status": "laminas-development-mode status",
+    "post-create-project-cmd": [
+      "@development-enable",
+      "php -r '$file = file_get_contents(\".gitignore\"); $file = str_replace(\"composer.lock\", \"\", $file); file_put_contents(\".gitignore\", $file);'"
+    ],
+    "serve": "php -S 0.0.0.0:8090 -t public",
+    "test": "phpunit"
+  }
+}
