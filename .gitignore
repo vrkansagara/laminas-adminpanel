@@ -4,6 +4,7 @@ node_modules/
 .project
 .settings/
 git
+
 .svn
 .hg
 .CVS
