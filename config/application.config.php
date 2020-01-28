@@ -6,15 +6,26 @@
  * @see https://docs.laminas.dev/tutorials/advanced-config/#environment-specific-system-configuration
  * @see https://docs.laminas.dev/tutorials/advanced-config/#environment-specific-application-configuration
  */
+
 return [
     // Retrieve list of modules used in this application.
     'modules' => require __DIR__ . '/modules.config.php',
 
     // These are various options for the listeners attached to the ModuleManager
     'module_listener_options' => [
+        // This should be an array of paths in which modules reside.
+        // If a string key is provided, the listener will consider that a module
+        // namespace, the value of that key the specific path to that module's
+        // Module class.
+        'module_paths' => [
+            './core',
+            './module',
+            './sample',
+            './vendor',
+        ],
         // use composer autoloader instead of laminas-loader
         'use_laminas_loader' => false,
-        
+
         // An array of paths from which to glob configuration files after
         // modules are loaded. These effectively override configuration
         // provided by modules themselves. Paths may use GLOB_BRACE notation.

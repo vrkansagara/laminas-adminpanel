@@ -5,8 +5,22 @@
  *
  * This should be an array of module namespaces used in the application.
  */
-return [
-    'Laminas\Router',
-    'Laminas\Validator',
+
+use Laminas\Stdlib\ArrayUtils;
+
+$applicationModules = [
     'Application',
+    'Album',
+    'Blog',
 ];
+
+$frameworkModule = [
+    'Laminas\Router',
+    'Laminas\Navigation',
+    'Laminas\Form',
+    'Laminas\Mail',
+    'Laminas\Paginator',
+    'Laminas\Db',
+    'Laminas\Validator',
+];
+return ArrayUtils::merge($frameworkModule, $applicationModules);

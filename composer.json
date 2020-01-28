@@ -25,29 +25,43 @@
     "php": "^7.3",
     "laminas/laminas-component-installer": "^1.0 || ^2.1",
     "laminas/laminas-development-mode": "^3.2",
-    "laminas/laminas-mvc": "^3.1.1"
+    "laminas/laminas-mvc": "^3.1.1",
+    "laminas/laminas-developer-tools": "^2.0",
+    "phpunit/phpunit": "^8.5",
+    "squizlabs/php_codesniffer": "^3.5",
+    "laminas/laminas-test": "^3.3"
   },
   "autoload": {
     "psr-4": {
-      "Application\\": "module/Application/src/"
+      "Application\\": "core/Application/src/",
+      "Album\\": "sample/Album/src/",
+      "Blog\\": "sample/Blog/src/",
+      "Blogwithorm\\": "sample/blogwithorm/src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "ApplicationTest\\": "module/Application/test/"
+      "ApplicationTest\\": "core/Application/test/",
+      "AlbumTest\\": "module/Album/test/",
+      "BlogTest\\": "module/Blog/test/",
+      "User\\": "sample/User/src/"
     }
   },
   "scripts": {
-    "cs-check": "phpcs",
-    "cs-fix": "phpcbf",
+    "cs-check": "./vendor/bin/phpcs",
+    "cs-fix": "./vendor/bin/phpcbf",
     "development-disable": "laminas-development-mode disable",
     "development-enable": "laminas-development-mode enable",
     "development-status": "laminas-development-mode status",
     "post-create-project-cmd": [
-      "@development-enable",
+      "@development-disable",
       "php -r '$file = file_get_contents(\".gitignore\"); $file = str_replace(\"composer.lock\", \"\", $file); file_put_contents(\".gitignore\", $file);'"
     ],
-    "serve": "php -S 0.0.0.0:8090 -t public",
-    "test": "phpunit"
+    "serve": "php -S 0.0.0.0:8090 -t public public/index.php",
+    "test": "phpunit",
+    "db": "./vendor/bin/doctrine-module"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-master"
   }
 }
