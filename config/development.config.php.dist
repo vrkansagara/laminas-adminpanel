@@ -1,35 +1,31 @@
 <?php
 
+/**
+ * @see       https://github.com/laminas/laminas-mvc-skeleton for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-mvc-skeleton/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-mvc-skeleton/blob/master/LICENSE.md New BSD License
+ */
+
 return [
-    // Development time modules
+    // Additional modules to include when in development mode
     'modules' => [
-        'Laminas\Mvc\Plugin\FilePrg',
-        'Laminas\Mvc\Plugin\FlashMessenger',
-        'Laminas\Mvc\Plugin\Identity',
-        'Laminas\Mvc\Plugin\Prg',
-        'Laminas\Session',
-        'Laminas\Navigation',
         'Laminas\Cache',
+        'Laminas\Session',
+        'Laminas\Db',
+        'Laminas\Paginator',
+        'Laminas\Mail',
         'Laminas\Form',
+        'Laminas\Hydrator',
         'Laminas\InputFilter',
         'Laminas\Filter',
-        'Laminas\Paginator',
-        'Laminas\Hydrator',
-        'Laminas\Router',
-        'Laminas\Db',
-        'Laminas\Mail',
-        'Laminas\Validator',
-        'Laminas\I18n',
+        'Laminas\Navigation',
         'Laminas\DeveloperTools',
-        'SanSessionToolbar',
         'DoctrineModule',
         'DoctrineORMModule',
-        'User',
-        'Laminas\ZendFrameworkBridge'
     ],
-
+    // Configuration overrides during development mode
     'module_listener_options' => [
-        // Turn off caching
+        'config_glob_paths' => [realpath(__DIR__) . '/autoload/{,*.}{global,local}-development.php'],
         'config_cache_enabled' => false,
         'module_map_cache_enabled' => false,
     ],

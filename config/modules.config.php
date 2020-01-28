@@ -23,5 +23,19 @@ $frameworkModule = [
     'Laminas\Db',
     'Laminas\Validator',
     'Laminas\Session',
+
+    'Laminas\Session',
+    'Laminas\Db',
+    'Laminas\Paginator',
+    'Laminas\Mail',
+    'Laminas\Form',
+    'Laminas\Hydrator',
+    'Laminas\InputFilter',
+    'Laminas\Filter',
+    'Laminas\Navigation',
+    'Laminas\DeveloperTools',
+    'DoctrineModule',
+    'DoctrineORMModule',
+
 ];
 return ArrayUtils::merge($frameworkModule, $applicationModules);

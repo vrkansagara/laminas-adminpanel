@@ -21,7 +21,6 @@ use Laminas\Router\Http\Literal;
 use Laminas\Router\Http\Segment;
 use Laminas\ServiceManager\Factory\InvokableFactory;
 
-// Continue from https://docs.zendframework.com/tutorials/in-depth-guide/models-and-servicemanager/
 return [
     'db' => [
         'driver' => 'Pdo',
@@ -122,7 +121,7 @@ return [
                                 'action' => 'index'
                             ],
                             'constraints' => [
-//                                'name' => '[1-9]\d*',
+                                //                                'name' => '[1-9]\d*',
                             ],
                         ],
                     ]

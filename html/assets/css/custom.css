@@ -1,3 +1,11 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: #fff;
+}
+
 .container {
   max-width: 800px;
   /* outline: 1px solid red; */
@@ -11,7 +19,7 @@
   text-align: center;
 }
 .js-editor {
-  display: block;
+  display: none;
 }
 .row {
   /* outline: 1px solid green; */
@@ -22,4 +30,62 @@
 }
 .columns {
   /* outline: 4px solid pink; */
+}
+
+.fork-me {
+  font-family: sans-serif;
+  position: fixed;
+  top: 5%;
+  z-index: 1100;
+  text-align: center;
+  font-weight: bold;
+  font-size: 120%;
+  color: #fff;
+  background-color: #68b60f;
+  padding: 5px 24px;
+  transform: rotate(45deg);
+  right: -40px;
+  border: 1px solid #888;
+  display: block;
+}
+
+.nav > li {
+  position: relative;
+  display: block;
+  float: left;
+  padding-right: 15px;
+}
+
+.pagination > li {
+  position: relative;
+  display: block;
+  float: left;
+  padding-right: 15px;
+}
+
+.breadcrumb {
+  margin-top: 35px;
+  margin-bottom: 35px;
+  padding: 8px 15px;
+  margin-bottom: 20px;
+  list-style: none;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+}
+.breadcrumb > li {
+  display: inline-block;
+}
+.breadcrumb > li + li:before {
+  padding: 0 5px;
+  color: #ccc;
+  content: "/\00a0";
+}
+ul {
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
 }
