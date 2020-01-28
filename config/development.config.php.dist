@@ -1,0 +1,36 @@
+<?php
+
+return [
+    // Development time modules
+    'modules' => [
+        'Laminas\Mvc\Plugin\FilePrg',
+        'Laminas\Mvc\Plugin\FlashMessenger',
+        'Laminas\Mvc\Plugin\Identity',
+        'Laminas\Mvc\Plugin\Prg',
+        'Laminas\Session',
+        'Laminas\Navigation',
+        'Laminas\Cache',
+        'Laminas\Form',
+        'Laminas\InputFilter',
+        'Laminas\Filter',
+        'Laminas\Paginator',
+        'Laminas\Hydrator',
+        'Laminas\Router',
+        'Laminas\Db',
+        'Laminas\Mail',
+        'Laminas\Validator',
+        'Laminas\I18n',
+        'Laminas\DeveloperTools',
+        'SanSessionToolbar',
+        'DoctrineModule',
+        'DoctrineORMModule',
+        'User',
+        'Laminas\ZendFrameworkBridge'
+    ],
+
+    'module_listener_options' => [
+        // Turn off caching
+        'config_cache_enabled' => false,
+        'module_map_cache_enabled' => false,
+    ],
+];

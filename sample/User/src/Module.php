@@ -1,10 +1,4 @@
 <?php
-/**
- * @link      http://github.com/zendframework/ZendSkeletonApplication for the canonical source repository
- * @copyright Copyright (c) 2005-2016 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
- */
-
 namespace User;
 
 use Laminas\Mvc\MvcEvent;
@@ -31,10 +25,13 @@ class Module
         // Get event manager.
         $eventManager = $event->getApplication()->getEventManager();
         $sharedEventManager = $eventManager->getSharedManager();
-        // Register the event listener method. 
-        $sharedEventManager->attach(AbstractActionController::class,
-            MvcEvent::EVENT_DISPATCH, [$this, 'onDispatch'], 100);
-
+        // Register the event listener method.
+        $sharedEventManager->attach(
+            AbstractActionController::class,
+            MvcEvent::EVENT_DISPATCH,
+            [$this, 'onDispatch'],
+            100
+        );
         $sessionManager = $event->getApplication()->getServiceManager()->get('Laminas\Session\SessionManager');
 
         $this->forgetInvalidSession($sessionManager);

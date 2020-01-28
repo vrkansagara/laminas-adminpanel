@@ -22,5 +22,6 @@ $frameworkModule = [
     'Laminas\Paginator',
     'Laminas\Db',
     'Laminas\Validator',
+    'Laminas\Session',
 ];
 return ArrayUtils::merge($frameworkModule, $applicationModules);
