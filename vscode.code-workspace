@@ -1,0 +1,31 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "workbench.colorTheme": "Visual Studio Light",
+    "workbench.iconTheme": "material-icon-theme",
+    "liveServer.settings.donotShowInfoMsg": true,
+    "terminal.integrated.fontFamily": "Fira Code",
+    "editor.formatOnSave": true,
+    "editor.fontFamily": "'Fira Code'",
+    "editor.fontSize": 14,
+    "editor.letterSpacing": 0,
+    "editor.lineHeight": 0,
+    "editor.selectionHighlight": true,
+    "files.exclude": {
+      "*.code-*": true,
+      "**/.project": true,
+      "**/node_modules": true,
+      "**/.settings": true,
+      "**/.git": true,
+      "**/.svn": true,
+      "**/.hg": true,
+      "**/CVS": true,
+      "**/.DS_Store": true
+    },
+    "editor.formatOnSaveTimeout": 5000
+  }
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="assets/dist/app.min.css" />
+    <script type="text/javascript" src="assets/dist/app.min.js" defer></script>
+    <script
+      type="text/javascript"
+      src="assets/js/ajax_tables.js"
+      defer
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <section class="header">
+        Load data: [
+        <a href="assets/js/domains.json" mochi:dataformat="json">domains.json</a>
+        | <a href="assets/js/domains.xml" mochi:dataformat="xml">domains.xml</a> ]
+        |
+        <a href="assets/js/domains1.json" mochi:dataformat="json"
+        >domains1.json</a
+        >
+        ] (current format:
+        <span class="mochi-template" mochi:content="format">loading</span>)
+        </div>
+      </section>
+    </div>
+    <div class="container">
+        <table>
+            <thead>
+              <tr>
+                <th mochi:sortcolumn="domain_name str">Domain Name</th>
+                <th mochi:sortcolumn="create_date isoDate">Creation Date</th>
+                <th mochi:sortcolumn="expiry_date isoDate">Expiry Date</th>
+                <th mochi:sortcolumn="organization_name istr">Organization Name</th>
+                <th mochi:sortcolumn="organization_name_ istr"> Name</th>
+              </tr>
+            </thead>
+            <tfoot class="invisible">
+              <tr>
+                <td colspan="0"></td>
+              </tr>
+            </tfoot>
+            <tbody class="mochi-template">
+              <tr mochi:repeat="item domains">
+                <td mochi:content="item.domain_name"></td>
+                <td mochi:content="item.create_date"></td>
+                <td mochi:content="item.expiry_date"></td>
+                <td mochi:content="item.organization_name"></td>
+                <td mochi:content="item.organization_name_"></td>
+              </tr>
+            </tbody>
+            </table>
+            
+    </div>
+
+    <div class="container">
+        <p>
+          <ul>
+              <li>No data found</li>
+              <li>Pagination</li>
+                <li>Show total records</li>
+                <li>Show dropdown for 5,10,15,20</li>
+                <li>Sticky column</li>
+                <li>visible / invisible column</li>
+                <li>Sticky column</li>
+                <li>print button</li>
+                <li>download pdf /excel button</li>
+                <li>table event(s)</li>
+                <li>Selected checkbox on paginated</li>
+          </ul>
+        </p>
+  </body>
+</html>

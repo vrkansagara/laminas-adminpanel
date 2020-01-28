@@ -1,0 +1,46 @@
+<?= $this->doctype() ?>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <?= $this->headTitle('Laminas MVC Skeleton')->setSeparator(' - ')->setAutoEscape(false) ?>
+
+    <?= $this->headMeta()
+        ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+        ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+    ?>
+
+    <meta name="description" content="getlaminas.in" />
+    <meta name="author" content="getlaminas.in" />
+    <!-- Mobile Specific Metas
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- FONT
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link href="//fonts.googleapis.com/css?family=Fira+Code:400,300,600" rel="stylesheet" type="text/css" />
+
+    <!-- Le styles -->
+    <?= $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . 'assets/images/favicon.png"'])
+        ->prependStylesheet($this->basePath('assets/dist/app.min.css'))
+    ?>
+
+    <!-- Scripts -->
+    <?= $this->inlineScript()
+        ->prependFile($this->basePath('assets/dist/app.min.js'))
+    ?>
+
+</head>
+
+<body>
+    <?= $this->content ?>
+    <hr>
+    <div class="container">
+        <footer>
+            <p>&copy; <?= date('Y') ?> by vrkansagara/laminas-adminpanel. All rights reserved.</p>
+        </footer>
+    </div>
+    <?= $this->inlineScript() ?>
+</body>
+
+</html>

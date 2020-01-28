@@ -1,0 +1,66 @@
+<?= $this->doctype() ?>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <?= $this->headTitle('ZF  Application')->setSeparator(' - ')->setAutoEscape(false) ?>
+
+    <?= $this->headMeta()
+        ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+        ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+    ?>
+
+    <!-- Le styles -->
+    <?= $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'])
+        ->prependStylesheet($this->basePath('css/custom.css'))
+        ->prependStylesheet($this->basePath('css/style.css'))
+        ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
+        ->prependStylesheet($this->basePath('css/bootstrap.min.css'))
+
+    ?>
+<!--    github-fork-ribbon-css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css" />
+
+    <!-- Scripts -->
+    <?= $this->headScript()
+        ->prependFile($this->basePath('js/bootstrap.min.js'))
+        ->prependFile($this->basePath('js/jquery-3.1.0.min.js'))
+    ?>
+</head>
+<body>
+<a class="fork-me" href="https://github.com/vrkansagara/zend-framework-enterprise-starter-kit" target="_blank">Fork me on GitHub</a><nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="<?= $this->url('home') ?>">
+                <img src="<?= $this->basePath('img/zf-logo-mark.svg') ?>" height="28"
+                     alt="Zend Framework <?= \Application\Module::VERSION ?>"/>&nbsp
+            </a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <?php // add this: ?>
+            <?= $this->navigation('navigation')
+                ->menu()
+                ->setMinDepth(0)
+                ->setMaxDepth(0)
+                ->setUlClass('nav navbar-nav') ?>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <?= $this->navigation('navigation')->breadcrumbs()->setMinDepth(0)->setPartial('partial/breadcrumb') ?>
+    <!-- Navigation bar -->
+    <?= $this->content ?>
+</div>
+<footer class="footer">
+    <div class="container">
+        <span class="text-muted"><p>&copy; 2005 - <?= date('Y') ?> by <a href="https://github.com/vrkansagara/zend-framework-enterprise-starter-kit">Zend Framework Enterprise Starter Kit</a>. All rights reserved.</p></span>
+    </div>
+</footer>
+<?= $this->inlineScript() ?>
+</body>
+</html>
