@@ -1,9 +1,11 @@
 <?php
+
 namespace User;
 
 use Laminas\Router\Http\Literal;
 use Laminas\Router\Http\Segment;
 use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
+use Laminas\ServiceManager\Factory\InvokableFactory;
 
 return [
     'router' => [
@@ -67,7 +69,8 @@ return [
     'controllers' => [
         'factories' => [
             Controller\AuthController::class => Controller\Factory\AuthControllerFactory::class,
-            Controller\UserController::class => Controller\Factory\UserControllerFactory::class,            
+            Controller\UserController::class => Controller\Factory\UserControllerFactory::class,
+            View\Helper\Breadcrumbs::class => InvokableFactory::class
         ],
     ],
     // We register module-provided controller plugins under this key.
@@ -77,6 +80,7 @@ return [
         ],
         'aliases' => [
             'currentUser' => Controller\Plugin\CurrentUserPlugin::class,
+            'pageBreadcrumbs' => View\Helper\Breadcrumbs::class,
         ],
     ],
     // The 'access_filter' key is used by the User module to restrict or permit

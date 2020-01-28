@@ -31,16 +31,16 @@ class ContactForm extends Form
     // submit button).
     private function addElements()
     {
-        $this->add([
-            'type' => 'file',
-            'name' => 'file',
-            'attributes' => [
-                'id' => 'file'
-            ],
-            'options' => [
-                'label' => 'Upload file',
-            ],
-        ]);
+        // $this->add([
+        //     'type' => 'file',
+        //     'name' => 'file',
+        //     'attributes' => [
+        //         'id' => 'file'
+        //     ],
+        //     'options' => [
+        //         'label' => 'Upload file',
+        //     ],
+        // ]);
 
         // Add "email" field
         $this->add([
@@ -95,94 +95,94 @@ class ContactForm extends Form
         $inputFilter = $this->getInputFilter();
 
         // Add validation rules for the "file" field.
+        // $inputFilter->add([
+        //     'type' => 'Laminas\InputFilter\FileInput',
+        //     'name' => 'file',
+        //     'required' => true,
+        //     'validators' => [
+        //         ['name' => 'FileUploadFile'],
+        //         [
+        //             'name' => 'FileMimeType',
+        //             'options' => [
+        //                 'mimeType' => ['image/jpeg', 'image/png']
+        //             ]
+        //         ],
+        //         ['name' => 'FileIsImage'],
+        //         [
+        //             'name' => 'FileImageSize',
+        //             'options' => [
+        //                 'minWidth' => 128,
+        //                 'minHeight' => 128,
+        //                 'maxWidth' => 4096,
+        //                 'maxHeight' => 4096
+        //             ]
+        //         ],
+        //     ],
+        //     'filters' => [
+        //         [
+        //             'name' => 'FileRenameUpload',
+        //             'options' => [
+        //                 'target' => './data/upload',
+        //                 'useUploadName' => true,
+        //                 'useUploadExtension' => true,
+        //                 'overwrite' => true,
+        //                 'randomize' => false
+        //             ]
+        //         ]
+        //     ],
+        // ]);
+
         $inputFilter->add([
-            'type' => 'Laminas\InputFilter\FileInput',
-            'name' => 'file',
+            'name' => 'email',
             'required' => true,
-            'validators' => [
-                ['name' => 'FileUploadFile'],
-                [
-                    'name' => 'FileMimeType',
-                    'options' => [
-                        'mimeType' => ['image/jpeg', 'image/png']
-                    ]
-                ],
-                ['name' => 'FileIsImage'],
-                [
-                    'name' => 'FileImageSize',
-                    'options' => [
-                        'minWidth' => 128,
-                        'minHeight' => 128,
-                        'maxWidth' => 4096,
-                        'maxHeight' => 4096
-                    ]
-                ],
-            ],
             'filters' => [
+                ['name' => 'StringTrim'],
+            ],
+            'validators' => [
                 [
-                    'name' => 'FileRenameUpload',
+                    'name' => 'EmailAddress',
                     'options' => [
-                        'target' => './data/upload',
-                        'useUploadName' => true,
-                        'useUploadExtension' => true,
-                        'overwrite' => true,
-                        'randomize' => false
-                    ]
-                ]
+                        'allow' => \Laminas\Validator\Hostname::ALLOW_DNS,
+                        'useMxCheck' => false,
+                    ],
+                ],
             ],
         ]);
 
         $inputFilter->add([
-                'name' => 'email',
-                'required' => true,
-                'filters' => [
-                    ['name' => 'StringTrim'],
-                ],
-                'validators' => [
-                    [
-                        'name' => 'EmailAddress',
-                        'options' => [
-                            'allow' => \Laminas\Validator\Hostname::ALLOW_DNS,
-                            'useMxCheck' => false,
-                        ],
+            'name' => 'subject',
+            'required' => true,
+            'filters' => [
+                ['name' => 'StringTrim'],
+                ['name' => 'StripTags'],
+                ['name' => 'StripNewlines'],
+            ],
+            'validators' => [
+                [
+                    'name' => 'StringLength',
+                    'options' => [
+                        'min' => 1,
+                        'max' => 128
                     ],
                 ],
-            ]);
+            ],
+        ]);
 
         $inputFilter->add([
-                'name' => 'subject',
-                'required' => true,
-                'filters' => [
-                    ['name' => 'StringTrim'],
-                    ['name' => 'StripTags'],
-                    ['name' => 'StripNewlines'],
-                ],
-                'validators' => [
-                    [
-                        'name' => 'StringLength',
-                        'options' => [
-                            'min' => 1,
-                            'max' => 128
-                        ],
+            'name' => 'body',
+            'required' => true,
+            'filters' => [
+                ['name' => 'StripTags'],
+            ],
+            'validators' => [
+                [
+                    'name' => 'StringLength',
+                    'options' => [
+                        'min' => 1,
+                        'max' => 4096
                     ],
                 ],
-            ]);
-
-        $inputFilter->add([
-                'name' => 'body',
-                'required' => true,
-                'filters' => [
-                    ['name' => 'StripTags'],
-                ],
-                'validators' => [
-                    [
-                        'name' => 'StringLength',
-                        'options' => [
-                            'min' => 1,
-                            'max' => 4096
-                        ],
-                    ],
-                ],
-            ]);
+            ],
+        ]);
     }
 }

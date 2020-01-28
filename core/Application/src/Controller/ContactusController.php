@@ -18,8 +18,6 @@ class ContactusController extends AbstractActionController
     // This action displays the feedback form
     public function indexAction()
     {
-        echo 1;
-        exit;
         // Create Contact Us form
         $form = new ContactForm();
 
@@ -28,7 +26,7 @@ class ContactusController extends AbstractActionController
             $request = $this->getRequest();
             $data = array_merge_recursive(
                 $request->getPost()->toArray(),
-                $request->getFiles()->toArray()
+                // $request->getFiles()->toArray()
             );
 
 
@@ -39,12 +37,16 @@ class ContactusController extends AbstractActionController
             // Validate form
             if ($form->isValid()) {
                 // Get filtered and validated data
-                $data = $form->getData();
-                $this->mailSender->sendMail('vrkansagara@gmail.com', $data['email'], $data['subject'], $data['body']);
-                // ... Do something with the validated data ...
+                $validatedData = $form->getData();
+                $this->mailSender->sendMail('vrkansagara@gmail.com', $validatedData['email'], $validatedData['subject'], $validatedData['body']);
 
                 // Redirect to "Thank You" page
                 return $this->redirect()->toRoute('contact', ['action' => 'thankYou']);
+            } else {
+                $messages = $form->getMessages();
+                echo '<pre>';
+                var_dump($messages);
+                exit;
             }
         }
 

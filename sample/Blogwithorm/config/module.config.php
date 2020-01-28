@@ -4,9 +4,7 @@ namespace Blogwithorm;
 
 use Laminas\Router\Http\Literal;
 use Laminas\Router\Http\Segment;
-use Laminas\Router\Http\Regex;
 use Laminas\ServiceManager\Factory\InvokableFactory;
-use Blogwithorm\Route\StaticRoute;
 use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
 
 return [

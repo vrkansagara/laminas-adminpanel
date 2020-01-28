@@ -9,6 +9,13 @@
 return [
     // Additional modules to include when in development mode
     'modules' => [
+        'Laminas\Mvc\Plugin\FilePrg',
+        'Laminas\Mvc\Plugin\FlashMessenger',
+        'Laminas\Mvc\Plugin\Identity',
+        'Laminas\Mvc\Plugin\Prg',
+        'Laminas\Router',
+        'Laminas\Validator',
+        'Laminas\I18n',
         'Laminas\Cache',
         'Laminas\Session',
         'Laminas\Db',
