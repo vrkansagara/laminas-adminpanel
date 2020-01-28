@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+// declare(strict_types=1);
 
 use Laminas\Mvc\Application;
 use Laminas\Stdlib\ArrayUtils;
@@ -14,8 +14,10 @@ date_default_timezone_set('UTC');
  */
 $_SERVER['APPLICATION_ENV'] = 'development';
 if (isset($_SERVER['APPLICATION_ENV']) && $_SERVER['APPLICATION_ENV'] === 'development') {
-    ini_set("error_reporting", 'E_ALL');
-    ini_set("display_errors", '1');
+    ini_set("error_reporting", E_ALL);
+    ini_set("display_errors", 1);
+    ini_set("display_startup_errors", 1);
+    ini_set("log_errors", 1);
 } else {
     ini_set("error_reporting", E_ALL & ~E_DEPRECATED & ~E_STRICT);
     ini_set("display_errors", '0');

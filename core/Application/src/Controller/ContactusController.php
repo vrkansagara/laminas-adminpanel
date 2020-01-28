@@ -18,6 +18,8 @@ class ContactusController extends AbstractActionController
     // This action displays the feedback form
     public function indexAction()
     {
+        echo 1;
+        exit;
         // Create Contact Us form
         $form = new ContactForm();
 
@@ -31,7 +33,7 @@ class ContactusController extends AbstractActionController
 
 
             // Fill in the form with POST data
-//            $data = $this->params()->fromPost();
+            //            $data = $this->params()->fromPost();
             $form->setData($data);
 
             // Validate form
