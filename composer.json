@@ -57,10 +57,10 @@
   },
   "autoload": {
     "psr-4": {
-      "Application\\": "core/Application/src/",
-      "Album\\": "sample/Album/src/",
-      "Blog\\": "sample/Blog/src/",
-      "User\\": "sample/User/src/"
+      "Application\\": "modules/Application/src/",
+      "Album\\": "modules/Album/src/",
+      "Blog\\": "modules/Blog/src/",
+      "User\\": "modules/User/src/"
     }
   },
   "autoload-dev": {
