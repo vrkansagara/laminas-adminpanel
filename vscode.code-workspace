@@ -26,6 +26,14 @@
       "**/CVS": true,
       "**/.DS_Store": true
     },
-    "editor.formatOnSaveTimeout": 5000
+    "editor.formatOnSaveTimeout": 5000,
+    "sqltools.connections": [
+      {
+        "database": "${workspaceFolder:laminas-adminpanel}/sample/Blog/data/blog.db",
+        "dialect": "SQLite",
+        "name": "laminas-adminpanel"
+      }
+    ],
+    "sqltools.useNodeRuntime": true
   }
 }

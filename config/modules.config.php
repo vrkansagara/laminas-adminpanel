@@ -12,15 +12,30 @@ $applicationModules = [
     'Application',
     'Album',
     'Blog',
+    'User'
 ];
 
 $frameworkModule = [
+    'Laminas\Mvc\Plugin\FilePrg',
+    'Laminas\Mvc\Plugin\FlashMessenger',
+    'Laminas\Mvc\Plugin\Identity',
+    'Laminas\Mvc\Plugin\Prg',
     'Laminas\Router',
-    'Laminas\Navigation',
-    'Laminas\Form',
-    'Laminas\Mail',
-    'Laminas\Paginator',
-    'Laminas\Db',
     'Laminas\Validator',
+    'Laminas\I18n',
+    'Laminas\Cache',
+    'Laminas\Session',
+    'Laminas\Db',
+    'Laminas\Paginator',
+    'Laminas\Mail',
+    'Laminas\Form',
+    'Laminas\Hydrator',
+    'Laminas\InputFilter',
+    'Laminas\Filter',
+    'Laminas\Navigation',
+    'Laminas\DeveloperTools',
+    'DoctrineModule',
+    'DoctrineORMModule'
+
 ];
 return ArrayUtils::merge($frameworkModule, $applicationModules);
