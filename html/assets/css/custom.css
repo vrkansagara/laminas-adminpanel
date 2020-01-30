@@ -102,3 +102,7 @@ ul {
 .text-muted {
   padding: 8px;
 }
+
+img {
+  width: 100%;
+}
