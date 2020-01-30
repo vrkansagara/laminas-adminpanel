@@ -128,7 +128,7 @@ return [
             'position' => 'bottom',
 
             /**
-             * If enabled, the Toolbar will check if your current Zend Framework version is up-to-date.
+             * If enabled, the Toolbar will check if your current Laminas Framework version is up-to-date.
              * Note: The check will only occur once every hour.
              *
              * Expects: bool

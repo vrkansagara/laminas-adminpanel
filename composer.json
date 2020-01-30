@@ -35,23 +35,36 @@
     "laminas/laminas-mail": "^2.10",
     "laminas/laminas-paginator": "^2.8",
     "laminas/laminas-db": "^2.11",
-    "laminas/laminas-session": "^2.9"
+    "laminas/laminas-session": "^2.9",
+    "doctrine/doctrine-orm-module": "^2.1",
+    "doctrine/migrations": "^2.1",
+    "laminas/laminas-cache": "^2.9",
+    "laminas/laminas-i18n": "^2.10",
+    "san/san-session-toolbar": "^3.0",
+    "laminas/laminas-authentication": "^2.7",
+    "laminas/laminas-math": "^3.2",
+    "laminas/laminas-crypt": "^3.3",
+    "laminas/laminas-validator": "^2.13",
+    "laminas/laminas-console": "^2.8",
+    "laminas/laminas-barcode": "^2.8",
+    "laminas/laminas-eventmanager": "^3.2",
+    "laminas/laminas-mime": "^2.7",
+    "laminas/laminas-captcha": "^2.9",
+    "laminas/laminas-dependency-plugin": "^1.0",
+    "roave/security-advisories": "dev-master",
+    "laminas/laminas-view": "^2.11",
+    "laminas/laminas-mvc-plugins": "^1.0"
   },
   "autoload": {
     "psr-4": {
-      "Application\\": "core/Application/src/",
-      "Album\\": "sample/Album/src/",
-      "Blog\\": "sample/Blog/src/",
-      "Blogwithorm\\": "sample/blogwithorm/src/"
+      "Application\\": "modules/Application/src/",
+      "Album\\": "modules/Album/src/",
+      "Blog\\": "modules/Blog/src/",
+      "User\\": "modules/User/src/"
     }
   },
   "autoload-dev": {
-    "psr-4": {
-      "ApplicationTest\\": "core/Application/test/",
-      "AlbumTest\\": "module/Album/test/",
-      "BlogTest\\": "module/Blog/test/",
-      "User\\": "sample/User/src/"
-    }
+    "psr-4": {}
   },
   "scripts": {
     "cs-check": "./vendor/bin/phpcs",
@@ -67,7 +80,5 @@
     "test": "phpunit",
     "db": "./vendor/bin/doctrine-module"
   },
-  "require-dev": {
-    "roave/security-advisories": "dev-master"
-  }
+  "require-dev": {}
 }
