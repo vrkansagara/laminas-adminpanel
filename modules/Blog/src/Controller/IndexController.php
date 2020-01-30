@@ -8,6 +8,7 @@ use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator as DoctrineAdapter;
 use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
 use Laminas\Paginator\Paginator;
 use Blog\Entity\Post;
+use League\CommonMark\CommonMarkConverter;
 
 class IndexController extends AbstractActionController
 {
@@ -42,7 +43,6 @@ class IndexController extends AbstractActionController
         $tagFilter = $this->params()->fromQuery('tag', null);
 
         if ($tagFilter) {
-
             // Filter posts by tag
             $query = $this->entityManager->getRepository(Post::class)
                 ->findPostsByTag($tagFilter);
@@ -60,11 +60,17 @@ class IndexController extends AbstractActionController
         // Get popular tags.
         $tagCloud = $this->postManager->getTagCloud();
 
+        $converter = new CommonMarkConverter([
+            'html_input' => 'strip',
+            'allow_unsafe_links' => false,
+        ]);
+
         // Render the view template.
         return new ViewModel([
             'posts' => $paginator,
             'postManager' => $this->postManager,
-            'tagCloud' => $tagCloud
+            'tagCloud' => $tagCloud,
+            'converter' => $converter
         ]);
     }
 

@@ -35,7 +35,7 @@ $this->headTitle('Posts');
             </p>
 
             <p>
-                <?= $this->escapeHtml($post->getContent()); ?>
+                <?= $converter->convertToHtml($this->escapeHtml($post->getContent())); ?>
             </p>
 
         <?php endforeach; ?>
