@@ -3,9 +3,6 @@ $this->headTitle('Posts');
 ?>
 <h1>Posts</h1>
 
-<a href="<?= $this->url('Blog/posts', ['action' => 'add']); ?>">
-    Add
-</a>
 <div class="row">
 
     <div class="col-md-8">
@@ -13,7 +10,7 @@ $this->headTitle('Posts');
         <?php foreach ($posts as $post) : ?>
 
             <h3>
-                <a href="<?= $this->url('Blog/posts', ['action' => 'view', 'id' => $post->getId()]); ?>">
+                <a href="<?= $this->url('blog/posts', ['action' => 'view', 'id' => $post->getId()]); ?>">
                     <?= $this->escapeHtml($post->getTitle()); ?>
                 </a>
             </h3>
@@ -26,7 +23,7 @@ $this->headTitle('Posts');
             <p class="comments-header">
                 <?= $this->escapeHtml($postManager->getCommentCountStr($post)); ?> |
                 <a href="<?= $this->url(
-                                'Blog/posts',
+                                'blog/posts',
                                 ['action' => 'view', 'id' => $post->getId()],
                                 ['fragment' => 'comment']
                             ); ?>">
@@ -40,12 +37,7 @@ $this->headTitle('Posts');
 
         <?php endforeach; ?>
 
-        <?= $this->paginationControl(
-            $posts,
-            'Sliding',
-            'Blog/partial/paginator',
-            array('route' => 'Blog')
-        ); ?>
+
 
     </div>
 
@@ -58,7 +50,7 @@ $this->headTitle('Posts');
                 <?php foreach ($this->tagCloud as $tagName => $frequency) : ?>
 
                     <a href="<?= $this->url(
-                                    'Blog',
+                                    'blog',
                                     ['action' => 'index'],
                                     ['query' => ['tag' => $tagName]]
                                 ); ?>">

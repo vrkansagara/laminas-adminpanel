@@ -36,10 +36,10 @@ class Module implements ConfigProviderInterface
         $moduleNamespace = substr($controllerClass, 0, strpos($controllerClass, '\\'));
 
         // Switch layout only for controllers belonging to our module.
-        if ($moduleNamespace == __NAMESPACE__) {
-            $viewModel = $event->getViewModel();
-            $viewModel->setTemplate('layout/layout2');
-        }
+        // if ($moduleNamespace == __NAMESPACE__) {
+        //     $viewModel = $event->getViewModel();
+        //     $viewModel->setTemplate('layout/layout2');
+        // }
     }
 
     // Event listener method.
