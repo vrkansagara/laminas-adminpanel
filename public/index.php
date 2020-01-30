@@ -12,7 +12,6 @@ date_default_timezone_set('UTC');
 /**
  * Display all errors when APPLICATION_ENV is development.
  */
-$_SERVER['APPLICATION_ENV'] = 'development';
 if (isset($_SERVER['APPLICATION_ENV']) && $_SERVER['APPLICATION_ENV'] === 'development') {
     ini_set("error_reporting", E_ALL);
     ini_set("display_errors", 1);
