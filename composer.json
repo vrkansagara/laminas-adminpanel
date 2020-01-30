@@ -59,7 +59,7 @@
     "psr-4": {
       "Application\\": "modules/Application/src/",
       "Album\\": "modules/Album/src/",
-      "Blog\\": "modules/Blog/src/",
+      "Blog\\": "modules/Blog/src",
       "User\\": "modules/User/src/"
     }
   },

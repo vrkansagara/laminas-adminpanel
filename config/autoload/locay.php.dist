@@ -1,0 +1,29 @@
+<?php
+return [
+    // Configuration for your SMTP server (for sending outgoing mail).
+    'smtp' => [
+        'name' => 'smtp.mailtrap.io',
+        'host' => 'smtp.mailtrap.io',
+        'port' => 2525,
+        'connection_class' => 'crammd5',
+        'connection_config' => [
+            'username' => 'd934fa534ee329',
+            'password' => '8456f4c9177b0b',
+        ],
+    ],
+    'doctrine' => [
+        'connection' => [
+            // default connection name
+            'orm_default' => [
+                'driverClass' => \Doctrine\DBAL\Driver\PDOMySql\Driver::class,
+                'params' => [
+                    'host' => 'localhost',
+                    'port' => '3306',
+                    'user' => 'root',
+                    'password' => 'toor',
+                    'dbname' => 'laminas-enterprise-starter-kit',
+                ],
+            ],
+        ],
+    ],
+];

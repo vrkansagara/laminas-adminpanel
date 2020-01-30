@@ -106,32 +106,32 @@ $navigation = [
                 ],
             ],
         ],
-        // [
-        //     'label' => 'Blog with ORM',
-        //     'route' => 'blogwithorm',
-        //     'pages' => [
-        //         [
-        //             'label' => 'Detail',
-        //             'route' => 'blogwithorm',
-        //             'action' => 'detail',
-        //         ],
-        //         [
-        //             'label' => 'Add',
-        //             'route' => 'blogwithorm/add',
-        //             'action' => 'add',
-        //         ],
-        //         [
-        //             'label' => 'Edit',
-        //             'route' => 'blogwithorm/add',
-        //             'action' => 'edit',
-        //         ],
-        //         [
-        //             'label' => 'Delete',
-        //             'route' => 'blogwithorm/add',
-        //             'action' => 'delete',
-        //         ],
-        //     ],
-        // ],
+        [
+            'label' => 'Blog with ORM',
+            'route' => 'blog',
+            'pages' => [
+                [
+                    'label' => 'Detail',
+                    'route' => 'blog',
+                    'action' => 'detail',
+                ],
+                [
+                    'label' => 'Add',
+                    'route' => 'blog/add',
+                    'action' => 'add',
+                ],
+                [
+                    'label' => 'Edit',
+                    'route' => 'blog/add',
+                    'action' => 'edit',
+                ],
+                [
+                    'label' => 'Delete',
+                    'route' => 'blog/add',
+                    'action' => 'delete',
+                ],
+            ],
+        ],
     ],
 ];
 return [

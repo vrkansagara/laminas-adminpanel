@@ -12,7 +12,7 @@ $applicationModules = [
     'Application',
     'Album',
     'Blog',
-    'User'
+    'User',
 ];
 
 $frameworkModule = [

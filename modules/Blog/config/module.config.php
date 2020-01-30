@@ -2,177 +2,106 @@
 
 namespace Blog;
 
-use Blog\Controller\DeleteController;
-use Blog\Controller\ListController;
-use Blog\Controller\WriteController;
-use Blog\Factory\DeleteControllerFactory;
-use Blog\Factory\ListControllerFactory;
-use Blog\Factory\WriteControllerFactory;
-use Blog\Factory\ZendDbSqlCommandFactory;
-use Blog\Factory\ZendDbSqlRepositoryFactory;
-use Blog\Model\PostCommand;
-use Blog\Model\PostCommandInterface;
-use Blog\Model\PostRepositoryInterface;
-use Blog\Model\ZendDbSqlCommand;
-use Blog\Model\ZendDbSqlRepository;
 use Laminas\Router\Http\Literal;
 use Laminas\Router\Http\Segment;
 use Laminas\ServiceManager\Factory\InvokableFactory;
+use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
 
 return [
-    'db' => [
-        'driver' => 'Pdo',
-        'dsn' => sprintf('sqlite:%s/../data/blog.db', __DIR__),
-    ],
-    // The following section is new and should be added to your file:
-    // This lines opens the configuration for the RouteManager
     'router' => [
-        // Open configuration for all possible routes
         'routes' => [
-            'barcode' => [
-                'type' => Segment::class,
-                'options' => [
-                    'route' => '/barcode[/:type/:label]',
-                    'constraints' => [
-                        'type' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'label' => '[a-zA-Z0-9_-]*'
-                    ],
-                    'defaults' => [
-                        'controller' => Controller\ListController::class,
-                        'action' => 'barcode',
-                    ],
-                ],
-            ],
-            // Define a new route called "blog"
             'blog' => [
-                // Define a "literal" route type:
                 'type' => Literal::class,
-                // Configure the route itself
                 'options' => [
-                    // Listen to "/blog" as uri:
                     'route' => '/blog',
-                    // Define default controller and action to be called when
-                    // this route is matched
                     'defaults' => [
-                        'controller' => ListController::class,
+                        'controller' => Controller\IndexController::class,
                         'action' => 'index',
                     ],
                 ],
                 // The following allows "/blog" to match on its own if no child routes match:
                 'may_terminate' => true,
                 'child_routes' => [
-                    'detail' => [
+                    'posts' => [
                         'type' => Segment::class,
                         'options' => [
-                            'route' => '/:id',
-                            'defaults' => [
-                                'controller' => ListController::class,
-                                'action' => 'detail'
-                            ],
+                            'route' => '/posts[/:action[/:id]]',
                             'constraints' => [
-                                'id' => '\d+',
-                            ]
-                        ]
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'id' => '[0-9]*'
+                            ],
+                            'defaults' => [
+                                'controller' => Controller\PostController::class,
+                                'action' => 'index',
+                            ],
+                        ],
                     ],
-                    'add' => [
+                    'about' => [
                         'type' => Literal::class,
                         'options' => [
-                            'route' => '/add',
+                            'route' => '/about',
                             'defaults' => [
-                                'controller' => WriteController::class,
-                                'action' => 'add',
+                                'controller' => Controller\IndexController::class,
+                                'action' => 'about',
                             ],
                         ],
                     ],
-                    'edit' => [
-                        'type' => Segment::class,
-                        'options' => [
-                            'route' => '/edit/:id',
-                            'defaults' => [
-                                'controller' => WriteController::class,
-                                'action' => 'edit',
-                            ],
-                            'constraints' => [
-                                'id' => '[1-9]\d*',
-                            ],
-                        ],
-                    ],
-                    'delete' => [
-                        'type' => Segment::class,
-                        'options' => [
-                            'route' => '/delete/:id',
-                            'defaults' => [
-                                'controller' => DeleteController::class,
-                                'action' => 'delete',
-                            ],
-                            'constraints' => [
-                                'id' => '[1-9]\d*',
-                            ],
-                        ],
-                    ],
-                    'download' => [
-                        'type' => Segment::class,
-                        'options' => [
-                            'route' => '/download',
-                            'defaults' => [
-                                'controller' => Controller\DownloadController::class,
-                                'action' => 'index'
-                            ],
-                            'constraints' => [
-                                //                                'name' => '[1-9]\d*',
-                            ],
-                        ],
-                    ]
                 ]
-
             ],
         ],
     ],
     'controllers' => [
         'factories' => [
-            ListController::class => ListControllerFactory::class,
-            WriteController::class => WriteControllerFactory::class,
-            DeleteController::class => DeleteControllerFactory::class,
-            Controller\DownloadController::class => InvokableFactory::class
+            Controller\IndexController::class => Controller\Factory\IndexControllerFactory::class,
+            Controller\PostController::class => Controller\Factory\PostControllerFactory::class,
         ],
     ],
     'service_manager' => [
-        'aliases' => [
-            PostRepositoryInterface::class => ZendDbSqlRepository::class,
-            PostCommandInterface::class => ZendDbSqlCommand::class,
-
-
-        ],
         'factories' => [
-            ZendDbSqlRepository::class => ZendDbSqlRepositoryFactory::class,
-            PostCommand::class => InvokableFactory::class,
-            ZendDbSqlCommand::class => ZendDbSqlCommandFactory::class,
+            Service\PostManager::class => Service\Factory\PostManagerFactory::class,
         ],
     ],
-    /**
-     * It is important to note that the view_manager configuration not only allows you to ship view files for your module, but also to overwrite view files from other modules.
-     */
-    'view_manager' => [
-        //view/{namespace}/{controller}/{action}.phtml
-        'template_path_stack' => [
-            'blog' => __DIR__ . '/../view',
+    // The following registers our custom view 
+    // helper classes in view plugin manager.
+    'view_helpers' => [
+        'factories' => [
+            View\Helper\Menu::class => InvokableFactory::class,
+            View\Helper\Breadcrumbs::class => InvokableFactory::class,
         ],
+        'aliases' => [
+            'mainMenu' => View\Helper\Menu::class,
+            'pageBreadcrumbs' => View\Helper\Breadcrumbs::class,
+        ],
+    ],
+    'view_manager' => [
+        'template_path_stack' => [
+            __DIR__ . '/../view',
+        ],
+    ],
+    'doctrine' => [
+        'driver' => [
+            __NAMESPACE__ . '_driver' => [
+                'class' => AnnotationDriver::class,
+                'cache' => 'array',
+                'paths' => [__DIR__ . '/../src/Entity']
+            ],
+            'orm_default' => [
+                'drivers' => [
+                    __NAMESPACE__ . '\Entity' => __NAMESPACE__ . '_driver'
+                ]
+            ]
+        ]
     ],
     // The 'access_filter' key is used by the User module to restrict or permit
     // access to certain controller actions for unauthorized visitors.
     'access_filter' => [
         'controllers' => [
-            Controller\ListController::class => [
-                ['actions' => ['index', 'info'], 'allow' => '*'],
-                ['actions' => ['add', 'view'], 'allow' => '@']
+            Controller\IndexController::class => [
+                ['actions' => ['index', 'about'], 'allow' => '*'],
             ],
-            Controller\DeleteController::class => [
+            Controller\PostController::class => [
                 ['actions' => ['delete'], 'allow' => '#']
-            ],
-            Controller\WriteController::class => [
-                ['actions' => ['add'], 'allow' => '*'],
-                ['actions' => ['delete', 'edit'], 'allow' => '#']
-            ],
+            ]
         ]
     ],
 ];
