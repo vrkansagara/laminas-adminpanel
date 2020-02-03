@@ -67,7 +67,6 @@ body {
 
 .breadcrumb {
   margin-top: 35px;
-  margin-bottom: 35px;
   padding: 8px 15px;
   margin-bottom: 20px;
   list-style: none;
@@ -87,8 +86,6 @@ ul {
   list-style-type: disc;
   margin-block-start: 1em;
   margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
   padding-inline-start: 40px;
 }
 .footer {
@@ -99,10 +96,19 @@ ul {
   padding-right: 15px;
   padding-left: 15px;
 }
+
 .text-muted {
   padding: 8px;
 }
 
 img {
   width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Quicksand', sans-serif;
+}
+
+ul > li {
+  font-family: 'Quicksand', sans-serif;
 }

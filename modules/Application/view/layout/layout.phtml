@@ -4,7 +4,7 @@
 <head>
     <!-- Basic Page Needs
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <?= $this->headTitle('Laminas Admin Panel')->setSeparator(' - ')->setAutoEscape(false) ?>
     <!-- Mobile Specific Metas
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -15,11 +15,11 @@
     ?>
     <!-- FONT
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <link href="//fonts.googleapis.com/css?family=Fira+Code:400,300,600" rel="stylesheet" type="text/css" />
-
+    <link href="//fonts.googleapis.com/css?family=Fira+Code:400,300,600" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:600&display=swap" rel="stylesheet">
     <!-- CSS
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <link rel="stylesheet" href="" />
+    <link rel="stylesheet" href=""/>
     <?= $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/png', 'href' => $this->basePath() . 'assets/images/favicon.png'])
         ->prependStylesheet($this->basePath('assets/dist/app.min.css'))
 
@@ -32,34 +32,35 @@
         ->prependFile($this->basePath('assets/dist/app.min.js'), null, ["defer" => "true"])
     ?>
     <!--    github-fork-ribbon-css-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css"/>
 </head>
 
 <body>
-    <a class="fork-me" href="https://github.com/vrkansagara/laminas-adminpanel" target="_blank">Fork me on GitHub</a>
+<a class="fork-me" href="https://github.com/vrkansagara/laminas-adminpanel" target="_blank">Fork me on GitHub</a>
 
+<div class="container">
+    <?= $this->navigation('navigation')
+        ->menu()
+        ->setMinDepth(0)
+        ->setMaxDepth(0)
+        ->setUlClass('nav navbar-nav') ?>
+</div>
+
+<div class="container">
+    <?= $this->navigation('navigation')->breadcrumbs()->setMinDepth(0)->setPartial('partial/breadcrumb') ?>
+    <!-- Navigation bar -->
+    <?= $this->content ?>
+</div>
+
+<footer class="footer">
     <div class="container">
-        <?= $this->navigation('navigation')
-            ->menu()
-            ->setMinDepth(0)
-            ->setMaxDepth(0)
-            ->setUlClass('nav navbar-nav') ?>
-    </div>
-
-    <div class="container">
-        <?= $this->navigation('navigation')->breadcrumbs()->setMinDepth(0)->setPartial('partial/breadcrumb') ?>
-        <!-- Navigation bar -->
-        <?= $this->content ?>
-    </div>
-
-    <footer class="footer">
-        <div class="container">
-            <span class="sticky-footer  text-muted">
-                <p>&copy; 2005 - <?= date('Y') ?> by <a href="https://github.com/vrkansagara/laminas-adminpanel">Laminas Admin Panel</a>. All rights reserved.</p>
+       <span class="sticky-footer  text-muted">
+               &copy; 2005 - <?= date('Y') ?> by <a href="https://github.com/vrkansagara/laminas-adminpanel">Laminas Admin Panel</a>. All rights reserved.
             </span>
-        </div>
-    </footer>
-    <?= $this->inlineScript() ?>
+    </div>
+</footer>
+<?= $this->inlineScript() ?>
 </body>
 
 </html>
