@@ -1,11 +1,5 @@
 <?php
 
-/**
- * List of enabled modules for this application.
- *
- * This should be an array of module namespaces used in the application.
- */
-
 use Laminas\Stdlib\ArrayUtils;
 
 $applicationModules = [
@@ -36,6 +30,5 @@ $frameworkModule = [
     'Laminas\DeveloperTools',
     'DoctrineModule',
     'DoctrineORMModule'
-
 ];
 return ArrayUtils::merge($frameworkModule, $applicationModules);
