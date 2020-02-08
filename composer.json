@@ -54,7 +54,8 @@
     "laminas/laminas-mvc-plugins": "^1.0",
     "league/commonmark": "^1.2",
     "phpunit/phpunit": "7.5.20",
-    "laminas/laminas-mvc-i18n": "^1.1"
+    "laminas/laminas-mvc-i18n": "^1.1",
+    "laminas/laminas-recaptcha": "^3.2"
   },
   "autoload": {
     "psr-4": {

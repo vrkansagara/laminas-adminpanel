@@ -14,14 +14,6 @@ $navigation = [
 
     'default' => [
         [
-            'label' => 'About',
-            'route' => 'about'
-        ],
-        [
-            'label' => 'JsValidation',
-            'route' => 'validation'
-        ],
-        [
             'label' => 'Home',
             'route' => 'home'
         ],
@@ -75,6 +67,18 @@ $navigation = [
                     'action' => 'delete',
                 ],
             ],
+        ],
+        [
+            'label' => 'About',
+            'route' => 'about'
+        ],
+        [
+            'label' => 'Contact',
+            'route' => 'contact'
+        ],
+        [
+            'label' => 'JsValidation',
+            'route' => 'validation'
         ],
 //        [
 //            'label' => 'Contact us',

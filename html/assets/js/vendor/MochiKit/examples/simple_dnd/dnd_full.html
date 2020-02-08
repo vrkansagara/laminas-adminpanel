@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>script.aculo.us Drag and drop functional test file</title>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+    <script src="../../lib/MochiKit/MochiKit.js" type="text/javascript"></script>
+    <script src="../../lib/MochiKit/Position.js" type="text/javascript"></script>
+    <script src="../../lib/MochiKit/Visual.js" type="text/javascript"></script>
+    <script src="../../lib/MochiKit/DragAndDrop.js" type="text/javascript"></script>
+    <script src="../../lib/MochiKit/Sortable.js" type="text/javascript"></script>
+    <style media="screen" type="text/css">
+        #thelist li {
+            background: green;
+            margin: 5px;
+            padding: 30px;
+        }
+
+        #thelist2 li {
+            background: #ffb;
+            margin: 2px;
+            padding: 2px;
+        }
+
+        #revertbox2 {
+            position: absolute;
+            top: 40px;
+            left: 50px;
+            z-index: 1000;
+            width: 150px;
+            height: 150px;
+            background: #bbf;
+        }
+    </style>
+</head>
+<body>
+<h1>script.aculo.us Drag and drop functional test file</h1>
+
+<h2>Draggables/Droppables</h2>
+
+<div class="box1" id="revertbox1" style="z-index:1000;width:150px;height:150px;background:#bbf;">
+    <span class="handle1">drag here</span><br/>
+    <input id="shouldrevert1" type="checkbox"/> Revert?
+</div>
+
+<div class="box" id="revertbox2">
+    <span id="handle2">drag here</span><br/>
+    <input id="shouldrevert2" type="checkbox"/> Revert?
+</div>
+
+<div id="xxxx">testtest</div>
+
+<script charset="utf-8" language="javascript" type="text/javascript">
+    // <![CDATA[
+    new MochiKit.DragAndDrop.Draggable('revertbox1', {
+        zindex: -5, handle: 'handle1', revert: function (element) {
+            return ($('shouldrevert1').checked)
+        }
+    });
+    new MochiKit.DragAndDrop.Draggable('revertbox2', {
+        handle: 'handle2', revert: function (element) {
+            return ($('shouldrevert2').checked)
+        }
+    });
+    new MochiKit.DragAndDrop.Droppable('xxxx', {
+        accept: ['box1', 'box2'], onDrop: function () {
+            alert('drop!')
+        }
+    });
+    // ]]>
+</script>
+
+
+<ul id="thelist" style="padding: 10px; position: absolute; top:20px; left:200px;z-index:1000;">
+    <li id="thelist_4">Hey there! I'm absolutely positioned</li>
+    <li id="thelist_1">one<br/>
+        <form id="form1"><input id="xyz" name="x" onclick="this.checked = !this.checked" type="checkbox"
+                                value="x"/><input id="xxx" type="text"></input></form>
+    </li>
+    <li id="thelist_2">two<br/>
+        <form id="form2"><input id="xyx" type="text"></input></form>
+    </li>
+    <li id="thelist_3">three<br/>
+        <form id="form3"><input id="xu3" type="text"></input></form>
+    </li>
+</ul>
+
+<ul id="thelist2" style="padding: 2px; background:red;">
+    <li>Relatively here!</li>
+    <li><input id="x" name="x" onclick="this.checked = !this.checked" type="checkbox"/>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+    <li>one</li>
+</ul>
+
+
+<script charset="utf-8" language="javascript" type="text/javascript">
+    // <![CDATA[
+    //  Sortable.create('thelist', {overlap: 'horizontal', constraint: false});
+    MochiKit.Sortable.Sortable.create('thelist');
+    MochiKit.Sortable.Sortable.create('thelist2');
+
+    // ]]>
+</script>
+
+</body>
+</html>

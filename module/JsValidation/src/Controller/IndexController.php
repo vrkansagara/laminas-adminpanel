@@ -2,7 +2,6 @@
 namespace JsValidation\Controller;
 
 use JsValidation\Form\PostForm;
-use Laminas\Filter\Word\UnderscoreToCamelCase;
 use Laminas\Mvc\Controller\AbstractActionController;
 use Laminas\View\Model\ViewModel;
 
@@ -32,7 +31,7 @@ class IndexController extends AbstractActionController
 // Attach a filter
         $filter   = new \Laminas\Filter\Word\UnderscoreToCamelCase();
         $filtered = $filter->filter($original);
-        echo $filtered;
+//        echo $filtered;
     }
 
     public function addAction()
