@@ -31,7 +31,7 @@ return [
             ],
 
         ],
-  
+
     ],
     'controllers' => [
         'factories' => [
