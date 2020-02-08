@@ -16,6 +16,7 @@ use Laminas\EventManager\ListenerAggregateInterface;
 use Laminas\Mvc\MvcEvent;
 use Laminas\Stdlib\CallbackHandler;
 use Laminas\Stdlib\ResponseInterface;
+
 use function in_array;
 
 /**
@@ -92,12 +93,12 @@ class PageCacheListener implements ListenerAggregateInterface
     public function onRoutePost(MvcEvent $e): ?ResponseInterface
     {
         $matches = $e->getRouteMatch();
-        if (!$matches) {
+        if (! $matches) {
             return null;
         }
 
         $controller = $matches->getParam('controller');
-        if (!in_array($controller, ['PhlySimplePage\Controller\Page', PageController::class], true)) {
+        if (! in_array($controller, ['PhlySimplePage\Controller\Page', PageController::class], true)) {
             return null;
         }
 
@@ -108,14 +109,14 @@ class PageCacheListener implements ListenerAggregateInterface
         }
 
         $template = $matches->getParam('template', false);
-        if (!$template) {
+        if (! $template) {
             return null;
         }
 
         $cacheKey = Module::normalizeCacheKey($template);
 
         $result = $this->cache->getItem($cacheKey, $success);
-        if (!$success) {
+        if (! $success) {
             // Not a cache hit; keep working, but indicate we should cache this
             $this->cacheThisRequest = true;
             $this->cacheKey = $cacheKey;
@@ -135,7 +136,7 @@ class PageCacheListener implements ListenerAggregateInterface
      */
     public function onFinishPost(MvcEvent $e): void
     {
-        if (!$this->cacheThisRequest || !$this->cacheKey) {
+        if (! $this->cacheThisRequest || ! $this->cacheKey) {
             return;
         }
 

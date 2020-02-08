@@ -14,6 +14,7 @@ use Laminas\Cache\Storage\Adapter\AbstractAdapter;
 use Laminas\Cache\StorageFactory;
 use Laminas\ServiceManager\Exception;
 use Psr\Container\ContainerInterface;
+
 use function sprintf;
 
 class PageCacheFactory
@@ -26,7 +27,7 @@ class PageCacheFactory
     public function __invoke(ContainerInterface $container): AbstractAdapter
     {
         $config = $container->get('config')['phly-simple-page'] ?? [];
-        if (!isset($config['cache'])) {
+        if (! isset($config['cache'])) {
             throw new Exception\ServiceNotCreatedException(sprintf(
                 '%s could not create a cache storage adapter, as the ["phly-simple-page"]["cache"]'
                 . ' key is missing',

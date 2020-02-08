@@ -25,6 +25,7 @@ use Laminas\Stdlib\DispatchableInterface;
 use Laminas\Stdlib\RequestInterface;
 use Laminas\Stdlib\ResponseInterface;
 use Laminas\View\Model\ViewModel;
+
 use function get_class;
 use function sprintf;
 
@@ -54,7 +55,7 @@ class PageController implements
     public function dispatch(RequestInterface $request, ?ResponseInterface $response = null)
     {
         $event = $this->getEvent();
-        if (!$event) {
+        if (! $event) {
             $event = new MvcEvent();
         }
 
@@ -104,7 +105,7 @@ class PageController implements
      */
     public function getEventManager(): EventManagerInterface
     {
-        if (!$this->events) {
+        if (! $this->events) {
             $this->setEventManager(new EventManager());
         }
         return $this->events;
@@ -153,7 +154,7 @@ class PageController implements
      */
     public function onDispatch(EventInterface $e): void
     {
-        if (!$e instanceof MvcEvent) {
+        if (! $e instanceof MvcEvent) {
             throw new Exception\DomainException(sprintf(
                 '%s requires an MvcEvent instance; received "%s"',
                 self::class,
@@ -163,8 +164,8 @@ class PageController implements
 
         $matches = $e->getRouteMatch();
         if (
-            !$matches instanceof RouteMatch
-            && !$matches instanceof LegacyRouteMatch
+            ! $matches instanceof RouteMatch
+            && ! $matches instanceof LegacyRouteMatch
         ) {
             throw new Exception\DomainException(sprintf(
                 'No RouteMatch instance provided to event passed to %s',
@@ -173,7 +174,7 @@ class PageController implements
         }
 
         $template = $matches->getParam('template', false);
-        if (!$template) {
+        if (! $template) {
             $e->setError(Application::ERROR_CONTROLLER_INVALID);
             $response = $e->getResponse();
             if ($response instanceof HttpResponse) {
