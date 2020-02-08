@@ -1,24 +1,80 @@
-<h1>Blog Posts</h1>
-<p>
-    <a href="<?php echo $this->url('blog/add'); ?>">Add new Post</a>
-</p>
-<div class="list-group">
-    <?php foreach ($this->posts as $post) : ?>
-        <div class="list-group-item">
-            <h4 class="list-group-item-heading">
-                <a href="<?= $this->url('blog/detail', ['id' => $post->getId()]) ?>">
-                    <?= $post->getTitle() ?>
-                </a>
-            </h4>
+<div class="container">
+    <?php
+    $this->headTitle('Posts');
+    ?>
+    <h1>Posts</h1>
 
-            <div class="btn-group" role="group" aria-label="Post actions">
-                <a class="btn btn-xs btn-default" href="<?= $this->url('blog/edit', ['id' => $post->getId()]) ?>">Edit</a>
-                <a class="btn btn-xs btn-danger" href="<?= $this->url('blog/delete', ['id' => $post->getId()]) ?>">Delete</a>
+    <a href="<?= $this->url('blog/posts', ['action' => 'add']); ?>">
+        Add
+    </a>
+</div>
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-8">
+
+            <?php foreach ($posts as $post) : ?>
+
+                <h3>
+                    <a href="<?= $this->url('blog/posts', ['action' => 'view', 'id' => $post->getId()]); ?>">
+                        <?= $this->escapeHtml($post->getTitle()); ?>
+                    </a>
+                </h3>
+
+                <p>
+                    Published: <?= $this->escapeHtml(date('jS \of F Y', strtotime($post->getDateCreated()))); ?>
+                    | Tags: <?= $this->escapeHtml($postManager->convertTagsToString($post)); ?>
+                </p>
+
+                <p class="comments-header">
+                    <?= $this->escapeHtml($postManager->getCommentCountStr($post)); ?> |
+                    <a href="<?= $this->url(
+                                    'blog/posts',
+                                    ['action' => 'view', 'id' => $post->getId()],
+                                    ['fragment' => 'comment']
+                                ); ?>">
+                        Add new comment
+                    </a>
+                </p>
+
+                <p>
+                    <?= $converter->convertToHtml($this->escapeHtml($post->getContent())); ?>
+                </p>
+
+            <?php endforeach; ?>
+
+            <?= $this->paginationControl(
+                $posts,
+                'Sliding',
+                'blog/partial/paginator',
+                array('route' => 'blog')
+            ); ?>
+
+        </div>
+
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Popular Tags</h3>
+                </div>
+                <div class="panel-body">
+                    <?php foreach ($this->tagCloud as $tagName => $frequency) : ?>
+
+                        <a href="<?= $this->url(
+                                        'blog',
+                                        ['action' => 'index'],
+                                        ['query' => ['tag' => $tagName]]
+                                    ); ?>">
+
+                            <span style="font-size:<?= $this->escapeHtml(0.9 + $frequency * 3) ?>em">
+                                <?= $this->escapeHtml($tagName); ?>
+                            </span>
+
+                        </a>
+
+                    <?php endforeach; ?>
+                </div>
             </div>
         </div>
-    <?php endforeach ?>
-</div>
-
-<div class="btn-group" role="group" aria-label="Post actions">
-    <a class="btn btn-primary" href="<?= $this->url('blog/add') ?>">Write new post</a>
+    </div>
 </div>

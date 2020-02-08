@@ -5,6 +5,31 @@ use Laminas\Session\Validator\HttpUserAgent;
 use Laminas\Session\Validator\RemoteAddr;
 
 return [
+//    'db' => [
+//        'adapters' => [
+//            'Application\Db\WriteAdapter' => [
+//                'driver' => 'Pdo',
+//                'dsn'    => 'mysql:dbname=application;host=canonical.example.com;charset=utf8',
+//            ],
+//            'Application\Db\ReadOnlyAdapter' => [
+//                'driver' => 'Pdo',
+//                'dsn'    => 'mysql:dbname=application;host=replica.example.com;charset=utf8',
+//            ],
+//        ],
+//    ],
+    'router' => [
+        'router_class' => Laminas\Mvc\I18n\Router\TranslatorAwareTreeRouteStack::class,
+    ],
+    'translator' => [
+        'locale' => 'en_US',
+        'translation_file_patterns' => [
+            [
+                'type'     => 'gettext',
+                'base_dir' => getcwd() .  '/data/language',
+                'pattern'  => '%s.mo',
+            ],
+        ],
+    ],
     'doctrine' => [
         // migrations configuration
         'migrations_configuration' => [
