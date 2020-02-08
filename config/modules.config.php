@@ -8,8 +8,10 @@ $applicationModules = [
     'EdpSuperluminal',
     'PhlySimplePage',
     'Blog',
+//    'User',
 //    'Event'
 'JsValidation',
+    'PhlyContact'
 ];
 
 $frameworkModule = [

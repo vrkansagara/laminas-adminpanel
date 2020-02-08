@@ -43,17 +43,17 @@ return [
                 ]
             ]
         ],
-        'controllers' => [
-            'factories' => [
-                Controller\IndexController::class => Factory\IndexControllerFactory::class,
 
-            ],
+    ],
+    'controllers' => [
+        'factories' => [
+            Controller\IndexController::class => Factory\IndexControllerFactory::class,
+
         ],
-        'service_manager' => [
-            'factories' => [
-            ],
+    ],
+    'service_manager' => [
+        'factories' => [
         ],
-        'view_helpers' => []
     ],
     'view_manager' => [
         'template_path_stack' => [

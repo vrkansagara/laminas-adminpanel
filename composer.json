@@ -58,14 +58,16 @@
   },
   "autoload": {
     "psr-4": {
-      "Application\\": "module/Application/src/",
+      "Application\\": "backend/core/module/Application/src",
+      "PhlySimplePage\\": "backend/vendor/module/phly/PhlySimplePage/src",
       "EdpSuperluminal\\": "module/EdpSuperluminal/src/",
-      "PhlySimplePage\\": "module/PhlySimplePage/src/",
       "AlbumTableGatway\\": "module/AlbumTableGatway/src/",
       "AlbumTableGatwayTest\\": "module/AlbumTableGatway/test/",
       "Blog\\": "module/Blog/src/",
+      "User\\": "module/User/src/",
       "Event\\": "module/Event/src/",
-      "JsValidation\\": "module/JsValidation/src/"
+      "JsValidation\\": "module/JsValidation/src/",
+      "PhlyContact\\": "module/PhlyContact"
     }
   },
   "autoload-dev": {
