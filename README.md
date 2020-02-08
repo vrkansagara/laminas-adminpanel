@@ -1,5 +1,7 @@
 # laminas-adminpanel
 
+># This project is NOT READY FOR PRODUCTION
+
 - Skeleton CSS
 - MochiKit (JavaScript)
 - HTML5
