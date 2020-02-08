@@ -1,10 +1,10 @@
 <?php
+
 namespace Blog\Controller;
 
 use Blog\Model\PostRepositoryInterface;
 use Laminas\Mvc\Controller\AbstractActionController;
 use Laminas\View\Model\ViewModel;
-use InvalidArgumentException;
 
 class ListController extends AbstractActionController
 {

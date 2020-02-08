@@ -2,8 +2,8 @@
 
 namespace Blog\Factory;
 
-use Interop\Container\ContainerInterface;
 use Blog\Model\LaminasDbSqlCommand;
+use Interop\Container\ContainerInterface;
 use Laminas\Db\Adapter\AdapterInterface;
 use Laminas\ServiceManager\Factory\FactoryInterface;
 

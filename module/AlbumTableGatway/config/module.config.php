@@ -1,11 +1,13 @@
 <?php
+
 namespace AlbumTableGatway;
 
 use Laminas\Router\Http\Segment;
+
 return [
     'db' => [
         'driver' => 'Pdo',
-        'dsn'    =>     sprintf('sqlite:%s/../data/laminastutorial.db', realpath(__DIR__))
+        'dsn' => sprintf('sqlite:%s/../data/laminastutorial.db', realpath(__DIR__))
     ],
 //    'controllers' => [
 //        'factories' => [

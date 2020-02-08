@@ -1,4 +1,5 @@
 <?php
+
 namespace Application\Controller;
 
 use Laminas\Mvc\Controller\AbstractActionController;
@@ -34,7 +35,7 @@ class IndexController extends AbstractActionController
         // Use the CurrentUser Controller plugin to get the current user.
         $user = $this->currentUser();
 
-        if ($user==null) {
+        if ($user == null) {
             throw new \Exception('Not logged in');
         }
 

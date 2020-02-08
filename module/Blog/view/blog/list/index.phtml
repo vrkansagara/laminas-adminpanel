@@ -6,7 +6,9 @@
     </div>
 </div>
 <div class="list-group">
-    <?php foreach ($this->posts as $post): ?>
+    <?php
+
+    foreach ($this->posts as $post) : ?>
         <div class="list-group-item">
             <h4 class="list-group-item-heading">
                 <a href="<?= $this->url('blog/detail', ['id' => $post->getId()]) ?>">
@@ -15,7 +17,8 @@
             </h4>
 
             <div class="btn-group" role="group" aria-label="Post actions">
-                <a class="btn btn-xs btn-default" href="<?= $this->url('blog/edit', ['id' => $post->getId()]) ?>">Edit</a>
+                <a class="btn btn-xs btn-default"
+                   href="<?= $this->url('blog/edit', ['id' => $post->getId()]) ?>">Edit</a>
                 <a class="btn btn-xs btn-danger" href="<?= $this->url('blog/delete', ['id' => $post->getId()]) ?>">Delete</a>
             </div>
         </div>

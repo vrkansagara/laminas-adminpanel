@@ -1,4 +1,5 @@
 <?php
+
 namespace AlbumTableGatwayTest\Model;
 
 use AlbumTableGatway\Model\Album;

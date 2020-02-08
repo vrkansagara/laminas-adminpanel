@@ -1,4 +1,5 @@
 <?php
+
 namespace Application\Validator;
 
 use Laminas\Validator\AbstractValidator;
@@ -46,8 +47,10 @@ class PhoneValidator extends AbstractValidator
     public function setFormat($format)
     {
         // Check input argument.
-        if ($format != self::PHONE_FORMAT_LOCAL &&
-            $format != self::PHONE_FORMAT_INTL) {
+        if (
+            $format != self::PHONE_FORMAT_LOCAL &&
+            $format != self::PHONE_FORMAT_INTL
+        ) {
             throw new \Exception('Invalid format argument passed.');
         }
 

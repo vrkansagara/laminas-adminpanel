@@ -2,10 +2,10 @@
 
 namespace AlbumTableGatway;
 
-use Laminas\ModuleManager\Feature\ConfigProviderInterface;
 use Laminas\Db\Adapter\AdapterInterface;
 use Laminas\Db\ResultSet\ResultSet;
 use Laminas\Db\TableGateway\TableGateway;
+use Laminas\ModuleManager\Feature\ConfigProviderInterface;
 
 class Module implements ConfigProviderInterface
 {
@@ -18,7 +18,7 @@ class Module implements ConfigProviderInterface
     {
         return [
             'factories' => [
-                Model\AlbumTable::class => function($container) {
+                Model\AlbumTable::class => function ($container) {
                     $tableGateway = $container->get(Model\AlbumTableGateway::class);
                     return new Model\AlbumTable($tableGateway);
                 },
@@ -36,7 +36,7 @@ class Module implements ConfigProviderInterface
     {
         return [
             'factories' => [
-                Controller\AlbumController::class => function($container) {
+                Controller\AlbumController::class => function ($container) {
                     // get service manager
                     $serviceLocator = $container->get('ServiceManager');
                     // get view helper manager
@@ -52,6 +52,4 @@ class Module implements ConfigProviderInterface
             ],
         ];
     }
-
-
 }

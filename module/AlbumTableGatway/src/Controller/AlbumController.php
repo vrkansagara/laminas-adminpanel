@@ -4,9 +4,9 @@ namespace AlbumTableGatway\Controller;
 
 use AlbumTableGatway\Form\AlbumForm;
 use AlbumTableGatway\Model\Album;
+use AlbumTableGatway\Model\AlbumTable;
 use Laminas\Mvc\Controller\AbstractActionController;
 use Laminas\View\Model\ViewModel;
-use AlbumTableGatway\Model\AlbumTable;
 
 class AlbumController extends AbstractActionController
 {

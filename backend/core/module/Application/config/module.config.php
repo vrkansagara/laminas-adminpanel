@@ -157,18 +157,18 @@ return [
     'navigation' => $navigation,
     'router' => [
         'routes' => [
-            'about' => array(
+            'about' => [
                 'type' => 'Literal',
-                'options' => array(
+                'options' => [
                     'route' => '/about',
-                    'defaults' => array(
+                    'defaults' => [
                         'controller' => PageController::class,
                         'template' => 'application/pages/about',
                         'layout' => 'layout/layout',
                         'do_not_cache' => true,
-                    ),
-                ),
-            ),
+                    ],
+                ],
+            ],
             'home' => [
                 'type' => Literal::class,
                 'options' => [

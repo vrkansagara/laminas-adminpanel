@@ -2,7 +2,6 @@
 
 namespace Blog\Controller;
 
-use Blog\Model\Post;
 use Blog\Model\PostCommandInterface;
 use Blog\Model\PostRepositoryInterface;
 use InvalidArgumentException;
@@ -47,11 +46,12 @@ class DeleteController extends AbstractActionController
         }
 
         $request = $this->getRequest();
-        if (! $request->isPost()) {
+        if (!$request->isPost()) {
             return new ViewModel(['post' => $post]);
         }
 
-        if ($id != $request->getPost('id')
+        if (
+            $id != $request->getPost('id')
             || 'Delete' !== $request->getPost('confirm', 'no')
         ) {
             return $this->redirect()->toRoute('blog');

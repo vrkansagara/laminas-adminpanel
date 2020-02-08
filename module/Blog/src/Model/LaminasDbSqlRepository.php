@@ -1,13 +1,15 @@
 <?php
+
 namespace Blog\Model;
 
 use InvalidArgumentException;
 use Laminas\Db\Adapter\AdapterInterface;
-use Laminas\Db\Sql\Sql;
-use RuntimeException;
 use Laminas\Db\Adapter\Driver\ResultInterface;
-use Laminas\Hydrator\HydratorInterface;
 use Laminas\Db\ResultSet\HydratingResultSet;
+use Laminas\Db\Sql\Sql;
+use Laminas\Hydrator\HydratorInterface;
+use RuntimeException;
+
 class LaminasDbSqlRepository implements PostRepositoryInterface
 {
 
@@ -53,8 +55,6 @@ class LaminasDbSqlRepository implements PostRepositoryInterface
         $resultSet = new HydratingResultSet($this->hydrator, $this->postPrototype);
         $resultSet->initialize($result);
         return $resultSet;
-
-
     }
 
     /**

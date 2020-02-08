@@ -1,8 +1,9 @@
 <?php
+
 namespace User;
 
-use Laminas\Mvc\MvcEvent;
 use Laminas\Mvc\Controller\AbstractActionController;
+use Laminas\Mvc\MvcEvent;
 use User\Controller\AuthController;
 use User\Service\AuthManager;
 
@@ -74,9 +75,10 @@ class Module
 
         // Execute the access filter on every controller except AuthController
         // (to avoid infinite redirect).
-        if ($controllerName != AuthController::class &&
-            !$authManager->filterAccess($controllerName, $actionName)) {
-
+        if (
+            $controllerName != AuthController::class &&
+            !$authManager->filterAccess($controllerName, $actionName)
+        ) {
             // Remember the URL of the page the user tried to access. We will
             // redirect the user to that URL after successful login.
             $uri = $event->getApplication()->getRequest()->getUri();

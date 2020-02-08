@@ -1,9 +1,10 @@
 <?php
+
 namespace UserTest\Controller;
 
-use User\Controller\UserController;
 use Laminas\Stdlib\ArrayUtils;
 use Laminas\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
+use User\Controller\UserController;
 
 class UserControllerTest extends AbstractHttpControllerTestCase
 {

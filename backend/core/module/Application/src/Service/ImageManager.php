@@ -1,4 +1,5 @@
 <?php
+
 /**
  * A service model class encapsulating the functionality for image management.
  */
@@ -62,7 +63,7 @@ class ImageManager
         $files = [];
         $handle = opendir($this->saveToDir);
         while (false !== ($entry = readdir($handle))) {
-            if (in_array($entry, ['.', '..','.gitkeep','.gitignore'])) {
+            if (in_array($entry, ['.', '..', '.gitkeep', '.gitignore'])) {
                 continue; // Skip current dir and parent dir.
             }
             $files[] = $entry;

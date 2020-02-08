@@ -33,7 +33,6 @@ class PostForm extends Form
                 'value' => 'Insert new Post',
             ],
         ]);
-
     }
 
 

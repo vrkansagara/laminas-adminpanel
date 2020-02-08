@@ -1,9 +1,10 @@
 <?php
+
 namespace Application\Controller;
 
+use Application\Form\ImageForm;
 use Laminas\Mvc\Controller\AbstractActionController;
 use Laminas\View\Model\ViewModel;
-use Application\Form\ImageForm;
 
 /**
  * This Controller is designed for managing image file uploads.

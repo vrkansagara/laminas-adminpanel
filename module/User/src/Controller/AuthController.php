@@ -2,12 +2,11 @@
 
 namespace User\Controller;
 
-use Laminas\Mvc\Controller\AbstractActionController;
-use Laminas\View\Model\ViewModel;
 use Laminas\Authentication\Result;
+use Laminas\Mvc\Controller\AbstractActionController;
 use Laminas\Uri\Uri;
+use Laminas\View\Model\ViewModel;
 use User\Form\LoginForm;
-use User\Entity\User;
 
 /**
  * This controller is responsible for letting the user to log in and log out.
@@ -50,7 +49,7 @@ class AuthController extends AbstractActionController
         // Retrieve the redirect URL (if passed). We will redirect the user to this
         // URL after successfull login.
         $redirectUrl = (string)$this->params()->fromQuery('redirectUrl', '');
-        if (strlen($redirectUrl)>2048) {
+        if (strlen($redirectUrl) > 2048) {
             throw new \Exception("Too long redirectUrl argument passed");
         }
 
@@ -67,25 +66,25 @@ class AuthController extends AbstractActionController
 
         // Check if user has submitted the form
         if ($this->getRequest()->isPost()) {
-
             // Fill in the form with POST data
             $data = $this->params()->fromPost();
 
             $form->setData($data);
 
             // Validate form
-            if($form->isValid()) {
-
+            if ($form->isValid()) {
                 // Get filtered and validated data
                 $data = $form->getData();
 
                 // Perform login attempt.
-                $result = $this->authManager->login($data['email'],
-                        $data['password'], $data['remember_me']);
+                $result = $this->authManager->login(
+                    $data['email'],
+                    $data['password'],
+                    $data['remember_me']
+                );
 
                 // Check result.
                 if ($result->getCode() == Result::SUCCESS) {
-
                     // Get redirect URL.
                     $redirectUrl = $this->params()->fromPost('redirect_url', '');
 
@@ -93,13 +92,14 @@ class AuthController extends AbstractActionController
                         // The below check is to prevent possible redirect attack
                         // (if someone tries to redirect user to another domain).
                         $uri = new Uri($redirectUrl);
-                        if (!$uri->isValid() || $uri->getHost()!=null)
+                        if (!$uri->isValid() || $uri->getHost() != null) {
                             throw new \Exception('Incorrect redirect URL: ' . $redirectUrl);
+                        }
                     }
 
                     // If redirect URL is provided, redirect the user to that URL;
                     // otherwise redirect to Home page.
-                    if(empty($redirectUrl)) {
+                    if (empty($redirectUrl)) {
                         return $this->redirect()->toRoute('home');
                     } else {
                         $this->redirect()->toUrl($redirectUrl);

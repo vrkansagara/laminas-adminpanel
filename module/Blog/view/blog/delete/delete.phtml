@@ -6,8 +6,10 @@
     <li class="list-group-item"><?= $this->escapeHtml($this->post->getTitle()) ?></li>
 </ul>
 
-<form action="<?php $this->url('blog/delete', [], true) ?>" method="post">
-    <input type="hidden" name="id" value="<?= $this->escapeHtmlAttr($this->post->getId()) ?>" />
-    <input class="btn btn-default" type="submit" name="confirm" value="Cancel" />
-    <input class="btn btn-danger" type="submit" name="confirm" value="Delete" />
+<form action="<?php
+
+$this->url('blog/delete', [], true) ?>" method="post">
+    <input type="hidden" name="id" value="<?= $this->escapeHtmlAttr($this->post->getId()) ?>"/>
+    <input class="btn btn-default" type="submit" name="confirm" value="Cancel"/>
+    <input class="btn btn-danger" type="submit" name="confirm" value="Delete"/>
 </form>

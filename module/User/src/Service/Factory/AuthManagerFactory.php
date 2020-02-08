@@ -14,7 +14,7 @@ use User\Service\AuthManager;
 class AuthManagerFactory implements FactoryInterface
 {
     /**
-     * This method creates the AuthManager service and returns its instance. 
+     * This method creates the AuthManager service and returns its instance.
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {

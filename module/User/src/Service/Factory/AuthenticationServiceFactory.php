@@ -4,9 +4,9 @@ namespace User\Service\Factory;
 
 use Interop\Container\ContainerInterface;
 use Laminas\Authentication\AuthenticationService;
+use Laminas\Authentication\Storage\Session as SessionStorage;
 use Laminas\ServiceManager\Factory\FactoryInterface;
 use Laminas\Session\SessionManager;
-use Laminas\Authentication\Storage\Session as SessionStorage;
 use User\Service\AuthAdapter;
 
 /**
@@ -15,8 +15,8 @@ use User\Service\AuthAdapter;
 class AuthenticationServiceFactory implements FactoryInterface
 {
     /**
-     * This method creates the Laminas\Authentication\AuthenticationService service 
-     * and returns its instance. 
+     * This method creates the Laminas\Authentication\AuthenticationService service
+     * and returns its instance.
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {

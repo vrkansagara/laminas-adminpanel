@@ -1,4 +1,5 @@
 <?php
+
 namespace JsValidation;
 
 use Laminas\Router\Http\Literal;

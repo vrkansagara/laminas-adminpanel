@@ -1,4 +1,5 @@
 <?php
+
 namespace Blog\Factory;
 
 use Blog\Controller\WriteController;

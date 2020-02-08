@@ -1,9 +1,10 @@
 <?php
+
 namespace User\Service\Factory;
 
 use Interop\Container\ContainerInterface;
-use User\Service\AuthAdapter;
 use Laminas\ServiceManager\Factory\FactoryInterface;
+use User\Service\AuthAdapter;
 
 /**
  * This is the factory class for AuthAdapter service. The purpose of the factory
@@ -12,13 +13,13 @@ use Laminas\ServiceManager\Factory\FactoryInterface;
 class AuthAdapterFactory implements FactoryInterface
 {
     /**
-     * This method creates the AuthAdapter service and returns its instance. 
+     * This method creates the AuthAdapter service and returns its instance.
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
-    {        
+    {
         // Get Doctrine entity manager from Service Manager.
-        $entityManager = $container->get('doctrine.entitymanager.orm_default');        
-                        
+        $entityManager = $container->get('doctrine.entitymanager.orm_default');
+
         // Create the AuthAdapter and inject dependency to its constructor.
         return new AuthAdapter($entityManager);
     }

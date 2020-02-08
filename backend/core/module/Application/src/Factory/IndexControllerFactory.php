@@ -2,9 +2,9 @@
 
 namespace Application\Factory;
 
+use Application\Controller\IndexController;
 use Interop\Container\ContainerInterface;
 use Laminas\ServiceManager\Factory\FactoryInterface;
-use Application\Controller\IndexController;
 
 /**
  * This is the factory for IndexController. Its purpose is to instantiate the

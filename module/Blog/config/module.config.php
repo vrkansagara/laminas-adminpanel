@@ -1,4 +1,5 @@
 <?php
+
 namespace Blog;
 
 use Laminas\Router\Http\Literal;
@@ -8,7 +9,7 @@ use Laminas\ServiceManager\Factory\InvokableFactory;
 return [
     'db' => [
         'driver' => 'Pdo',
-        'dsn'    =>     sprintf('sqlite:%s/../data/laminastutorial.db', realpath(__DIR__))
+        'dsn' => sprintf('sqlite:%s/../data/laminastutorial.db', realpath(__DIR__))
     ],
     'controllers' => [
         'factories' => [
@@ -21,7 +22,7 @@ return [
     'service_manager' => [
         'aliases' => [
             Model\PostRepositoryInterface::class => Model\LaminasDbSqlRepository::class,
-            Model\PostCommandInterface::class =>  Model\LaminasDbSqlCommand::class,
+            Model\PostCommandInterface::class => Model\LaminasDbSqlCommand::class,
 
         ],
         'factories' => [

@@ -40,8 +40,10 @@ class Module
     public function cache($e)
     {
         $request = $e->getRequest();
-        if ($request instanceof ConsoleRequest ||
-            $request->getQuery()->get('EDPSUPERLUMINAL_CACHE', null) === null) {
+        if (
+            $request instanceof ConsoleRequest ||
+            $request->getQuery()->get('EDPSUPERLUMINAL_CACHE', null) === null
+        ) {
             return;
         }
         if (file_exists(ZF_CLASS_CACHE)) {
@@ -92,7 +94,8 @@ class Module
 
             // Skip internal classes or classes from extensions
             // (this shouldn't happen, as we're only caching Zend classes)
-            if ($class->isInternal()
+            if (
+                $class->isInternal()
                 || $class->getExtensionName()
             ) {
                 continue;

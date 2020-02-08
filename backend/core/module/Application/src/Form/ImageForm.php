@@ -1,8 +1,8 @@
 <?php
+
 namespace Application\Form;
 
 use Laminas\Form\Form;
-use Laminas\InputFilter\InputFilter;
 use Laminas\InputFilter\FileInput;
 
 /**

@@ -3,10 +3,8 @@
 namespace Application;
 
 use Laminas\EventManager\Event;
-use Laminas\ModuleManager\Feature\AutoloaderProviderInterface;
 use Laminas\ModuleManager\Feature\ConfigProviderInterface;
 use Laminas\Mvc\MvcEvent;
-use Laminas\Session\SessionManager;
 
 class Module implements ConfigProviderInterface
 {
@@ -59,7 +57,7 @@ class Module implements ConfigProviderInterface
         if ($config['is_debug']) {
             $this->bufferOldSize = strlen($content);
         }
-        $whiteSpaceRules = array(
+        $whiteSpaceRules = [
             '/(\s)+/s' => '\\1',// shorten multiple whitespace sequences
             "#>\s+<#" => ">\n<",  // Strip excess whitespace using new line
             "#\n\s+<#" => "\n<",// strip excess whitespace using new line
@@ -75,14 +73,14 @@ class Module implements ConfigProviderInterface
              * /x',
              */
             //            '/\s+(?![^<>]*>)/x' => '', //Remove all whitespaces except content between html tags. //MOST DANGEROUS
-        );
-        $commentRules = array(
+        ];
+        $commentRules = [
             "/<!--.*?-->/ms" => '',// Remove all html comment.,
-        );
-        $replaceWords = array(
+        ];
+        $replaceWords = [
             //OldWord will be replaced by the NewWord
             //              '/\bOldWord\b/i' =>'NewWord' // OldWord <-> NewWord DO NOT REMOVE THIS LINE. {REFERENCE LINE}
-        );
+        ];
         $allRules = array_merge(
             $replaceWords,
             $commentRules,
@@ -95,7 +93,8 @@ class Module implements ConfigProviderInterface
             $old = $this->formatSizeUnits($this->bufferOldSize);
             $new = $this->formatSizeUnits($this->bufferNewSize);
             $percent = round(
-                ($this->bufferNewSize / $this->bufferOldSize) * 100, 2
+                ($this->bufferNewSize / $this->bufferOldSize) * 100,
+                2
             );
             $buffer
                 .= <<< EOF
@@ -165,7 +164,7 @@ EOF;
     public function formatSizeUnits($size)
     {
         $base = log($size) / log(1024);
-        $suffix = array('', 'KB', 'MB', 'GB', 'TB');
+        $suffix = ['', 'KB', 'MB', 'GB', 'TB'];
         $f_base = floor($base);
         return round(pow(1024, $base - floor($base)), 2) . $suffix[$f_base];
     }
@@ -173,7 +172,7 @@ EOF;
     public function compressJscript($buffer)
     {
         // JavaScript compressor by John Elliot <jj5@jj5.net>
-        $replace = array(
+        $replace = [
             '#\'([^\n\']*?)/\*([^\n\']*)\'#' => "'\1/'+\'\'+'*\2'",
             // remove comments from ' strings
             '#\"([^\n\"]*?)/\*([^\n\"]*)\"#' => '"\1/"+\'\'+"*\2"',
@@ -193,9 +192,9 @@ EOF;
             // (important given later replacements)
             '#/([\'"])\+\'\'\+([\'"])\*#' => "/*"
             // restore comments in strings
-        );
+        ];
         $script = preg_replace(array_keys($replace), $replace, $buffer);
-        $replace = array(
+        $replace = [
             "&&\n" => "&&",
             "||\n" => "||",
             "(\n" => "(",
@@ -213,7 +212,7 @@ EOF;
             "\n)" => ")",
             "\n}" => "}",
             "\n\n" => "\n",
-        );
+        ];
         $script = str_replace(array_keys($replace), $replace, $script);
         return trim($script);
     }

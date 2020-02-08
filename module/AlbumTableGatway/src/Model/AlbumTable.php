@@ -1,12 +1,13 @@
 <?php
+
 namespace AlbumTableGatway\Model;
 
 use Laminas\Db\ResultSet\ResultSet;
 use Laminas\Db\Sql\Select;
+use Laminas\Db\TableGateway\TableGatewayInterface;
 use Laminas\Paginator\Adapter\DbSelect;
 use Laminas\Paginator\Paginator;
 use RuntimeException;
-use Laminas\Db\TableGateway\TableGatewayInterface;
 
 class AlbumTable
 {

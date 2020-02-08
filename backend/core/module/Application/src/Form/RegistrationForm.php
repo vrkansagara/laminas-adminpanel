@@ -1,9 +1,10 @@
 <?php
+
 namespace Application\Form;
 
+use Application\Validator\PhoneValidator;
 use Laminas\Form\Form;
 use Laminas\InputFilter\InputFilter;
-use Application\Validator\PhoneValidator;
 
 /**
  * This form is used to collect user registration data. This form is multi-step.

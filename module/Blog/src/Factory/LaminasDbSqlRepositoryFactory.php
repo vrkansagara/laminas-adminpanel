@@ -1,13 +1,13 @@
 <?php
+
 namespace Blog\Factory;
 
-use Interop\Container\ContainerInterface;
-use Blog\Model\Post;
 use Blog\Model\LaminasDbSqlRepository;
+use Blog\Model\Post;
+use Interop\Container\ContainerInterface;
 use Laminas\Db\Adapter\AdapterInterface;
 use Laminas\Hydrator\Reflection as ReflectionHydrator;
 use Laminas\ServiceManager\Factory\FactoryInterface;
-
 
 class LaminasDbSqlRepositoryFactory implements FactoryInterface
 {
@@ -23,5 +23,6 @@ class LaminasDbSqlRepositoryFactory implements FactoryInterface
             $container->get(AdapterInterface::class),
             new ReflectionHydrator(),
             new Post('', '')
-        );    }
+        );
+    }
 }

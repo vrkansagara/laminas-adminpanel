@@ -1,4 +1,5 @@
 <?php
+
 use Laminas\Paginator\ConfigProvider;
 
 return [

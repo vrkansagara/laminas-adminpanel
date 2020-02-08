@@ -1,12 +1,13 @@
 <?php
+
 namespace AlbumTableGatwayTest\Model;
 
 use AlbumTableGatway\Model\Album;
 use AlbumTableGatway\Model\AlbumTable;
-use PHPUnit\Framework\TestCase;
-use RuntimeException;
 use Laminas\Db\ResultSet\ResultSetInterface;
 use Laminas\Db\TableGateway\TableGatewayInterface;
+use PHPUnit\Framework\TestCase;
+use RuntimeException;
 
 class AlbumTableTest extends TestCase
 {

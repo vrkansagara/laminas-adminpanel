@@ -2,7 +2,6 @@
 
 namespace JsValidation\Form;
 
-
 use Laminas\Filter\StringTrim;
 use Laminas\Filter\StripNewlines;
 use Laminas\Filter\StripTags;
@@ -41,6 +40,5 @@ class PostInputFilter extends InputFilter
         ]);
 
         return $inputFilter;
-
     }
 }

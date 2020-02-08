@@ -1,10 +1,10 @@
 <?php
+
 namespace Application\Controller;
 
+use Application\Form\RegistrationForm;
 use Laminas\Mvc\Controller\AbstractActionController;
 use Laminas\View\Model\ViewModel;
-use Application\Form\RegistrationForm;
-use Laminas\Session\Container;
 
 /**
  * This is the Controller class displaying a page with the User Registration form.
@@ -68,7 +68,7 @@ class RegistrationController extends AbstractActionController
                 $this->sessionContainer->userChoices["step$step"] = $data;
 
                 // Increase step
-                $step ++;
+                $step++;
                 $this->sessionContainer->step = $step;
 
                 // If we completed all 3 steps, redirect to Review page.
@@ -99,9 +99,11 @@ class RegistrationController extends AbstractActionController
     public function reviewAction()
     {
         // Validate session data.
-        if (! isset($this->sessionContainer->step) ||
+        if (
+            !isset($this->sessionContainer->step) ||
             $this->sessionContainer->step <= 3 ||
-            ! isset($this->sessionContainer->userChoices)) {
+            !isset($this->sessionContainer->userChoices)
+        ) {
             throw new \Exception('Sorry, the data is not available for review yet');
         }
 

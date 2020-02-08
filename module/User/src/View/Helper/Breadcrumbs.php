@@ -25,8 +25,9 @@ class Breadcrumbs extends AbstractHelper
     // Renders the breadcrumbs.
     public function render()
     {
-        if (count($this->items) == 0)
+        if (count($this->items) == 0) {
             return ''; // Do nothing if there are no items.
+        }
 
         // Resulting HTML code will be stored in this var
         $result = '<ol class="breadcrumb">';
@@ -38,7 +39,6 @@ class Breadcrumbs extends AbstractHelper
 
         // Walk through items
         foreach ($this->items as $label => $link) {
-
             // Make the last item inactive
             $isActive = ($itemNum == $itemCount ? true : false);
 
@@ -59,10 +59,11 @@ class Breadcrumbs extends AbstractHelper
     {
         $result = $isActive ? '<li class="active">' : '<li>';
 
-        if (!$isActive)
+        if (!$isActive) {
             $result .= '<a href="' . $link . '">' . $label . '</a>';
-        else
+        } else {
             $result .= $label;
+        }
 
         $result .= '</li>';
 

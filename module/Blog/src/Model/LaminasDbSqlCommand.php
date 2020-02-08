@@ -2,13 +2,13 @@
 
 namespace Blog\Model;
 
-use RuntimeException;
 use Laminas\Db\Adapter\AdapterInterface;
 use Laminas\Db\Adapter\Driver\ResultInterface;
 use Laminas\Db\Sql\Delete;
 use Laminas\Db\Sql\Insert;
 use Laminas\Db\Sql\Sql;
 use Laminas\Db\Sql\Update;
+use RuntimeException;
 
 class LaminasDbSqlCommand implements PostCommandInterface
 {

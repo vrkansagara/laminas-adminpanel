@@ -60,14 +60,14 @@
     "psr-4": {
       "Application\\": "backend/core/module/Application/src",
       "PhlySimplePage\\": "backend/vendor/module/phly/PhlySimplePage/src",
+      "PhlyContact\\": "backend/vendor/module/phly/PhlyContact/src",
       "EdpSuperluminal\\": "module/EdpSuperluminal/src/",
       "AlbumTableGatway\\": "module/AlbumTableGatway/src/",
       "AlbumTableGatwayTest\\": "module/AlbumTableGatway/test/",
       "Blog\\": "module/Blog/src/",
       "User\\": "module/User/src/",
       "Event\\": "module/Event/src/",
-      "JsValidation\\": "module/JsValidation/src/",
-      "PhlyContact\\": "module/PhlyContact"
+      "JsValidation\\": "module/JsValidation/src/"
     }
   },
   "autoload-dev": {

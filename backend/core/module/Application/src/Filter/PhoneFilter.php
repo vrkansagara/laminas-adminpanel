@@ -32,8 +32,10 @@ class PhoneFilter extends AbstractFilter
     public function setFormat($format)
     {
         // Check input argument.
-        if ($format != self::PHONE_FORMAT_LOCAL &&
-            $format != self::PHONE_FORMAT_INTL) {
+        if (
+            $format != self::PHONE_FORMAT_LOCAL &&
+            $format != self::PHONE_FORMAT_INTL
+        ) {
             throw new \Exception('Invalid format argument passed.');
         }
 

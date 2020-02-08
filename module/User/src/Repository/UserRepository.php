@@ -1,4 +1,5 @@
 <?php
+
 namespace User\Repository;
 
 use Doctrine\ORM\EntityRepository;
@@ -16,13 +17,13 @@ class UserRepository extends EntityRepository
     public function findAllUsers()
     {
         $entityManager = $this->getEntityManager();
-        
+
         $queryBuilder = $entityManager->createQueryBuilder();
-        
+
         $queryBuilder->select('u')
             ->from(User::class, 'u')
             ->orderBy('u.dateCreated', 'DESC');
-        
+
         return $queryBuilder->getQuery();
     }
 }

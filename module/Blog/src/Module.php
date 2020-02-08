@@ -1,4 +1,5 @@
 <?php
+
 namespace Blog;
 
 use Laminas\ModuleManager\Feature\ConfigProviderInterface;

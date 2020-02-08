@@ -1,13 +1,9 @@
 <?php
 
-
 namespace Event;
 
-
-use Laminas\EventManager\Event;
 use Laminas\EventManager\EventManager;
 use Laminas\ModuleManager\Feature\ConfigProviderInterface;
-use Laminas\Mvc\MvcEvent;
 
 class Module implements ConfigProviderInterface
 {
@@ -35,6 +31,4 @@ class Module implements ConfigProviderInterface
         $params = ['foo' => 'bar', 'baz' => 'bat'];
         $events->trigger('do', null, $params);
     }
-
-
 }

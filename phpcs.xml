@@ -28,5 +28,7 @@
     <!-- Paths to check -->
     <file>config</file>
     <file>module</file>
+    <file>backend/core</file>
+    <file>backend/vendor/module/phly</file>
     <file>public/index.php</file>
 </ruleset>

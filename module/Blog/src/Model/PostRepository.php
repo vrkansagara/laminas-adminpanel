@@ -1,9 +1,8 @@
 <?php
 
-
 namespace Blog\Model;
-use DomainException;
 
+use DomainException;
 
 class PostRepository implements PostRepositoryInterface
 {

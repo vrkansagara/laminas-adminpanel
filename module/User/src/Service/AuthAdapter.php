@@ -1,4 +1,5 @@
 <?php
+
 namespace User\Service;
 
 use Laminas\Authentication\Adapter\AdapterInterface;
@@ -17,22 +18,22 @@ class AuthAdapter implements AdapterInterface
 {
     /**
      * User email.
-     * @var string 
+     * @var string
      */
     private $email;
-    
+
     /**
      * Password
-     * @var string 
+     * @var string
      */
     private $password;
-    
+
     /**
      * Entity manager.
-     * @var Doctrine\ORM\EntityManager 
+     * @var Doctrine\ORM\EntityManager
      */
     private $entityManager;
-        
+
     /**
      * Constructor.
      */
@@ -40,69 +41,71 @@ class AuthAdapter implements AdapterInterface
     {
         $this->entityManager = $entityManager;
     }
-    
+
     /**
-     * Sets user email.     
+     * Sets user email.
      */
-    public function setEmail($email) 
+    public function setEmail($email)
     {
-        $this->email = $email;        
+        $this->email = $email;
     }
-    
+
     /**
-     * Sets password.     
+     * Sets password.
      */
-    public function setPassword($password) 
+    public function setPassword($password)
     {
-        $this->password = (string)$password;        
+        $this->password = (string)$password;
     }
-    
+
     /**
      * Performs an authentication attempt.
      */
     public function authenticate()
-    {                
+    {
         // Check the database if there is a user with such email.
         $user = $this->entityManager->getRepository(User::class)
-                ->findOneByEmail($this->email);
-        
+            ->findOneByEmail($this->email);
+
         // If there is no such user, return 'Identity Not Found' status.
         if ($user == null) {
             return new Result(
-                Result::FAILURE_IDENTITY_NOT_FOUND, 
-                null, 
-                ['Invalid credentials.']);        
-        }   
-        
+                Result::FAILURE_IDENTITY_NOT_FOUND,
+                null,
+                ['Invalid credentials.']
+            );
+        }
+
         // If the user with such email exists, we need to check if it is active or retired.
         // Do not allow retired users to log in.
-        if ($user->getStatus()==User::STATUS_RETIRED) {
+        if ($user->getStatus() == User::STATUS_RETIRED) {
             return new Result(
-                Result::FAILURE, 
-                null, 
-                ['User is retired.']);        
+                Result::FAILURE,
+                null,
+                ['User is retired.']
+            );
         }
-        
+
         // Now we need to calculate hash based on user-entered password and compare
         // it with the password hash stored in database.
         $bcrypt = new Bcrypt();
         $passwordHash = $user->getPassword();
-        
+
         if ($bcrypt->verify($this->password, $passwordHash)) {
             // Great! The password hash matches. Return user identity (email) to be
             // saved in session for later use.
             return new Result(
-                    Result::SUCCESS, 
-                    $this->email, 
-                    ['Authenticated successfully.']);        
-        }             
-        
+                Result::SUCCESS,
+                $this->email,
+                ['Authenticated successfully.']
+            );
+        }
+
         // If password check didn't pass return 'Invalid Credential' failure status.
         return new Result(
-                Result::FAILURE_CREDENTIAL_INVALID, 
-                null, 
-                ['Invalid credentials.']);        
+            Result::FAILURE_CREDENTIAL_INVALID,
+            null,
+            ['Invalid credentials.']
+        );
     }
 }
-
-
