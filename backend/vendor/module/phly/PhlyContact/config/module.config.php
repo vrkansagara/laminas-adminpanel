@@ -2,33 +2,36 @@
 
 namespace PhlyContact;
 
+use Laminas\Captcha\Dumb;
+use Laminas\Mail\Transport\Sendmail;
+
 return [
     'phly_contact' => [
         'captcha' => [
-            'class' => 'dumb',
+            'class' => Dumb::class,
         ],
         'form' => [
             'name' => 'contact',
         ],
         'mail_transport' => [
-            'class' => 'Laminas\Mail\Transport\Sendmail',
+            'class' => Sendmail::class,
             'options' => [
             ]
         ],
         'message' => [
-            /*
-            'to' => array(
-                'EMAIL HERE' => 'NAME HERE',
-            ),
-            'sender' => array(
-                'address' => 'EMAIL HERE',
-                'name'    => 'NAME HERE',
-            ),
-            'from' => array(
-                'EMAIL HERE' => 'NAME HERE',
-            ),
-             */
+            'to' => [
+                'to@laminas-adminpanel.local' => 'laminas-adminpanel',
+            ],
+            'sender' => [
+                'address' => 'sender@laminas-adminpanel.local',
+                'laminas-adminpanel' => 'laminas-adminpanel',
+            ],
+            'from' => [
+                'from@laminas-adminpanel.local' => 'laminas-adminpanel',
+            ],
+
         ],
+  
     ],
     'controllers' => [
         'factories' => [
