@@ -14,10 +14,10 @@ Initial thought is not to implement bellow library for avoiding performance issu
 
 ## Goal
 
-The gola of making this admin panel to server a basic need of each web application which majory focus on three points.
+The goal of making this admin panel to server a basic need of web application using `Laminas` component.
 
 (1) Speed
 (2) Performance
 (3) Accuracy
 
-This will be totaly focus on SPA (Speed + Performance + Accuracy) theroy.
+This will be totally focus on SPA (Speed + Performance + Accuracy) theory.
