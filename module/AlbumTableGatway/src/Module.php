@@ -2,7 +2,8 @@
 
 namespace AlbumTableGatway;
 
-use Laminas\Db\Adapter\AdapterInterface;
+use Interop\Container\ContainerInterface;
+use Laminas\Db\Adapter\Adapter;
 use Laminas\Db\ResultSet\ResultSet;
 use Laminas\Db\TableGateway\TableGateway;
 use Laminas\ModuleManager\Feature\ConfigProviderInterface;
@@ -18,12 +19,14 @@ class Module implements ConfigProviderInterface
     {
         return [
             'factories' => [
-                Model\AlbumTable::class => function ($container) {
+                Model\AlbumTable::class => function (ContainerInterface $container) {
                     $tableGateway = $container->get(Model\AlbumTableGateway::class);
                     return new Model\AlbumTable($tableGateway);
                 },
-                Model\AlbumTableGateway::class => function ($container) {
-                    $dbAdapter = $container->get(AdapterInterface::class);
+                Model\AlbumTableGateway::class => function (ContainerInterface $container) {
+//                    $dbAdapter = $container->get(AdapterInterface::class);
+                    $configArray = $container->get('config');
+                    $dbAdapter = new Adapter($configArray['album-db']['db']);
                     $resultSetPrototype = new ResultSet();
                     $resultSetPrototype->setArrayObjectPrototype(new Model\Album());
                     return new TableGateway('album', $dbAdapter, null, $resultSetPrototype);
@@ -36,7 +39,7 @@ class Module implements ConfigProviderInterface
     {
         return [
             'factories' => [
-                Controller\AlbumController::class => function ($container) {
+                Controller\AlbumController::class => function (ContainerInterface $container) {
                     // get service manager
                     $serviceLocator = $container->get('ServiceManager');
                     // get view helper manager

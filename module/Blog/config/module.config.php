@@ -7,9 +7,11 @@ use Laminas\Router\Http\Segment;
 use Laminas\ServiceManager\Factory\InvokableFactory;
 
 return [
-    'db' => [
-        'driver' => 'Pdo',
-        'dsn' => sprintf('sqlite:%s/../data/laminastutorial.db', realpath(__DIR__))
+    'blog' => [
+        'db' => [
+            'driver' => 'Pdo',
+            'dsn' => sprintf('sqlite:%s/../data/Blog.db', realpath(__DIR__))
+        ]
     ],
     'controllers' => [
         'factories' => [
@@ -49,15 +51,15 @@ return [
                     // this route is matched
                     'defaults' => [
                         'controller' => Controller\ListController::class,
-                        'action'     => 'index',
+                        'action' => 'index',
                     ],
                 ],
                 'may_terminate' => true,
-                'child_routes'  => [
+                'child_routes' => [
                     'detail' => [
                         'type' => Segment::class,
                         'options' => [
-                            'route'    => '/:id',
+                            'route' => '/:id',
                             'defaults' => [
                                 'action' => 'detail',
                             ],
@@ -69,20 +71,20 @@ return [
                     'add' => [
                         'type' => Literal::class,
                         'options' => [
-                            'route'    => '/add',
+                            'route' => '/add',
                             'defaults' => [
                                 'controller' => Controller\WriteController::class,
-                                'action'     => 'add',
+                                'action' => 'add',
                             ],
                         ],
                     ],
                     'edit' => [
                         'type' => Segment::class,
                         'options' => [
-                            'route'    => '/edit/:id',
+                            'route' => '/edit/:id',
                             'defaults' => [
                                 'controller' => Controller\WriteController::class,
-                                'action'     => 'edit',
+                                'action' => 'edit',
                             ],
                             'constraints' => [
                                 'id' => '[1-9]\d*',
@@ -95,7 +97,7 @@ return [
                             'route' => '/delete/:id',
                             'defaults' => [
                                 'controller' => Controller\DeleteController::class,
-                                'action'     => 'delete',
+                                'action' => 'delete',
                             ],
                             'constraints' => [
                                 'id' => '[1-9]\d*',
@@ -115,9 +117,9 @@ return [
         'locale' => 'en_US',
         'translation_file_patterns' => [
             [
-                'type'     => 'gettext',
+                'type' => 'gettext',
                 'base_dir' => __DIR__ . '/../language',
-                'pattern'  => '%s.mo',
+                'pattern' => '%s.mo',
             ],
         ],
     ],

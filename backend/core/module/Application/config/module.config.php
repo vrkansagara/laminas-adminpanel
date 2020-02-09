@@ -80,6 +80,14 @@ $navigation = [
             'label' => 'JsValidation',
             'route' => 'validation'
         ],
+        [
+            'label' => 'Todo',
+            'route' => 'todo'
+        ],
+        [
+            'label' => 'Contributors',
+            'route' => 'contributors'
+        ],
 //        [
 //            'label' => 'Contact us',
 //            'route' => 'contact',
@@ -127,11 +135,11 @@ return [
     'phly-simple-page' => [
         'cache' => [
             'adapter' => [
-                'name'   => 'filesystem',
+                'name' => 'filesystem',
                 'options' => [
-                    'namespace'       => 'pages',
-                    'cache_dir'       => getcwd() . '/data/cache',
-                    'dir_permission'  => '0777',
+                    'namespace' => 'pages',
+                    'cache_dir' => getcwd() . '/data/cache',
+                    'dir_permission' => '0777',
                     'file_permission' => '0666',
                 ],
             ],
@@ -161,6 +169,30 @@ return [
     'navigation' => $navigation,
     'router' => [
         'routes' => [
+            'contributors' => [
+                'type' => 'Literal',
+                'options' => [
+                    'route' => '/contributors',
+                    'defaults' => [
+                        'controller' => PageController::class,
+                        'template' => 'application/pages/contributors',
+                        'layout' => 'layout/layout',
+                        'do_not_cache' => true,
+                    ],
+                ],
+            ],
+            'todo' => [
+                'type' => 'Literal',
+                'options' => [
+                    'route' => '/todo',
+                    'defaults' => [
+                        'controller' => PageController::class,
+                        'template' => 'application/pages/todo',
+                        'layout' => 'layout/layout',
+                        'do_not_cache' => true,
+                    ],
+                ],
+            ],
             'about' => [
                 'type' => 'Literal',
                 'options' => [

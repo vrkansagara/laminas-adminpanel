@@ -4,13 +4,13 @@ use Laminas\Stdlib\ArrayUtils;
 
 $applicationModules = [
     'Application',
-    'AlbumTableGatway',
     'EdpSuperluminal',
     'PhlySimplePage',
     'Blog',
+    'AlbumTableGatway',
 //    'User',
 //    'Event'
-'JsValidation',
+    'JsValidation',
     'PhlyContact'
 ];
 
