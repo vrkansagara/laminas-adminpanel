@@ -17,16 +17,18 @@ var paths = {
   distRoot: root + "dist"
 };
 var jSBundle = [
-  root + "js/vendor/MochiKit/MochiKit.js",
-  root + "js/vendor/MochiKit/Base.js",
-  root + "js/vendor/MochiKit/Iter.js",
-  root + "js/vendor/MochiKit/Logging.js",
-  root + "js/vendor/MochiKit/DateTime.js",
-  root + "js/vendor/MochiKit/Format.js",
-  root + "js/vendor/MochiKit/Async.js",
-  root + "js/vendor/MochiKit/DOM.js",
-  root + "js/vendor/MochiKit/Selector.js",
-  root + "js/vendor/MochiKit/Style.js",
+    root + "js/vendor/jquery/jquery-3.4.1.min.js",
+    root + "css/vendor/bootstrap/js/bootstrap.js",
+    root + "js/vendor/MochiKit/MochiKit.js",
+    root + "js/vendor/MochiKit/Base.js",
+    root + "js/vendor/MochiKit/Iter.js",
+    root + "js/vendor/MochiKit/Logging.js",
+    root + "js/vendor/MochiKit/DateTime.js",
+    root + "js/vendor/MochiKit/Format.js",
+    root + "js/vendor/MochiKit/Async.js",
+    root + "js/vendor/MochiKit/DOM.js",
+    root + "js/vendor/MochiKit/Selector.js",
+    root + "js/vendor/MochiKit/Style.js",
   root + "js/vendor/MochiKit/LoggingPane.js",
   root + "js/vendor/MochiKit/Color.js",
   root + "js/vendor/MochiKit/Signal.js",
@@ -37,19 +39,20 @@ var jSBundle = [
   // root + "js/interpreter.js"
 ];
 var cssBundle = [
-  root + "css/normalize.css",
-  root + "css/skeleton.css",
-  root + "css/interpreter.css",
-  root + "css/custom.css",
-  root + "src/css/scss/**/*.scss"
+    root + "css/vendor/skeleton/normalize.css",
+    // root + "css/skeleton.css",
+    // root + "css/interpreter.css",
+    root + "css/vendor/bootstrap/css/bootstrap.css",
+    root + "css/custom.css",
+    // root + "src/css/scss/**/*.scss"
 ];
 
 function js() {
   return (
-    gulp
-      .src(jSBundle)
-      .pipe(concat("app.min.js"))
-      // .pipe(uglify())
+      gulp
+          .src(jSBundle)
+          .pipe(concat("app.min.js"))
+          .pipe(uglify())
       .pipe(gulp.dest(paths.distRoot))
       .pipe(browserSync.stream())
   );

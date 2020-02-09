@@ -216,7 +216,7 @@ return [
                         'controller' => PageController::class,
                         'template' => 'application/pages/home',
                         'layout' => 'layout/layout',
-                        'do_not_cache' => false,
+                        'do_not_cache' => true,
 
                     ],
                 ],
@@ -300,10 +300,10 @@ return [
     ],
     'view_helpers' => [
         'factories' => [
-            View\Helper\Menu::class => InvokableFactory::class,
+//            View\Helper\Menu::class => InvokableFactory::class,
         ],
         'aliases' => [
-            'mainMenu' => View\Helper\Menu::class
+//            'mainMenu' => View\Helper\Menu::class
         ]
     ],
     'view_manager' => [
