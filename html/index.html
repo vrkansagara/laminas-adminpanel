@@ -1,120 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <!-- Basic Page Needs
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>Your page title here :)</title>
-    <meta name="description" content="getlaminas.in" />
-    <meta name="author" content="getlaminas.in" />
+    <meta content="getlaminas.in" name="description"/>
+    <meta content="getlaminas.in" name="author"/>
     <!-- Mobile Specific Metas
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
     <!-- FONT
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <link
-      href="//fonts.googleapis.com/css?family=Fira+Code:400,300,600"
-      rel="stylesheet"
-      type="text/css"
+            href="//fonts.googleapis.com/css?family=Fira+Code:400,300,600"
+            rel="stylesheet"
+            type="text/css"
     />
     <link href="https://fonts.googleapis.com/css?family=Quicksand:600&display=swap" rel="stylesheet">
     <!-- CSS
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <link rel="stylesheet" href="assets/dist/app.min.css" />
+    <link href="assets/dist/app.min.css" rel="stylesheet"/>
     <!-- Favicon
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+    <link href="assets/images/favicon.png" rel="icon" type="image/png"/>
 
     <script type="text/javascript" src="assets/dist/app.min.js" defer></script>
-  </head>
-  <body>
-    <div class="container">
-      <section class="header">
+</head>
+<body>
+
+<div class="container">
+    <section class="header">
         <h2 class="title">Get Laminas</h2>
         <h3>Something is coming up for enterprise.</h3>
         <a
-          class="button button-primary"
-          href="https://github.com/vrkansagara/laminas-adminpanel"
-          >Download</a
+                class="button button-primary"
+                href="https://github.com/vrkansagara/laminas-adminpanel"
+        >Download</a
         >
         <div class="value-props row">
-          <div class="four columns value-prop">
-            Design
-          </div>
-          <div class="four columns value-prop">
-            Develop
-          </div>
-          <div class="four columns value-prop">
-            Deploy
-          </div>
+            <div class="four columns value-prop">
+                Design
+            </div>
+            <div class="four columns value-prop">
+                Develop
+            </div>
+            <div class="four columns value-prop">
+                Deploy
+            </div>
         </div>
-      </section>
-    </div>
-    <div class="container js-editor">
-      <form id="interpreter_form" autocomplete="off">
+    </section>
+</div>
+<div class="container js-editor">
+    <form autocomplete="off" id="interpreter_form">
         <div id="interpreter_area">
-          <div id="interpreter_output">df</div>
+            <div id="interpreter_output">df</div>
         </div>
         <div id="oneline">
-          <input
-            id="interpreter_text"
-            name="input_text"
-            type="text"
-            class="textbox"
-            size="100"
-          />
+            <input
+                    class="textbox"
+                    id="interpreter_text"
+                    name="input_text"
+                    size="100"
+                    type="text"
+            />
         </div>
         <div id="multiline">
           <textarea
-            id="interpreter_textarea"
-            name="input_textarea"
-            type="text"
-            class="textbox"
-            cols="97"
-            rows="10"
+                  class="textbox"
+                  cols="97"
+                  id="interpreter_textarea"
+                  name="input_textarea"
+                  rows="10"
+                  type="text"
           ></textarea>
-          <br />
+            <br/>
         </div>
-      </form>
-      <div>
+    </form>
+    <div>
         Notes:
         <ul>
-          <li>
-            To show the signature of a MochiKit function and link to its
-            documentation, type help(fn) on any MochiKit function.
-          </li>
-          <li>
-            To write multi-line code snippets, use the lower text area and press
-            ctrl-enter or cmd-enter to submit.
-          </li>
-          <li>
-            <tt>function name() {}</tt> syntax might not end up in window scope,
-            so use <tt>name = function () {}</tt>
-            syntax instead
-          </li>
-          <li>
-            If you want to stuff something into the output window other than the
-            <tt>repr(...)</tt> of the expression result, use the
-            <tt>writeln(...)</tt> function. It accepts anything that
-            MochiKit.DOM does, so you can even put styled stuff in there!
-          </li>
-          <li>Use <tt>clear()</tt> to clear the interpreter window.</li>
-          <li>
-            You can use <tt>blockOn(aDeferred)</tt> to wait on a Deferred. This
-            expression must be used by itself, so the value must be obtained
-            from <tt>_</tt> or <tt>last_exc</tt>. Typing any expression will
-            cancel the Deferred.
-          </li>
-          <li>
-            Up and down arrow keys work as a rudimentary history
-          </li>
-          <li>
-            <tt>_</tt> is the value of the last expression that was not
-            <tt>undefined</tt>, <tt>last_exc</tt> is the value of the last
-            unhandled exception.
-          </li>
+            <li>
+                To show the signature of a MochiKit function and link to its
+                documentation, type help(fn) on any MochiKit function.
+            </li>
+            <li>
+                To write multi-line code snippets, use the lower text area and press
+                ctrl-enter or cmd-enter to submit.
+            </li>
+            <li>
+                <tt>function name() {}</tt> syntax might not end up in window scope,
+                so use <tt>name = function () {}</tt>
+                syntax instead
+            </li>
+            <li>
+                If you want to stuff something into the output window other than the
+                <tt>repr(...)</tt> of the expression result, use the
+                <tt>writeln(...)</tt> function. It accepts anything that
+                MochiKit.DOM does, so you can even put styled stuff in there!
+            </li>
+            <li>Use <tt>clear()</tt> to clear the interpreter window.</li>
+            <li>
+                You can use <tt>blockOn(aDeferred)</tt> to wait on a Deferred. This
+                expression must be used by itself, so the value must be obtained
+                from <tt>_</tt> or <tt>last_exc</tt>. Typing any expression will
+                cancel the Deferred.
+            </li>
+            <li>
+                Up and down arrow keys work as a rudimentary history
+            </li>
+            <li>
+                <tt>_</tt> is the value of the last expression that was not
+                <tt>undefined</tt>, <tt>last_exc</tt> is the value of the last
+                unhandled exception.
+            </li>
         </ul>
-      </div>
     </div>
-  </body>
+</div>
+</body>
 </html>
