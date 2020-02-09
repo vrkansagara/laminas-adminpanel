@@ -1,9 +1,11 @@
-<h1>Delete post</h1>
+<div class="container">
 
-<p>Are you sure you want to delete the following post?</p>
+    <h1>Delete post</h1>
 
-<ul class="list-group">
-    <li class="list-group-item"><?= $this->escapeHtml($this->post->getTitle()) ?></li>
+    <p>Are you sure you want to delete the following post?</p>
+
+    <ul class="list-group">
+        <li class="list-group-item"><?= $this->escapeHtml($this->post->getTitle()) ?></li>
 </ul>
 
 <form action="<?php
@@ -13,3 +15,4 @@ $this->url('blog/delete', [], true) ?>" method="post">
     <input class="btn btn-default" type="submit" name="confirm" value="Cancel"/>
     <input class="btn btn-danger" type="submit" name="confirm" value="Delete"/>
 </form>
+</div>

@@ -1,31 +1,32 @@
-<?php
+<div class="container">
+    <?php
 
-$title = 'Add new album';
-$this->headTitle($title);
-?>
+    $title = 'Add new album';
+    $this->headTitle($title);
+    ?>
     <h1><?= $this->escapeHtml($title) ?></h1>
-<?php
-// This provides a default CSS class and placeholder text for the title element:
-$album = $form->get('title');
-$album->setAttribute('class', 'form-control');
-$album->setAttribute('placeholder', 'Album title');
+    <?php
+    // This provides a default CSS class and placeholder text for the title element:
+    $album = $form->get('title');
+    $album->setAttribute('class', 'form-control');
+    $album->setAttribute('placeholder', 'Album title');
 
-// This provides a default CSS class and placeholder text for the artist element:
-$artist = $form->get('artist');
-$artist->setAttribute('class', 'form-control');
-$artist->setAttribute('placeholder', 'Artist');
+    // This provides a default CSS class and placeholder text for the artist element:
+    $artist = $form->get('artist');
+    $artist->setAttribute('class', 'form-control');
+    $artist->setAttribute('placeholder', 'Artist');
 
-// This provides CSS classes for the submit button:
-$submit = $form->get('submit');
-$submit->setAttribute('class', 'btn btn-primary');
+    // This provides CSS classes for the submit button:
+    $submit = $form->get('submit');
+    $submit->setAttribute('class', 'btn btn-primary');
 
-$form->setAttribute('action', $this->url('album', ['action' => 'add']));
-$form->prepare();
+    $form->setAttribute('action', $this->url('album', ['action' => 'add']));
+    $form->prepare();
 
-echo $this->form()->openTag($form);
-?>
-<?php // Wrap the elements in divs marked as form groups, and render the
-// label, element, and errors separately within ?>
+    echo $this->form()->openTag($form);
+    ?>
+    <?php // Wrap the elements in divs marked as form groups, and render the
+    // label, element, and errors separately within ?>
     <div class="form-group">
         <?= $this->formLabel($album) ?>
         <?= $this->formElement($album) ?>
@@ -38,7 +39,9 @@ echo $this->form()->openTag($form);
         <?= $this->formElementErrors()->render($artist, ['class' => 'help-block']) ?>
     </div>
 
-<?php
-echo $this->formSubmit($submit);
-echo $this->formHidden($form->get('id'));
-echo $this->form()->closeTag();
+    <?php
+    echo $this->formSubmit($submit);
+    echo $this->formHidden($form->get('id'));
+    echo $this->form()->closeTag();
+    ?>
+</div>
