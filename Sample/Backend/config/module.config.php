@@ -35,7 +35,9 @@ return [
         ],
     ],
     'controllers' => [
-        'factories' => [
+        'factories' => [et Laminas
+Something is coming up for enterprise.
+DOWNLOAD
             IndexController::class => InvokableFactory::class,
             LoginController::class => LoginControllerFactory::class,
         ],

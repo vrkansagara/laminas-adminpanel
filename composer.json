@@ -27,9 +27,7 @@
     "laminas/laminas-development-mode": "^3.2",
     "laminas/laminas-mvc": "^3.1.1",
     "laminas/laminas-developer-tools": "^2.0",
-    "phpunit/phpunit": "^8.5",
     "squizlabs/php_codesniffer": "^3.5",
-    "laminas/laminas-test": "^3.3",
     "laminas/laminas-navigation": "^2.9",
     "laminas/laminas-form": "^2.14",
     "laminas/laminas-mail": "^2.10",
@@ -53,14 +51,24 @@
     "laminas/laminas-dependency-plugin": "^1.0",
     "roave/security-advisories": "dev-master",
     "laminas/laminas-view": "^2.11",
-    "laminas/laminas-mvc-plugins": "^1.0"
+    "laminas/laminas-mvc-plugins": "^1.0",
+    "league/commonmark": "^1.2",
+    "phpunit/phpunit": "7.5.20",
+    "laminas/laminas-mvc-i18n": "^1.1",
+    "laminas/laminas-recaptcha": "^3.2"
   },
   "autoload": {
     "psr-4": {
-      "Application\\": "modules/Application/src/",
-      "Album\\": "modules/Album/src/",
-      "Blog\\": "modules/Blog/src",
-      "User\\": "modules/User/src/"
+      "Application\\": "backend/core/module/Application/src",
+      "PhlySimplePage\\": "backend/vendor/module/phly/PhlySimplePage/src",
+      "PhlyContact\\": "backend/vendor/module/phly/PhlyContact/src",
+      "EdpSuperluminal\\": "module/EdpSuperluminal/src/",
+      "AlbumTableGatway\\": "module/AlbumTableGatway/src/",
+      "AlbumTableGatwayTest\\": "module/AlbumTableGatway/test/",
+      "Blog\\": "module/Blog/src/",
+      "User\\": "module/User/src/",
+      "Event\\": "module/Event/src/",
+      "JsValidation\\": "module/JsValidation/src/"
     }
   },
   "autoload-dev": {
@@ -80,5 +88,7 @@
     "test": "phpunit",
     "db": "./vendor/bin/doctrine-module"
   },
-  "require-dev": {}
+  "require-dev": {
+    "laminas/laminas-test": "^3.3"
+  }
 }

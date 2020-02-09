@@ -67,7 +67,6 @@ body {
 
 .breadcrumb {
   margin-top: 35px;
-  margin-bottom: 35px;
   padding: 8px 15px;
   margin-bottom: 20px;
   list-style: none;
@@ -87,8 +86,6 @@ ul {
   list-style-type: disc;
   margin-block-start: 1em;
   margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
   padding-inline-start: 40px;
 }
 .footer {
@@ -99,6 +96,47 @@ ul {
   padding-right: 15px;
   padding-left: 15px;
 }
+
 .text-muted {
   padding: 8px;
+}
+
+img {
+  width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6, label {
+    font-family: 'Quicksand', sans-serif;
+}
+
+ul > li {
+  font-family: 'Quicksand', sans-serif;
+}
+
+
+.is-invalid {
+  border-color: #e3342f;
+  padding-right: calc(1.6em + 0.75rem);
+  background-repeat: no-repeat;
+  background-position: right calc(0.4em + 0.1875rem) center;
+  background-size: calc(0.8em + 0.375rem) calc(0.8em + 0.375rem);
+}
+
+.is-valid {
+  border-color: #38c172;
+  padding-right: calc(1.6em + 0.75rem);
+  background-repeat: no-repeat;
+  background-position: right calc(0.4em + 0.1875rem) center;
+  background-size: calc(0.8em + 0.375rem) calc(0.8em + 0.375rem);
+}
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.invalid-feedback {
+  display: none;
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 80%;
+  color: #e3342f;
 }

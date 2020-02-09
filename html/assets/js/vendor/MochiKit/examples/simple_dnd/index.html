@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Test Drag and drop with MochiKit</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <link href="simple_dnd.css" rel="stylesheet" type="text/css"/>
+    <script src="../../lib/MochiKit/MochiKit.js" type="text/javascript"></script>
+    <script src="../../lib/MochiKit/Position.js" type="text/javascript"></script>
+    <script src="../../lib/MochiKit/Visual.js" type="text/javascript"></script>
+    <script src="../../lib/MochiKit/DragAndDrop.js" type="text/javascript"></script>
+</head>
+<body>
+<h3>Drag and Drop examples.</h3>
+<div>
+    <div class="drag" id="drag-1">test drag 1</div>
+    <div class="drag" id="drag-2">test drag 2 (horizontal)</div>
+    <div class="drag" id="drag-3">test drag 3 (vertical)</div>
+    <div class="drag" id="drag-4">test drag 4 (selectclass)</div>
+    <div class="drag" id="drag-5">test drag 5 (fixed)</div>
+    <div class="drag" id="drag-6">test drag 6 (absolute)</div>
+    <div class="drag" id="drag-7">test drag 7 (relative)</div>
+    <div class="drag" id="drag-8">test drag 8 (handle)</div>
+    <div class="drag" id="handle">handle for drag 8</div>
+</div>
+<div id="dropzones">
+    <div class="drop" id="drop-1">test drop 1</div>
+    <div class="drop" id="drop-2">test drop 2 (hoverclass)</div>
+    <div class="drop" id="drop-3">test drop 3 (activeclass)</div>
+    <div class="drop" id="drop-4">test drop 4 (hoverFunc)</div>
+    <div class="drop" id="drop-5">test drop 5 (activeFunc)</div>
+    <div id="drop-6">test drop 6</div>
+    <div id="droptext">No select</div>
+</div>
+<script type="text/javascript">
+    <!--
+    var saveTxt = "";
+    onHoverFunc = function (element, onhover) {
+        if (onhover) {
+            saveTxt = element.childNodes[0].nodeValue;
+            element.childNodes[0].nodeValue = "Please drop on me!";
+        } else {
+            element.childNodes[0].nodeValue = saveTxt;
+        }
+    };
+    onActiveFunc = function (element, dragElt) {
+        element.childNodes[0].nodeValue += " and I'm active ! (" + dragElt.id + ")";
+    };
+    onDesactiveFunc = function (element, dragElt) {
+        var ind = element.childNodes[0].nodeValue.lastIndexOf(" and I'm active !");
+        element.childNodes[0].nodeValue = element.childNodes[0].nodeValue.slice(0, ind);
+    };
+    onSelectFunc = function (element) {
+        new MochiKit.Visual.Highlight(element);
+    };
+    onDeselectFunc = function (element) {
+        element.childNodes[0].nodeValue += ".";
+    };
+    ondrop = function (element, dropElt) {
+        MochiKit.Visual.pulsate(dropElt);
+        MochiKit.DOM.getElement('droptext').childNodes[0].nodeValue = "Selected: " + element.id;
+    };
+
+    new MochiKit.DragAndDrop.Draggable('drag-1', {'revert': true, 'ghosting': true});
+    new MochiKit.DragAndDrop.Draggable('drag-2', {'revert': true, 'constraint': 'horizontal'});
+    new MochiKit.DragAndDrop.Draggable('drag-3', {'revert': true, 'constraint': 'vertical'});
+    new MochiKit.DragAndDrop.Draggable('drag-4', {'revert': true, 'selectclass': 'drag-select'});
+    new MochiKit.DragAndDrop.Draggable('drag-5', {
+        'revert': true,
+        'starteffect': onSelectFunc,
+        'endeffect': onDeselectFunc
+    });
+    new MochiKit.DragAndDrop.Draggable('drag-6', {'revert': true});
+    new MochiKit.DragAndDrop.Draggable('drag-7', {'revert': true});
+    new MochiKit.DragAndDrop.Draggable('drag-8', {'revert': true, 'handle': 'handle'});
+
+    new MochiKit.DragAndDrop.Droppable('drop-1', {'ondrop': ondrop});
+    new MochiKit.DragAndDrop.Droppable('drop-2', {'ondrop': ondrop, 'hoverclass': 'drop-hover'});
+    new MochiKit.DragAndDrop.Droppable('drop-3', {'ondrop': ondrop, 'activeclass': 'drop-active'});
+    new MochiKit.DragAndDrop.Droppable('drop-4', {'ondrop': ondrop, 'hoverfunc': onHoverFunc});
+    new MochiKit.DragAndDrop.Droppable('drop-5', {
+        'ondrop': ondrop,
+        'onactive': onActiveFunc,
+        'ondesactive': onDesactiveFunc
+    });
+    new MochiKit.DragAndDrop.Droppable('drop-6', {'ondrop': ondrop, 'transparent': true});
+    // -->
+</script>
+<div>
+    Links to other samples:
+    <ul>
+        <li><a href="dnd_boxes.html">Boxes DND</a></li>
+        <li><a href="dnd_hoverclass.html">Hoverclass DND</a></li>
+        <li><a href="dnd_snap.html">Snap DND</a></li>
+        <li><a href="dnd_ghost.html">Ghost DND</a></li>
+        <li><a href="dnd_scroll.html">Scroll DND</a></li>
+        <li><a href="dnd_full.html">Full DND</a></li>
+    </ul>
+</div>
+</body>
+</html>
