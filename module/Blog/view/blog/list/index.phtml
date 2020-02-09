@@ -6,7 +6,9 @@
                     From the Firehose
                     <a class="btn btn-primary" href="<?= $this->url('blog/add') ?>">Write new post</a>
                 </h3>
-                <?php foreach ($this->posts as $post) : ?>
+                <?php
+
+                foreach ($this->posts as $post) : ?>
                     <div class="blog-post">
                         <h2 class="blog-post-title">
                             <a href="<?= $this->url('blog/detail', ['id' => $post->getId()]) ?>">

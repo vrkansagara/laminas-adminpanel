@@ -1,21 +1,23 @@
-<?php if ($this->pageCount) : ?>
+<?php
+
+if ($this->pageCount) : ?>
     <div>
         <ul class="pagination justify-content-center">
 
             <?php if (!$this->is_first) : ?>
                 <?php if (!$this->previous) : ?>
                     <li class="page-item disabled"><a
-                                href="<?= $this->url($this->route, [], ['query' => ['page' => $this->first]]) ?>"
-                                class="page-link"> &lt;&lt;</a></li>
-                <?php else: ?>
-                    <li class="page-item"><a
-                                href="<?= $this->url($this->route, [], ['query' => ['page' => $this->first]]) ?>"
-                                class="page-link"> &lt;&lt;</a></li>
-                <?php endif; ?>
-            <?php else: ?>
-                <li class="page-item"><a
                             href="<?= $this->url($this->route, [], ['query' => ['page' => $this->first]]) ?>"
-                            class="page-link">First</a></li>
+                            class="page-link"> &lt;&lt;</a></li>
+                <?php else : ?>
+                    <li class="page-item"><a
+                            href="<?= $this->url($this->route, [], ['query' => ['page' => $this->first]]) ?>"
+                            class="page-link"> &lt;&lt;</a></li>
+                <?php endif; ?>
+            <?php else : ?>
+                <li class="page-item"><a
+                        href="<?= $this->url($this->route, [], ['query' => ['page' => $this->first]]) ?>"
+                        class="page-link">First</a></li>
             <?php endif ?>
 
 
@@ -68,8 +70,8 @@
             <?php if (!$this->is_last) : ?>
                 <?php if (isset($this->next)) : ?>
                     <li class="page-item"><a
-                                href="<?= $this->url($this->route, [], ['query' => ['page' => $this->last]]) ?>"
-                                class="page-link">&gt;&gt</a></li>
+                            href="<?= $this->url($this->route, [], ['query' => ['page' => $this->last]]) ?>"
+                            class="page-link">&gt;&gt</a></li>
                 <?php else : ?>
                     <li class="page-item disabled"><a href="<?= $this->base_path ?>?page=<?= $this->last ?>"
                                                       class="page-link">&gt;&gt</a>
