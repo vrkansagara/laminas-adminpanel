@@ -1,6 +1,5 @@
 <?= $this->doctype() ?>
-<html lang="en">
-
+<html lang="en" class="h-100">
 <head>
     <!-- Basic Page Needs
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -29,36 +28,33 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css"/>
 </head>
 
-<body>
-<a class="fork-me" href="https://github.com/vrkansagara/laminas-adminpanel" target="_blank">Fork me on GitHub</a>
-
+<body class="d-flex flex-column h-100">
 <div class="container">
-    <?php
-
-    echo $this->navigation('navigation')
-        ->menu()
+    <?= $this->navigation('navigation')->menu()
+        ->setOnlyActiveBranch(true)
+        ->setRenderParents(true)
         ->setMinDepth(0)
         ->setMaxDepth(0)
-        ->setUlClass('nav navbar-nav')
+        ->setUlClass('d-inline-flex')
+//        ->setPartial('partial/nav')
+//        ->renderSubMenu(null, 'sidebar', 4)
+        ->render();
     ?>
 </div>
-
 <div class="container">
-    <?php
-     echo $this->navigation('navigation')->breadcrumbs()->setMinDepth(0)->setPartial('partial/breadcrumb')
-    ?>
+    <?= $this->navigation('navigation')->breadcrumbs()->setMinDepth(0)->setPartial('partial/breadcrumb') ?>
     <!-- Navigation bar -->
     <?= $this->content ?>
 </div>
 
-<footer class="footer">
+
+<footer class="footer mt-auto py-3">
     <div class="container">
-       <span class="sticky-footer  text-muted">
+               <span class="sticky-footer  text-muted">
                &copy; 2005 - <?= date('Y') ?> by <a href="https://github.com/vrkansagara/laminas-adminpanel">Laminas Admin Panel</a>. <?= $this->translate('All rights reserved.') ?>.
             </span>
     </div>
 </footer>
-<!-- <script type="text/javascript" src="" defer></script> -->
 <!-- Scripts -->
 <?= $this->headScript()
     ->setAllowArbitraryAttributes(true)
