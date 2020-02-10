@@ -73,6 +73,7 @@
     "development-enable": "laminas-development-mode enable",
     "development-status": "laminas-development-mode status",
     "post-create-project-cmd": [
+      "chmod +x run.sh",
       "@development-disable",
       "php -r '$file = file_get_contents(\".gitignore\"); $file = str_replace(\"composer.lock\", \"\", $file); file_put_contents(\".gitignore\", $file);'"
     ],
