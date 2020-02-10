@@ -1,0 +1,83 @@
+<?php
+
+if ($this->pageCount) : ?>
+    <div>
+        <ul class="pagination justify-content-center">
+
+            <?php if (!$this->is_first) : ?>
+                <?php if (!$this->previous) : ?>
+                    <li class="page-item disabled"><a
+                            href="<?= $this->url($this->route, [], ['query' => ['page' => $this->first]]) ?>"
+                            class="page-link"> &lt;&lt;</a></li>
+                <?php else : ?>
+                    <li class="page-item"><a
+                            href="<?= $this->url($this->route, [], ['query' => ['page' => $this->first]]) ?>"
+                            class="page-link"> &lt;&lt;</a></li>
+                <?php endif; ?>
+            <?php else : ?>
+                <li class="page-item"><a
+                        href="<?= $this->url($this->route, [], ['query' => ['page' => $this->first]]) ?>"
+                        class="page-link">First</a></li>
+            <?php endif ?>
+
+
+            <!-- Previous page link -->
+            <?php if (isset($this->previous)) : ?>
+                <li class="page-item">
+                    <a class="page-link"
+                       href="<?= $this->url($this->route, [], ['query' => ['page' => $this->previous]]) ?>">
+                        &lt;
+                    </a>
+                </li>
+            <?php else : ?>
+                <li class="page-item disabled">
+                    <a class="page-link" href="#">
+                        &lt;
+                    </a>
+                </li>
+            <?php endif ?>
+
+            <!-- Numbered page links -->
+            <?php foreach ($this->pagesInRange as $page) : ?>
+                <?php if ($page !== $this->current) : ?>
+                    <li class="page-item">
+                        <a class="page-link" href="<?= $this->url($this->route, [], ['query' => ['page' => $page]]) ?>">
+                            <?= $page ?>
+                        </a>
+                    </li>
+                <?php else : ?>
+                    <li class="page-item active">
+                        <a class="page-link" href="#"><?= $page ?></a>
+                    </li>
+                <?php endif ?>
+            <?php endforeach ?>
+
+            <!-- Next page link -->
+            <?php if (isset($this->next)) : ?>
+                <li class="page-item">
+                    <a class="page-link"
+                       href="<?= $this->url($this->route, [], ['query' => ['page' => $this->next]]) ?>">
+                        &gt;
+                    </a>
+                </li>
+            <?php else : ?>
+                <li class="page-item disabled">
+                    <a class="page-link" href="#">
+                        &gt;
+                    </a>
+                </li>
+            <?php endif ?>
+            <?php if (!$this->is_last) : ?>
+                <?php if (isset($this->next)) : ?>
+                    <li class="page-item"><a
+                            href="<?= $this->url($this->route, [], ['query' => ['page' => $this->last]]) ?>"
+                            class="page-link">&gt;&gt</a></li>
+                <?php else : ?>
+                    <li class="page-item disabled"><a href="<?= $this->base_path ?>?page=<?= $this->last ?>"
+                                                      class="page-link">&gt;&gt</a>
+                    </li>
+                <?php endif ?>
+            <?php endif ?>
+        </ul>
+    </div>
+<?php endif ?>

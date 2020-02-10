@@ -1,18 +1,17 @@
 <?php
 
-/**
- * List of enabled modules for this application.
- *
- * This should be an array of module namespaces used in the application.
- */
-
 use Laminas\Stdlib\ArrayUtils;
 
 $applicationModules = [
     'Application',
-    'Album',
+    'EdpSuperluminal',
+    'PhlySimplePage',
     'Blog',
-    'User'
+    'AlbumTableGatway',
+//    'User',
+//    'Event'
+    'JsValidation',
+    'PhlyContact'
 ];
 
 $frameworkModule = [
@@ -36,6 +35,5 @@ $frameworkModule = [
     'Laminas\DeveloperTools',
     'DoctrineModule',
     'DoctrineORMModule'
-
 ];
 return ArrayUtils::merge($frameworkModule, $applicationModules);

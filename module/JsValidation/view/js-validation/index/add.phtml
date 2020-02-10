@@ -1,0 +1,20 @@
+<div class="container">
+    <h1>Add</h1>
+    <div class="container">
+        <div class="btn-group" role="group" aria-label="Post actions">
+            <a class="btn btn-primary" href="<?= $this->url('validation') ?>">Go to validation</a>
+        </div>
+    </div>
+
+    <?php
+
+    $form = $this->form;
+    $form->setAttribute('action', $this->url());
+    echo $this->partial('js-validation/index/form', [
+        'form' => $form,
+        'submitLabel' => 'Insert new post',
+    ]);
+
+    ?>
+
+</div>
