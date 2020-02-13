@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace PhlyContact;
 
@@ -6,7 +8,7 @@ use Laminas\Captcha\Dumb;
 use Laminas\Mail\Transport\Sendmail;
 
 return [
-    'phly_contact' => [
+    'phly-contact' => [
         'captcha' => [
             'class' => Dumb::class,
         ],
@@ -83,8 +85,8 @@ return [
     ],
     'view_manager' => [
         'template_map' => [
-            'phly-contact/contact/index' => __DIR__ . '/../view/phly-contact/contact/index.phtml',
-            'phly-contact/contact/thank-you' => __DIR__ . '/../view/phly-contact/contact/thank-you.phtml',
+//            'phly-contact/contact/index' => __DIR__ . '/../view/phly-contact/contact/index.phtml',
+//            'phly-contact/contact/thank-you' => __DIR__ . '/../view/phly-contact/contact/thank-you.phtml',
         ],
         'template_path_stack' => [
             'phly-contact' => __DIR__ . '/../view',

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 $db = new PDO('sqlite:' . __DIR__ . '/Blog.db');
 $fh = fopen(__DIR__ . '/posts.schema.sql', 'r');

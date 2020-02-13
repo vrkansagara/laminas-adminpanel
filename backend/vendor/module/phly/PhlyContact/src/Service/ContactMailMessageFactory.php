@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace PhlyContact\Service;
 
@@ -16,7 +18,7 @@ class ContactMailMessageFactory implements FactoryInterface
         if ($config instanceof Traversable) {
             $config = ArrayUtils::iteratorToArray($config);
         }
-        $config = $config['phly_contact']['message'];
+        $config = $config['phly-contact']['message'];
 
         $message = new Message();
 

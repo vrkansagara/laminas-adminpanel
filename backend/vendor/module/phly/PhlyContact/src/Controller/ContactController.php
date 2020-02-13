@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace PhlyContact\Controller;
 
@@ -77,7 +79,6 @@ class ContactController extends AbstractActionController
         ) {
             return $this->redirect()->toRoute('contact');
         }
-
         return [];
     }
 

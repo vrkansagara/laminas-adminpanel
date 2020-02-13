@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace PhlyContact\Service;
 
@@ -20,7 +22,7 @@ class ContactFormFactory implements FactoryInterface
         if ($config instanceof Traversable) {
             $config = ArrayUtils::iteratorToArray($config);
         }
-        $name = $config['phly_contact']['form']['name'];
+        $name = $config['phly-contact']['form']['name'];
         $captcha = $container->get('PhlyContactCaptcha');
         $filter = new ContactFilter();
         $form = new ContactForm($name, $captcha);

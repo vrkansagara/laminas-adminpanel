@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 use Laminas\Mvc\Application;
 use Laminas\Stdlib\ArrayUtils;
