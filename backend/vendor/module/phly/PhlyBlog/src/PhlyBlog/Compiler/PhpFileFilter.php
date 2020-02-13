@@ -30,13 +30,13 @@ class PhpFileFilter extends FilterIterator
     public function __construct($dirOrIterator = '.')
     {
         if (is_string($dirOrIterator)) {
-            if (!is_dir($dirOrIterator)) {
+            if (! is_dir($dirOrIterator)) {
                 throw new InvalidArgumentException('Expected a valid directory name');
             }
 
             $dirOrIterator = new RecursiveDirectoryIterator($dirOrIterator);
         }
-        if (!$dirOrIterator instanceof DirectoryIterator) {
+        if (! $dirOrIterator instanceof DirectoryIterator) {
             throw new InvalidArgumentException('Expected a DirectoryIterator');
         }
 
@@ -53,11 +53,11 @@ class PhpFileFilter extends FilterIterator
     public function accept()
     {
         $current = $this->getInnerIterator()->current();
-        if (!$current instanceof SplFileInfo) {
+        if (! $current instanceof SplFileInfo) {
             return false;
         }
 
-        if (!$current->isFile()) {
+        if (! $current->isFile()) {
             return false;
         }
 

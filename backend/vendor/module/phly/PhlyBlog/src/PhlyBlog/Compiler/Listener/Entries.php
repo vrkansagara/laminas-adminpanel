@@ -6,10 +6,10 @@ use DomainException;
 use PhlyBlog\Compiler\Event;
 use PhlyBlog\Compiler\ResponseFile;
 use PhlyBlog\CompilerOptions;
-use Zend\EventManager\EventManagerInterface as Events;
-use Zend\EventManager\ListenerAggregateInterface;
-use Zend\View\Model\ViewModel;
-use Zend\View\View;
+use Laminas\EventManager\EventManagerInterface as Events;
+use Laminas\EventManager\ListenerAggregateInterface;
+use Laminas\View\Model\ViewModel;
+use Laminas\View\View;
 
 class Entries implements ListenerAggregateInterface
 {
@@ -53,7 +53,7 @@ class Entries implements ListenerAggregateInterface
 
     public function createEntries($template = null)
     {
-        if (!$this->entries) {
+        if (! $this->entries) {
             return;
         }
 

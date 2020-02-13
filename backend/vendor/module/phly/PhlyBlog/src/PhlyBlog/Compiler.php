@@ -4,9 +4,9 @@ namespace PhlyBlog;
 
 use DateTime;
 use DateTimezone;
-use Zend\EventManager\EventManager;
-use Zend\EventManager\EventManagerAwareInterface;
-use Zend\EventManager\EventManagerInterface;
+use Laminas\EventManager\EventManager;
+use Laminas\EventManager\EventManagerAwareInterface;
+use Laminas\EventManager\EventManagerInterface;
 
 class Compiler implements EventManagerAwareInterface
 {
@@ -41,11 +41,11 @@ class Compiler implements EventManagerAwareInterface
 
         foreach ($this->files as $file) {
             $entry = include $file->getRealPath();
-            if (!$entry instanceof EntryEntity) {
+            if (! $entry instanceof EntryEntity) {
                 continue;
             }
 
-            if (!$entry->isValid()) {
+            if (! $entry->isValid()) {
                 // if we have an invalid entry, we should not continue
                 continue;
             }
@@ -70,7 +70,7 @@ class Compiler implements EventManagerAwareInterface
 
     public function getEventManager()
     {
-        if (!$this->events) {
+        if (! $this->events) {
             $this->setEventManager(new EventManager());
         }
         return $this->events;

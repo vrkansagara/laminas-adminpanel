@@ -2,9 +2,9 @@
 
 namespace PhlyBlog\Filter;
 
-use Zend\Uri\Uri;
-use Zend\Uri\UriFactory;
-use Zend\Validator\AbstractValidator;
+use Laminas\Uri\Uri;
+use Laminas\Uri\UriFactory;
+use Laminas\Validator\AbstractValidator;
 
 class Url extends AbstractValidator
 {
@@ -18,11 +18,11 @@ class Url extends AbstractValidator
     {
         $this->setValue($value);
 
-        if (!$value instanceof Uri) {
+        if (! $value instanceof Uri) {
             $value = UriFactory::factory($value);
         }
 
-        if (!$value->isValid()) {
+        if (! $value->isValid()) {
             $this->error(self::INVALID_URL);
             return false;
         }

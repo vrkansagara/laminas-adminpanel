@@ -6,7 +6,7 @@ use DomainException;
 use InvalidArgumentException;
 use PhlyBlog\Compiler\Event;
 use PhlyBlog\Compiler\SortedEntries;
-use Zend\Tag\Cloud as TagCloud;
+use Laminas\Tag\Cloud as TagCloud;
 
 class Tags extends AbstractList
 {
@@ -16,12 +16,12 @@ class Tags extends AbstractList
     public function onCompile(Event $e)
     {
         $entry = $e->getEntry();
-        if (!$entry->isPublic()) {
+        if (! $entry->isPublic()) {
             return;
         }
 
         foreach ($entry->getTags() as $tag) {
-            if (!isset($this->tags[$tag])) {
+            if (! isset($this->tags[$tag])) {
                 $this->tags[$tag] = new SortedEntries();
             }
             $this->tags[$tag]->insert($entry, $entry->getCreated());
@@ -71,7 +71,7 @@ class Tags extends AbstractList
     public function createTagFeeds($type)
     {
         $type = strtolower($type);
-        if (!in_array($type, ['atom', 'rss'])) {
+        if (! in_array($type, ['atom', 'rss'])) {
             throw new InvalidArgumentException('Feed type must be "atom" or "rss"');
         }
 

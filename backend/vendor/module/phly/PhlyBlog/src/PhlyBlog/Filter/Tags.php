@@ -2,7 +2,7 @@
 
 namespace PhlyBlog\Filter;
 
-use Zend\Validator\AbstractValidator;
+use Laminas\Validator\AbstractValidator;
 
 class Tags extends AbstractValidator
 {
@@ -19,7 +19,7 @@ class Tags extends AbstractValidator
         $this->setValue($value);
         if (is_array($value)) {
             foreach ($value as $v) {
-                if (!is_string($v)) {
+                if (! is_string($v)) {
                     $this->error(self::INVALID_TAG);
                     return false;
                 }

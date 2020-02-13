@@ -1,100 +1,93 @@
 {
-  "name": "vrkansagara/laminas-adminpanel",
-  "description": "Laminas Admin Panel",
-  "type": "project",
-  "keywords": [
-    "laminas",
-    "admin",
-    "panel"
-  ],
-  "homepage": "https://vrkansagara.in/",
-  "license": "BSD-3-Clause",
-  "authors": [
-    {
-      "name": "Vallabh Kansagara",
-      "email": "vrkansagara@gmail.com",
-      "homepage": "https://vrkansagara.in/"
-    }
-  ],
-  "support": {
-    "email": "vrkansagara@gmail.com",
-    "issues": "https://github.com/vrkansagara/laminas-adminpanel/issues",
-    "source": "https://github.com/vrkansagara/laminas-adminpanel"
-  },
-  "require": {
-    "php": "^7.3",
-    "laminas/laminas-component-installer": "^2.1",
-    "laminas/laminas-development-mode": "^3.2",
-    "laminas/laminas-mvc": "^3.1.1",
-    "laminas/laminas-developer-tools": "^2.0",
-    "squizlabs/php_codesniffer": "^3.5",
-    "laminas/laminas-navigation": "^2.9",
-    "laminas/laminas-form": "^2.14",
-    "laminas/laminas-mail": "^2.10",
-    "laminas/laminas-paginator": "^2.8",
-    "laminas/laminas-db": "^2.11",
-    "laminas/laminas-session": "^2.9",
-    "doctrine/doctrine-orm-module": "^2.1",
-    "doctrine/migrations": "^2.1",
-    "laminas/laminas-cache": "^2.9",
-    "laminas/laminas-i18n": "^2.10",
-    "san/san-session-toolbar": "^3.0",
-    "laminas/laminas-authentication": "^2.7",
-    "laminas/laminas-math": "^3.2",
-    "laminas/laminas-crypt": "^3.3",
-    "laminas/laminas-validator": "^2.13",
-    "laminas/laminas-console": "^2.8",
-    "laminas/laminas-barcode": "^2.8",
-    "laminas/laminas-eventmanager": "^3.2",
-    "laminas/laminas-mime": "^2.7",
-    "laminas/laminas-captcha": "^2.9",
-    "laminas/laminas-dependency-plugin": "^1.0",
-    "roave/security-advisories": "dev-master",
-    "laminas/laminas-view": "^2.11",
-    "laminas/laminas-mvc-plugins": "^1.0",
-    "league/commonmark": "^1.2",
-    "phpunit/phpunit": "7.5.20",
-    "laminas/laminas-mvc-i18n": "^1.1",
-    "laminas/laminas-recaptcha": "^3.2"
-  },
-  "autoload": {
-    "psr-4": {
-      "Application\\": "backend/core/module/Application/src",
-      "PhlySimplePage\\": "backend/vendor/module/phly/PhlySimplePage/src",
-      "PhlyContact\\": "backend/vendor/module/phly/PhlyContact/src",
-      "EdpSuperluminal\\": "module/EdpSuperluminal/src/",
-      "AlbumTableGatway\\": "module/AlbumTableGatway/src/",
-      "AlbumTableGatwayTest\\": "module/AlbumTableGatway/test/",
-      "Blog\\": "module/Blog/src/",
-      "User\\": "module/User/src/",
-      "Event\\": "module/Event/src/",
-      "JsValidation\\": "module/JsValidation/src/"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {}
-  },
-  "scripts": {
-    "cs-check": "./vendor/bin/phpcs",
-    "cs-fix": "./vendor/bin/phpcbf",
-    "development-disable": "laminas-development-mode disable",
-    "development-enable": "laminas-development-mode enable",
-    "development-status": "laminas-development-mode status",
-    "post-create-project-cmd": [
-      "chmod +x run.sh",
-      "@development-disable",
-      "php -r '$file = file_get_contents(\".gitignore\"); $file = str_replace(\"composer.lock\", \"\", $file); file_put_contents(\".gitignore\", $file);'"
+    "name": "vrkansagara/laminas-adminpanel",
+    "description": "Laminas Admin Panel",
+    "type": "project",
+    "keywords": [
+        "laminas",
+        "admin",
+        "panel"
     ],
-    "serve": "php -S 0.0.0.0:8091 -t public public/index.php",
-    "test": "phpunit",
-    "db": "./vendor/bin/doctrine-module"
-  },
-<<<<<<< HEAD
-  "require-dev": {}
+    "homepage": "https://vrkansagara.in/",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Vallabh Kansagara",
+            "email": "vrkansagara@gmail.com",
+            "homepage": "https://vrkansagara.in/"
+        }
+    ],
+    "support": {
+        "email": "vrkansagara@gmail.com",
+        "issues": "https://github.com/vrkansagara/laminas-adminpanel/issues",
+        "source": "https://github.com/vrkansagara/laminas-adminpanel"
+    },
+    "require": {
+        "php": "^7.3",
+        "laminas/laminas-component-installer": "^2.1",
+        "laminas/laminas-development-mode": "^3.2",
+        "laminas/laminas-mvc": "^3.1.1",
+        "laminas/laminas-developer-tools": "^2.0",
+        "squizlabs/php_codesniffer": "^3.5",
+        "laminas/laminas-navigation": "^2.9",
+        "laminas/laminas-form": "^2.14",
+        "laminas/laminas-mail": "^2.10",
+        "laminas/laminas-paginator": "^2.8",
+        "laminas/laminas-db": "^2.11",
+        "laminas/laminas-session": "^2.9",
+        "doctrine/doctrine-orm-module": "^2.1",
+        "doctrine/migrations": "^2.1",
+        "laminas/laminas-cache": "^2.9",
+        "laminas/laminas-i18n": "^2.10",
+        "san/san-session-toolbar": "^3.0",
+        "laminas/laminas-authentication": "^2.7",
+        "laminas/laminas-math": "^3.2",
+        "laminas/laminas-crypt": "^3.3",
+        "laminas/laminas-validator": "^2.13",
+        "laminas/laminas-console": "^2.8",
+        "laminas/laminas-barcode": "^2.8",
+        "laminas/laminas-eventmanager": "^3.2",
+        "laminas/laminas-mime": "^2.7",
+        "laminas/laminas-captcha": "^2.9",
+        "laminas/laminas-dependency-plugin": "^1.0",
+        "roave/security-advisories": "dev-master",
+        "laminas/laminas-view": "^2.11",
+        "laminas/laminas-mvc-plugins": "^1.0",
+        "league/commonmark": "^1.2",
+        "phpunit/phpunit": "7.5.20",
+        "laminas/laminas-mvc-i18n": "^1.1",
+        "laminas/laminas-recaptcha": "^3.2"
+    },
+    "require-dev": {
+        "laminas/laminas-test": "^3.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Application\\": "backend/core/module/Application/src",
+            "PhlySimplePage\\": "backend/vendor/module/phly/PhlySimplePage/src",
+            "PhlyContact\\": "backend/vendor/module/phly/PhlyContact/src",
+            "EdpSuperluminal\\": "module/EdpSuperluminal/src/",
+            "AlbumTableGatway\\": "module/AlbumTableGatway/src/",
+            "AlbumTableGatwayTest\\": "module/AlbumTableGatway/test/",
+            "Blog\\": "module/Blog/src/",
+            "User\\": "module/User/src/",
+            "Event\\": "module/Event/src/",
+            "JsValidation\\": "module/JsValidation/src/"
+        }
+    },
+
+    "scripts": {
+        "cs-check": "./vendor/bin/phpcs",
+        "cs-fix": "./vendor/bin/phpcbf",
+        "development-disable": "laminas-development-mode disable",
+        "development-enable": "laminas-development-mode enable",
+        "development-status": "laminas-development-mode status",
+        "post-create-project-cmd": [
+            "chmod +x run.sh",
+            "@development-disable",
+            "php -r '$file = file_get_contents(\".gitignore\"); $file = str_replace(\"composer.lock\", \"\", $file); file_put_contents(\".gitignore\", $file);'"
+        ],
+        "serve": "php -S 0.0.0.0:8091 -t public public/index.php",
+        "test": "phpunit",
+        "db": "./vendor/bin/doctrine-module"
+    }
 }
-=======
-  "require-dev": {
-    "laminas/laminas-test": "^3.3"
-  }
-}
->>>>>>> upstream/development

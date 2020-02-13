@@ -46,7 +46,7 @@ class DeleteController extends AbstractActionController
         }
 
         $request = $this->getRequest();
-        if (!$request->isPost()) {
+        if (! $request->isPost()) {
             return new ViewModel(['post' => $post]);
         }
 

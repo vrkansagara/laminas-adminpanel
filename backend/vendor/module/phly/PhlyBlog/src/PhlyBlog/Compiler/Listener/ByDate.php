@@ -13,14 +13,14 @@ class ByDate extends AbstractList
     public function onCompile(Event $e)
     {
         $entry = $e->getEntry();
-        if (!$entry->isPublic()) {
+        if (! $entry->isPublic()) {
             return;
         }
 
         $date = $e->getDate();
         $day = $date->format('Y/m/d');
 
-        if (!isset($this->days[$day])) {
+        if (! isset($this->days[$day])) {
             $this->days[$day] = new SortedEntries();
         }
         $this->days[$day]->insert($entry, $entry->getCreated());

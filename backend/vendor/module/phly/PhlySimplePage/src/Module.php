@@ -13,6 +13,7 @@ namespace PhlySimplePage;
 use Laminas\Mvc\Application;
 use Laminas\Mvc\MvcEvent;
 use Laminas\Stdlib\ResponseInterface;
+
 use function in_array;
 use function str_replace;
 
@@ -64,12 +65,12 @@ class Module
     public function onRoutePost(MvcEvent $e): void
     {
         $matches = $e->getRouteMatch();
-        if (!$matches) {
+        if (! $matches) {
             return;
         }
 
         $controller = $matches->getParam('controller');
-        if (!in_array($controller, ['PhlySimplePage\Controller\Page', PageController::class], true)) {
+        if (! in_array($controller, ['PhlySimplePage\Controller\Page', PageController::class], true)) {
             return;
         }
 
@@ -88,7 +89,7 @@ class Module
     public function onDispatchPost(MvcEvent $e): ?ResponseInterface
     {
         $target = $e->getTarget();
-        if (!$target instanceof PageController) {
+        if (! $target instanceof PageController) {
             return null;
         }
 

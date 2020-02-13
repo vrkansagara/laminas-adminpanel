@@ -2,14 +2,14 @@
 
 namespace PhlyBlog;
 
-use Zend\Console\Adapter\AdapterInterface as Console;
-use Zend\Http\PhpEnvironment\Request;
-use Zend\Http\PhpEnvironment\Response;
-use Zend\ModuleManager\Feature\ConsoleUsageProviderInterface;
-use Zend\Stdlib\ArrayUtils;
-use Zend\View\Model;
-use Zend\View\Renderer\PhpRenderer;
-use Zend\View\View;
+use Laminas\Console\Adapter\AdapterInterface as Console;
+use Laminas\Http\PhpEnvironment\Request;
+use Laminas\Http\PhpEnvironment\Response;
+use Laminas\ModuleManager\Feature\ConsoleUsageProviderInterface;
+use Laminas\Stdlib\ArrayUtils;
+use Laminas\View\Model;
+use Laminas\View\Renderer\PhpRenderer;
+use Laminas\View\View;
 
 class Module implements ConsoleUsageProviderInterface
 {
@@ -26,7 +26,7 @@ class Module implements ConsoleUsageProviderInterface
     public function getAutoloaderConfig()
     {
         return [
-            'Zend\Loader\ClassMapAutoloader' => [
+            'Laminas\Loader\ClassMapAutoloader' => [
                 __DIR__ . '/autoload_classmap.php'
             ],
         ];

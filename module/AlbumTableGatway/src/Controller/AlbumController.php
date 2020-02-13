@@ -115,7 +115,7 @@ JS;
     public function deleteAction()
     {
         $id = (int) $this->params()->fromRoute('id', 0);
-        if (!$id) {
+        if (! $id) {
             return $this->redirect()->toRoute('album');
         }
 

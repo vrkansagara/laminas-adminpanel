@@ -2,7 +2,7 @@
 
 namespace PhlyBlog\Compiler;
 
-use Zend\View\View;
+use Laminas\View\View;
 
 class ResponseStrategy
 {

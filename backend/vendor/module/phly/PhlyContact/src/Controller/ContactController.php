@@ -33,14 +33,14 @@ class ContactController extends AbstractActionController
 
     public function processAction()
     {
-        if (!$this->request->isPost()) {
+        if (! $this->request->isPost()) {
             return $this->redirect()->toRoute('contact');
         }
 
         $post = $this->request->getPost();
         $form = $this->form;
         $form->setData($post);
-        if (!$form->isValid()) {
+        if (! $form->isValid()) {
             $model = new ViewModel([
                 'error' => true,
                 'form' => $form,
@@ -72,8 +72,8 @@ class ContactController extends AbstractActionController
     {
         $headers = $this->request->getHeaders();
         if (
-            !$headers->has('Referer')
-            || !preg_match('#/contact$#', $headers->get('Referer')->getFieldValue())
+            ! $headers->has('Referer')
+            || ! preg_match('#/contact$#', $headers->get('Referer')->getFieldValue())
         ) {
             return $this->redirect()->toRoute('contact');
         }

@@ -14,7 +14,7 @@ class Archives extends AbstractList
     public function onCompile(Event $e)
     {
         $entry = $e->getEntry();
-        if (!$entry->isPublic()) {
+        if (! $entry->isPublic()) {
             return;
         }
 
@@ -62,7 +62,7 @@ class Archives extends AbstractList
     public function createArchiveFeed($type, $title = '')
     {
         $type = strtolower($type);
-        if (!in_array($type, ['atom', 'rss'])) {
+        if (! in_array($type, ['atom', 'rss'])) {
             throw new InvalidArgumentException('Feed type must be "atom" or "rss"');
         }
 

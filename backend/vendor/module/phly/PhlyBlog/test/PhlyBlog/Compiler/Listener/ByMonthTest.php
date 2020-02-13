@@ -18,7 +18,7 @@ class ByMonthTest extends TestCase
         $self = $this;
         $this->compiler->getEventManager()->attach('compile', function ($e) use ($self) {
             $entry = $e->getEntry();
-            if ($entry->isDraft() || !$entry->isPublic()) {
+            if ($entry->isDraft() || ! $entry->isPublic()) {
                 return;
             }
 

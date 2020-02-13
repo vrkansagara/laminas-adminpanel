@@ -53,8 +53,8 @@ class ImageManager
 
         // Check whether the directory already exists, and if not,
         // create the directory.
-        if (!is_dir($this->saveToDir)) {
-            if (!mkdir($this->saveToDir)) {
+        if (! is_dir($this->saveToDir)) {
+            if (! mkdir($this->saveToDir)) {
                 throw new \Exception('Could not create directory for uploads: ' . error_get_last());
             }
         }
@@ -81,7 +81,7 @@ class ImageManager
     public function getImageFileInfo($filePath)
     {
         // Try to open file
-        if (!is_readable($filePath)) {
+        if (! is_readable($filePath)) {
             return false;
         }
 

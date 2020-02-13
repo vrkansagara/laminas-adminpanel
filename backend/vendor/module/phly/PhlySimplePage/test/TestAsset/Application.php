@@ -28,7 +28,7 @@ class Application implements ApplicationInterface
 
     public function getEventManager(): EventManagerInterface
     {
-        if (!$this->events) {
+        if (! $this->events) {
             $this->setEventManager(new EventManager());
         }
         return $this->events;

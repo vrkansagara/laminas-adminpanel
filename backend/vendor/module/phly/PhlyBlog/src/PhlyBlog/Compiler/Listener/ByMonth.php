@@ -13,14 +13,14 @@ class ByMonth extends AbstractList
     public function onCompile(Event $e)
     {
         $entry = $e->getEntry();
-        if (!$entry->isPublic()) {
+        if (! $entry->isPublic()) {
             return;
         }
 
         $date = $e->getDate();
         $month = $date->format('Y/m');
 
-        if (!isset($this->months[$month])) {
+        if (! isset($this->months[$month])) {
             $this->months[$month] = new SortedEntries();
         }
         $this->months[$month]->insert($entry, $entry->getCreated());

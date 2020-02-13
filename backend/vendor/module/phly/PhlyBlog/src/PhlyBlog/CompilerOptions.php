@@ -2,8 +2,8 @@
 
 namespace PhlyBlog;
 
-use Zend\Stdlib\AbstractOptions;
-use Zend\Uri\UriFactory;
+use Laminas\Stdlib\AbstractOptions;
+use Laminas\Uri\UriFactory;
 
 class CompilerOptions extends AbstractOptions
 {
@@ -602,7 +602,7 @@ class CompilerOptions extends AbstractOptions
     public function setFeedAuthorUri($feedAuthorUri)
     {
         $uri = UriFactory::factory($feedAuthorUri);
-        if (!$uri->isValid()) {
+        if (! $uri->isValid()) {
             throw new \InvalidArgumentException('Author URI for feed is invalid');
         }
         $this->feedAuthorUri = $feedAuthorUri;

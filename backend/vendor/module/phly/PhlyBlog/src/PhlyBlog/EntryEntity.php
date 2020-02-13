@@ -4,7 +4,7 @@ namespace PhlyBlog;
 
 use PhlyCommon\Entity as EntityDefinition;
 use PhlyCommon\Filter\Timestamp as TimestampFilter;
-use Zend\InputFilter\InputFilterInterface;
+use Laminas\InputFilter\InputFilterInterface;
 
 class EntryEntity implements EntityDefinition
 {
@@ -481,9 +481,9 @@ class EntryEntity implements EntityDefinition
      */
     public function setMetadata($metadata, $value = null)
     {
-        if (is_array($metadata) && !empty($metadata)) {
+        if (is_array($metadata) && ! empty($metadata)) {
             $this->metadata = array_merge($this->metadata, $metadata);
-        } elseif (is_scalar($metadata) && !empty($metadata)) {
+        } elseif (is_scalar($metadata) && ! empty($metadata)) {
             $this->metadata[$metadata] = $value;
         }
         return $this;
@@ -513,7 +513,7 @@ class EntryEntity implements EntityDefinition
     public function setVersion($version)
     {
         $this->version = (int)$version;
-        if (!in_array($this->version, [1, 2])) {
+        if (! in_array($this->version, [1, 2])) {
             $this->version = 2;
         }
         return $this;

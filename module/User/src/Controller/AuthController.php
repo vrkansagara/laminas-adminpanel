@@ -88,11 +88,11 @@ class AuthController extends AbstractActionController
                     // Get redirect URL.
                     $redirectUrl = $this->params()->fromPost('redirect_url', '');
 
-                    if (!empty($redirectUrl)) {
+                    if (! empty($redirectUrl)) {
                         // The below check is to prevent possible redirect attack
                         // (if someone tries to redirect user to another domain).
                         $uri = new Uri($redirectUrl);
-                        if (!$uri->isValid() || $uri->getHost() != null) {
+                        if (! $uri->isValid() || $uri->getHost() != null) {
                             throw new \Exception('Incorrect redirect URL: ' . $redirectUrl);
                         }
                     }

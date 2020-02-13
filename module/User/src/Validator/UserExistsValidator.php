@@ -57,7 +57,7 @@ class UserExistsValidator extends AbstractValidator
      */
     public function isValid($value)
     {
-        if (!is_scalar($value)) {
+        if (! is_scalar($value)) {
             $this->error(self::NOT_SCALAR);
             return false;
         }
@@ -79,7 +79,7 @@ class UserExistsValidator extends AbstractValidator
         }
 
         // If there were an error, set error message.
-        if (!$isValid) {
+        if (! $isValid) {
             $this->error(self::USER_EXISTS);
         }
 

@@ -2,7 +2,7 @@
 
 namespace User\View\Helper;
 
-use Zend\View\Helper\AbstractHelper;
+use Laminas\View\Helper\AbstractHelper;
 
 // This view helper class displays breadcrumbs.
 class Breadcrumbs extends AbstractHelper
@@ -59,7 +59,7 @@ class Breadcrumbs extends AbstractHelper
     {
         $result = $isActive ? '<li class="active">' : '<li>';
 
-        if (!$isActive) {
+        if (! $isActive) {
             $result .= '<a href="' . $link . '">' . $label . '</a>';
         } else {
             $result .= $label;

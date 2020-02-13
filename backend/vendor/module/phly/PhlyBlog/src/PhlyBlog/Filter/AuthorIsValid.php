@@ -3,7 +3,7 @@
 namespace PhlyBlog\Filter;
 
 use PhlyBlog\AuthorEntity;
-use Zend\Validator\AbstractValidator;
+use Laminas\Validator\AbstractValidator;
 
 class AuthorIsValid extends AbstractValidator
 {
@@ -28,7 +28,7 @@ class AuthorIsValid extends AbstractValidator
                 $this->error(self::INVALID_NAME_TOO_SHORT);
                 return false;
             }
-            if (!preg_match('/[a-z][a-z0-9_-]*/i', $value)) {
+            if (! preg_match('/[a-z][a-z0-9_-]*/i', $value)) {
                 $this->error(self::INVALID_NAME);
                 return false;
             }
@@ -42,12 +42,12 @@ class AuthorIsValid extends AbstractValidator
             unset($author);
         }
 
-        if (!$value instanceof AuthorEntity) {
+        if (! $value instanceof AuthorEntity) {
             $this->error(self::INVALID_TYPE);
             return false;
         }
 
-        if (!$value->isValid()) {
+        if (! $value->isValid()) {
             $this->error(self::INVALID_AUTHOR);
             return false;
         }

@@ -15,7 +15,7 @@ class FileWriterTest extends TestCase
 
     public function cleanup()
     {
-        if (!is_dir($this->basePath)) {
+        if (! is_dir($this->basePath)) {
             return;
         }
 

@@ -13,14 +13,14 @@ class ByYear extends AbstractList
     public function onCompile(Event $e)
     {
         $entry = $e->getEntry();
-        if (!$entry->isPublic()) {
+        if (! $entry->isPublic()) {
             return;
         }
 
         $date = $e->getDate();
         $year = $date->format('Y');
 
-        if (!isset($this->years[$year])) {
+        if (! isset($this->years[$year])) {
             $this->years[$year] = new SortedEntries();
         }
         $this->years[$year]->insert($entry, $entry->getCreated());

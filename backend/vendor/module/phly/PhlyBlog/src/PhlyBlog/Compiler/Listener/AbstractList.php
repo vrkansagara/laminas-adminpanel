@@ -7,13 +7,13 @@ use PhlyBlog\Compiler\Event;
 use PhlyBlog\Compiler\ResponseFile;
 use PhlyBlog\Compiler\WriterInterface;
 use PhlyBlog\CompilerOptions;
-use Zend\EventManager\EventManagerInterface as Events;
-use Zend\EventManager\ListenerAggregateInterface;
-use Zend\Feed\Writer\Feed as FeedWriter;
-use Zend\Paginator\Adapter\ArrayAdapter as ArrayPaginator;
-use Zend\Paginator\Paginator;
-use Zend\View\Model\ViewModel;
-use Zend\View\View;
+use Laminas\EventManager\EventManagerInterface as Events;
+use Laminas\EventManager\ListenerAggregateInterface;
+use Laminas\Feed\Writer\Feed as FeedWriter;
+use Laminas\Paginator\Adapter\ArrayAdapter as ArrayPaginator;
+use Laminas\Paginator\Paginator;
+use Laminas\View\Model\ViewModel;
+use Laminas\View\View;
 
 abstract class AbstractList implements ListenerAggregateInterface, ListenerInterface
 {
@@ -58,9 +58,8 @@ abstract class AbstractList implements ListenerAggregateInterface, ListenerInter
         $urlTemplate,
         $substitution,
         $template
-    )
-    {
-        if (!is_array($list) || empty($list)) {
+    ) {
+        if (! is_array($list) || empty($list)) {
             return;
         }
 
@@ -123,9 +122,8 @@ abstract class AbstractList implements ListenerAggregateInterface, ListenerInter
         $blogLink,
         $feedLinkTemplate,
         $filenameTemplate
-    )
-    {
-        if (!is_array($list) || empty($list)) {
+    ) {
+        if (! is_array($list) || empty($list)) {
             return;
         }
 
@@ -158,7 +156,7 @@ abstract class AbstractList implements ListenerAggregateInterface, ListenerInter
 
         $latest = false;
         foreach ($paginator as $post) {
-            if (!$latest) {
+            if (! $latest) {
                 $latest = $post;
             }
 

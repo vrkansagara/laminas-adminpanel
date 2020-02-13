@@ -3,12 +3,12 @@
 namespace PhlyBlog;
 
 use RuntimeException;
-use Zend\Console\Adapter\AdapterInterface as Console;
-use Zend\Console\ColorInterface as Color;
-use Zend\Console\Request as ConsoleRequest;
-use Zend\EventManager\EventManagerInterface;
-use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\View;
+use Laminas\Console\Adapter\AdapterInterface as Console;
+use Laminas\Console\ColorInterface as Color;
+use Laminas\Console\Request as ConsoleRequest;
+use Laminas\EventManager\EventManagerInterface;
+use Laminas\Mvc\Controller\AbstractActionController;
+use Laminas\View\View;
 
 class CompileController extends AbstractActionController
 {
@@ -37,7 +37,7 @@ class CompileController extends AbstractActionController
         if ($config instanceof Traversable) {
             $config = ArrayUtils::iteratorToArray($config);
         }
-        if (!is_array($config)) {
+        if (! is_array($config)) {
             throw new RuntimeException(sprintf(
                 'Expected array or Traversable PhlyBlog configuration; received %s',
                 (is_object($config) ? get_class($config) : gettype($config))
@@ -74,7 +74,7 @@ class CompileController extends AbstractActionController
     public function compileAction()
     {
         $request = $this->getRequest();
-        if (!$request instanceof ConsoleRequest) {
+        if (! $request instanceof ConsoleRequest) {
             throw new RuntimeException(sprintf(
                 '%s may only be called from the console',
                 __METHOD__
@@ -130,7 +130,7 @@ class CompileController extends AbstractActionController
             $long = $spec['long'];
             $short = $spec['short'];
             if (
-                (!isset($options[$long]) || !$options[$long])
+                (! isset($options[$long]) || ! $options[$long])
                 && (isset($options[$short]) && $options[$short])
             ) {
                 $options[$long] = true;

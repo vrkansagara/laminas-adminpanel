@@ -28,7 +28,7 @@ class SortedEntries extends SplPriorityQueue
 
     public function insert($data, $priority)
     {
-        if (!$data instanceof EntryEntity) {
+        if (! $data instanceof EntryEntity) {
             throw new InvalidArgumentException(sprintf(
                 '%s expects an EntryEntity; received %s',
                 __METHOD__,

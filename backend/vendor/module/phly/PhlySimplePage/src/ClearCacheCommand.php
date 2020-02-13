@@ -16,6 +16,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+
 use function sprintf;
 
 class ClearCacheCommand extends Command
@@ -43,7 +44,7 @@ class ClearCacheCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $page = $input->getOption('page');
-        if (!$page) {
+        if (! $page) {
             return $this->clearAllPages($output);
         }
 
@@ -54,7 +55,7 @@ class ClearCacheCommand extends Command
     {
         $output->writeln('<info>Clearing caches for all static pages</info>');
 
-        if (!$this->cache instanceof FlushableInterface) {
+        if (! $this->cache instanceof FlushableInterface) {
             $output->writeln('<error>Cache does not support flushing!</error>');
             return 1;
         }
@@ -71,7 +72,7 @@ class ClearCacheCommand extends Command
         $output->writeln(sprintf('<info>Clearing cache for page "%s"</info>', $page));
 
         $key = Module::normalizeCacheKey($page);
-        if (!$this->cache->hasItem($key)) {
+        if (! $this->cache->hasItem($key)) {
             $output->writeln('<info>Page is not in cache</info>');
             return 0;
         }

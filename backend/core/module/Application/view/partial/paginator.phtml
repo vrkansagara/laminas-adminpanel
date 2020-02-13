@@ -4,8 +4,8 @@ if ($this->pageCount) : ?>
     <div>
         <ul class="pagination justify-content-center">
 
-            <?php if (!$this->is_first) : ?>
-                <?php if (!$this->previous) : ?>
+            <?php if (! $this->is_first) : ?>
+                <?php if (! $this->previous) : ?>
                     <li class="page-item disabled"><a
                             href="<?= $this->url($this->route, [], ['query' => ['page' => $this->first]]) ?>"
                             class="page-link"> &lt;&lt;</a></li>
@@ -67,7 +67,7 @@ if ($this->pageCount) : ?>
                     </a>
                 </li>
             <?php endif ?>
-            <?php if (!$this->is_last) : ?>
+            <?php if (! $this->is_last) : ?>
                 <?php if (isset($this->next)) : ?>
                     <li class="page-item"><a
                             href="<?= $this->url($this->route, [], ['query' => ['page' => $this->last]]) ?>"

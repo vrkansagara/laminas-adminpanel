@@ -3,7 +3,7 @@
 namespace PhlyBlog;
 
 use PhlyCommon\Entity as EntityDefinition;
-use Zend\InputFilter\InputFilterInterface;
+use Laminas\InputFilter\InputFilterInterface;
 
 class AuthorEntity implements EntityDefinition
 {

@@ -4,6 +4,7 @@ use Laminas\Stdlib\ArrayUtils;
 
 $applicationModules = [
     'Application',
+    'PhlyContact',
     'EdpSuperluminal',
     'PhlySimplePage',
     'Blog',
@@ -11,7 +12,6 @@ $applicationModules = [
 //    'User',
 //    'Event'
     'JsValidation',
-    'PhlyContact'
 ];
 
 $frameworkModule = [
