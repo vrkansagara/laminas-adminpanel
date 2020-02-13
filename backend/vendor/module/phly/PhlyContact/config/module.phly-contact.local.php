@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * This is a sample "local" configuration for your application. To use it, copy

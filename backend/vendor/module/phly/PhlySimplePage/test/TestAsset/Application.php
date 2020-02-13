@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * @link      https://github.com/weierophinney/PhlySimplePage for the canonical source repository

@@ -1,10 +1,10 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace PhlyBlog;
 
+use Laminas\InputFilter\InputFilterInterface;
 use PhlyCommon\Entity as EntityDefinition;
 use PhlyCommon\Filter\Timestamp as TimestampFilter;
-use Laminas\InputFilter\InputFilterInterface;
 
 class EntryEntity implements EntityDefinition
 {

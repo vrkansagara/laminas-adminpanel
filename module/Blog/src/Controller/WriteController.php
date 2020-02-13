@@ -1,17 +1,13 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Blog\Controller;
 
 use Blog\Form\PostForm;
-use Blog\Model\Post;
 use Blog\Model\PostCommandInterface;
 use Blog\Model\PostRepositoryInterface;
-use Laminas\Db\Adapter\Driver\ResultInterface;
-use Laminas\Db\Sql\Sql;
-use Laminas\Db\Sql\Update;
+use InvalidArgumentException;
 use Laminas\Mvc\Controller\AbstractActionController;
 use Laminas\View\Model\ViewModel;
-use InvalidArgumentException;
 
 class WriteController extends AbstractActionController
 {

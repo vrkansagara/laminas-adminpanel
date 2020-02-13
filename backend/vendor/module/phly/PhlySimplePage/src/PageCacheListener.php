@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * @link      https://github.com/weierophinney/PhlySimplePage for the canonical source repository
@@ -16,7 +16,6 @@ use Laminas\EventManager\ListenerAggregateInterface;
 use Laminas\Mvc\MvcEvent;
 use Laminas\Stdlib\CallbackHandler;
 use Laminas\Stdlib\ResponseInterface;
-
 use function in_array;
 
 /**

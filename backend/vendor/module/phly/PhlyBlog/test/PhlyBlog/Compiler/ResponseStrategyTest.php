@@ -1,10 +1,10 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace PhlyBlog\Compiler;
 
-use PHPUnit_Framework_TestCase as TestCase;
 use Laminas\Mvc\MvcEvent;
 use Laminas\View\View;
+use PHPUnit_Framework_TestCase as TestCase;
 
 class ResponseStrategyTest extends TestCase
 {

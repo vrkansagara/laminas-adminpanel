@@ -1,14 +1,14 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace PhlyBlog;
 
-use RuntimeException;
 use Laminas\Console\Adapter\AdapterInterface as Console;
 use Laminas\Console\ColorInterface as Color;
 use Laminas\Console\Request as ConsoleRequest;
 use Laminas\EventManager\EventManagerInterface;
 use Laminas\Mvc\Controller\AbstractActionController;
 use Laminas\View\View;
+use RuntimeException;
 
 class CompileController extends AbstractActionController
 {

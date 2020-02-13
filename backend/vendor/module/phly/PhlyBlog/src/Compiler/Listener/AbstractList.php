@@ -1,12 +1,7 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace PhlyBlog\Compiler\Listener;
 
-use PhlyBlog\AuthorEntity;
-use PhlyBlog\Compiler\Event;
-use PhlyBlog\Compiler\ResponseFile;
-use PhlyBlog\Compiler\WriterInterface;
-use PhlyBlog\CompilerOptions;
 use Laminas\EventManager\EventManagerInterface as Events;
 use Laminas\EventManager\ListenerAggregateInterface;
 use Laminas\Feed\Writer\Feed as FeedWriter;
@@ -14,6 +9,11 @@ use Laminas\Paginator\Adapter\ArrayAdapter as ArrayPaginator;
 use Laminas\Paginator\Paginator;
 use Laminas\View\Model\ViewModel;
 use Laminas\View\View;
+use PhlyBlog\AuthorEntity;
+use PhlyBlog\Compiler\Event;
+use PhlyBlog\Compiler\ResponseFile;
+use PhlyBlog\Compiler\WriterInterface;
+use PhlyBlog\CompilerOptions;
 
 abstract class AbstractList implements ListenerAggregateInterface, ListenerInterface
 {

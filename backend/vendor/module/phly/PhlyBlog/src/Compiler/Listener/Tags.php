@@ -1,12 +1,12 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace PhlyBlog\Compiler\Listener;
 
 use DomainException;
 use InvalidArgumentException;
+use Laminas\Tag\Cloud as TagCloud;
 use PhlyBlog\Compiler\Event;
 use PhlyBlog\Compiler\SortedEntries;
-use Laminas\Tag\Cloud as TagCloud;
 
 class Tags extends AbstractList
 {

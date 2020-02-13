@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace EdpSuperluminal;
 
@@ -50,7 +50,7 @@ class Module
             $this->reflectClassCache();
             $code = file_get_contents(ZF_CLASS_CACHE);
         } else {
-            $code = "<?php\n";
+            $code = "<?php  declare(strict_types=1);\n";
         }
 
         $classes = array_merge(get_declared_interfaces(), get_declared_classes());

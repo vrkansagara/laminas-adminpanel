@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace PhlyBlog;
 
@@ -6,7 +6,6 @@ use Laminas\Console\Adapter\AdapterInterface as Console;
 use Laminas\Http\PhpEnvironment\Request;
 use Laminas\Http\PhpEnvironment\Response;
 use Laminas\ModuleManager\Feature\ConsoleUsageProviderInterface;
-use Laminas\Stdlib\ArrayUtils;
 use Laminas\View\Model;
 use Laminas\View\Renderer\PhpRenderer;
 use Laminas\View\View;
@@ -23,18 +22,9 @@ class Module implements ConsoleUsageProviderInterface
         }, 100);
     }
 
-    public function getAutoloaderConfig()
-    {
-        return [
-            'Laminas\Loader\ClassMapAutoloader' => [
-                __DIR__ . '/autoload_classmap.php'
-            ],
-        ];
-    }
-
     public function getConfig()
     {
-        return include __DIR__ . '/config/module.config.php';
+        return include __DIR__ . '/../config/module.config.php';
     }
 
     public function getServiceConfig()
@@ -72,6 +62,7 @@ class Module implements ConsoleUsageProviderInterface
             },
         ]];
     }
+
 
     public function getControllerConfig()
     {

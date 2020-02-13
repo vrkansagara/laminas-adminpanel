@@ -1,8 +1,7 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Application\Service;
 
-use Laminas\Mail;
 use Laminas\Mail\Message;
 use Laminas\Mail\Transport\Sendmail;
 

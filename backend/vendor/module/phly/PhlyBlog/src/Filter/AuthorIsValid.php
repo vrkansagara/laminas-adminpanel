@@ -1,9 +1,9 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace PhlyBlog\Filter;
 
-use PhlyBlog\AuthorEntity;
 use Laminas\Validator\AbstractValidator;
+use PhlyBlog\AuthorEntity;
 
 class AuthorIsValid extends AbstractValidator
 {

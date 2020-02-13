@@ -1,10 +1,10 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Application\Factory;
 
+use Application\Controller\RegistrationController;
 use Interop\Container\ContainerInterface;
 use Laminas\ServiceManager\Factory\FactoryInterface;
-use Application\Controller\RegistrationController;
 
 /**
  * This is the factory for RegistrationController. Its purpose is to instantiate the

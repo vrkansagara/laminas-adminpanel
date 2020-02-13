@@ -1,9 +1,9 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace PhlyBlog;
 
-use PhlyCommon\Entity as EntityDefinition;
 use Laminas\InputFilter\InputFilterInterface;
+use PhlyCommon\Entity as EntityDefinition;
 
 class AuthorEntity implements EntityDefinition
 {

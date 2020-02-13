@@ -1,15 +1,15 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace PhlyBlog\Compiler\Listener;
 
-use PhlyBlog\Compiler;
-use PhlyBlog\Compiler\TestAsset;
-use PhlyBlog\CompilerOptions;
-use PHPUnit_Framework_TestCase as TestCase;
 use Laminas\Mvc\Router\Http\TreeRouteStack;
 use Laminas\View\Renderer;
 use Laminas\View\Resolver;
 use Laminas\View\View;
+use PhlyBlog\Compiler;
+use PhlyBlog\Compiler\TestAsset;
+use PhlyBlog\CompilerOptions;
+use PHPUnit_Framework_TestCase as TestCase;
 
 class TestHelper
 {

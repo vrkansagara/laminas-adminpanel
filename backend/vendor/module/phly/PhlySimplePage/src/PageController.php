@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * @link      https://github.com/weierophinney/PhlySimplePage for the canonical source repository
@@ -25,7 +25,6 @@ use Laminas\Stdlib\DispatchableInterface;
 use Laminas\Stdlib\RequestInterface;
 use Laminas\Stdlib\ResponseInterface;
 use Laminas\View\Model\ViewModel;
-
 use function get_class;
 use function sprintf;
 

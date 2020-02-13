@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * @link      https://github.com/weierophinney/PhlySimplePage for the canonical source repository
@@ -13,7 +13,6 @@ namespace PhlySimplePage;
 use Laminas\Mvc\Application;
 use Laminas\Mvc\MvcEvent;
 use Laminas\Stdlib\ResponseInterface;
-
 use function in_array;
 use function str_replace;
 

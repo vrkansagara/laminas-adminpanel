@@ -1,9 +1,9 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace PhlyBlog\Filter;
 
-use PhlyCommon\Filter\Timezone as TimezoneValidator;
 use Laminas\InputFilter\InputFilter;
+use PhlyCommon\Filter\Timezone as TimezoneValidator;
 
 class EntryFilter extends InputFilter
 {

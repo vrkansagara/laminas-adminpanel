@@ -65,10 +65,10 @@
             "Application\\": "backend/core/module/Application/src",
             "PhlySimplePage\\": "backend/vendor/module/phly/PhlySimplePage/src",
             "PhlyContact\\": "backend/vendor/module/phly/PhlyContact/src",
+            "PhlyBlog\\": "backend/vendor/module/phly/PhlyBlog/src",
             "EdpSuperluminal\\": "module/EdpSuperluminal/src/",
             "AlbumTableGatway\\": "module/AlbumTableGatway/src/",
             "AlbumTableGatwayTest\\": "module/AlbumTableGatway/test/",
-            "Blog\\": "module/Blog/src/",
             "User\\": "module/User/src/",
             "Event\\": "module/Event/src/",
             "JsValidation\\": "module/JsValidation/src/"
@@ -86,7 +86,7 @@
             "@development-disable",
             "php -r '$file = file_get_contents(\".gitignore\"); $file = str_replace(\"composer.lock\", \"\", $file); file_put_contents(\".gitignore\", $file);'"
         ],
-        "serve": "php -S 0.0.0.0:8091 -t public public/index.php",
+        "serve": " php7.3 -S 0.0.0.0:8091 -t public -d public/index.php",
         "test": "phpunit",
         "db": "./vendor/bin/doctrine-module"
     }

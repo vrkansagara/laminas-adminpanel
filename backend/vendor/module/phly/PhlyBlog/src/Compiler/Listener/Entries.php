@@ -1,15 +1,15 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace PhlyBlog\Compiler\Listener;
 
 use DomainException;
-use PhlyBlog\Compiler\Event;
-use PhlyBlog\Compiler\ResponseFile;
-use PhlyBlog\CompilerOptions;
 use Laminas\EventManager\EventManagerInterface as Events;
 use Laminas\EventManager\ListenerAggregateInterface;
 use Laminas\View\Model\ViewModel;
 use Laminas\View\View;
+use PhlyBlog\Compiler\Event;
+use PhlyBlog\Compiler\ResponseFile;
+use PhlyBlog\CompilerOptions;
 
 class Entries implements ListenerAggregateInterface
 {
