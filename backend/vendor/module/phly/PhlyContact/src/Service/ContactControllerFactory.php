@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PhlyContact\Service;
 
 use Interop\Container\ContainerInterface;

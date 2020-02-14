@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PhlyBlog\Compiler\TestAsset;
 
 use PhlyBlog\Compiler\WriterInterface;

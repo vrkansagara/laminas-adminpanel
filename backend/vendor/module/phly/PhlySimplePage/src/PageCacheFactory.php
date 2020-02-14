@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @link      https://github.com/weierophinney/PhlySimplePage for the canonical source repository
  * @copyright Copyright (c) 2012-2020 Matthew Weier O'Phinney (https://mwop.net)

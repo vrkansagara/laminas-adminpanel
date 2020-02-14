@@ -18,7 +18,7 @@ return [
              * Expects: bool
              * Default: true
              */
-            'enabled' => false,
+            'enabled' => true,
 
             /**
              * Enables or disables the strict mode. If the strict mode is enabled, any error will throw an exception,
@@ -118,7 +118,7 @@ return [
              * Expects: bool
              * Default: false
              */
-            'auto_hide' => false,
+            'auto_hide' => true,
 
             /**
              * The Toolbar position.

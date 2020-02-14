@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Blog\Controller;
 
 use Blog\Model\PostCommandInterface;
@@ -46,7 +48,7 @@ class DeleteController extends AbstractActionController
         }
 
         $request = $this->getRequest();
-        if (!$request->isPost()) {
+        if (! $request->isPost()) {
             return new ViewModel(['post' => $post]);
         }
 

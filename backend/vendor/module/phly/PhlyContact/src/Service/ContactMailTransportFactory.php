@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PhlyContact\Service;
 
 use Interop\Container\ContainerInterface;
@@ -16,7 +18,7 @@ class ContactMailTransportFactory implements FactoryInterface
         if ($config instanceof Traversable) {
             $config = ArrayUtils::iteratorToArray($config);
         }
-        $config = $config['phly_contact']['mail_transport'];
+        $config = $config['phly-contact']['mail_transport'];
         $class = $config['class'];
         $options = $config['options'];
 

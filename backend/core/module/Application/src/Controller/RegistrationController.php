@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Application\Controller;
 
 use Application\Form\RegistrationForm;
@@ -100,9 +102,9 @@ class RegistrationController extends AbstractActionController
     {
         // Validate session data.
         if (
-            !isset($this->sessionContainer->step) ||
+            ! isset($this->sessionContainer->step) ||
             $this->sessionContainer->step <= 3 ||
-            !isset($this->sessionContainer->userChoices)
+            ! isset($this->sessionContainer->userChoices)
         ) {
             throw new \Exception('Sorry, the data is not available for review yet');
         }

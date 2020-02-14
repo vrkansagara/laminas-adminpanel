@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AlbumTableGatway;
 
 use Interop\Container\ContainerInterface;

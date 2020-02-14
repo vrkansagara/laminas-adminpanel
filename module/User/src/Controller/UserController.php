@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace User\Controller;
 
 use Application\Entity\Post;
@@ -214,7 +216,7 @@ class UserController extends AbstractActionController
                 $data = $form->getData();
 
                 // Try to change password.
-                if (!$this->userManager->changePassword($user, $data)) {
+                if (! $this->userManager->changePassword($user, $data)) {
                     $this->flashMessenger()->addErrorMessage(
                         'Sorry, the old password is incorrect. Could not set the new password.'
                     );
@@ -311,13 +313,13 @@ class UserController extends AbstractActionController
         $token = $this->params()->fromQuery('token', null);
 
         // Validate token length
-        if ($token != null && (!is_string($token) || strlen($token) != 32)) {
+        if ($token != null && (! is_string($token) || strlen($token) != 32)) {
             throw new \Exception('Invalid token type or length');
         }
 
         if (
             $token === null ||
-            !$this->userManager->validatePasswordResetToken($email, $token)
+            ! $this->userManager->validatePasswordResetToken($email, $token)
         ) {
             return $this->redirect()->toRoute(
                 'users',

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Application;
 
 use Laminas\EventManager\Event;

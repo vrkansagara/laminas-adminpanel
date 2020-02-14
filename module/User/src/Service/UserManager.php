@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace User\Service;
 
 use Laminas\Crypt\Password\Bcrypt;
@@ -228,7 +230,7 @@ class UserManager
         $bcrypt = new Bcrypt();
         $tokenHash = $user->getPasswordResetToken();
 
-        if (!$bcrypt->verify($passwordResetToken, $tokenHash)) {
+        if (! $bcrypt->verify($passwordResetToken, $tokenHash)) {
             return false; // mismatch
         }
 
@@ -250,7 +252,7 @@ class UserManager
      */
     public function setNewPasswordByToken($email, $passwordResetToken, $newPassword)
     {
-        if (!$this->validatePasswordResetToken($email, $passwordResetToken)) {
+        if (! $this->validatePasswordResetToken($email, $passwordResetToken)) {
             return false;
         }
 
@@ -285,7 +287,7 @@ class UserManager
         $oldPassword = $data['old_password'];
 
         // Check that old password is correct
-        if (!$this->validatePassword($user, $oldPassword)) {
+        if (! $this->validatePassword($user, $oldPassword)) {
             return false;
         }
 

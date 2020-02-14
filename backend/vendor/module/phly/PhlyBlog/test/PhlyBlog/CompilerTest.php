@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PhlyBlog;
 
 use PHPUnit_Framework_TestCase as TestCase;

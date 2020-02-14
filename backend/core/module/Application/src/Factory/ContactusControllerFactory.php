@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Application\Factory;
 
 use Application\Controller\ContactusController;
+use Application\Service\MailSender;
 use Interop\Container\ContainerInterface;
 use Laminas\ServiceManager\Factory\FactoryInterface;
-use Application\Service\MailSender;
 
 class ContactusControllerFactory implements FactoryInterface
 {

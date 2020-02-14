@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace User\Controller\Factory;
 
 use Interop\Container\ContainerInterface;
-use User\Controller\AuthController;
 use Laminas\ServiceManager\Factory\FactoryInterface;
+use User\Controller\AuthController;
 use User\Service\AuthManager;
 use User\Service\UserManager;
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AlbumTableGatway\Form;
 
 use Laminas\Form\Form;

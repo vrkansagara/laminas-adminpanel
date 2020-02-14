@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This is a sample "local" configuration for your application. To use it, copy
  * it to your config/autoload/ directory of your application, and edit to suit
@@ -11,7 +13,7 @@
  */
 
 return [
-    'phly_contact' => [
+    'phly-contact' => [
         // This is simply configuration to pass to Laminas\Captcha\Factory
         'captcha' => [
             'class' => 'recaptcha',

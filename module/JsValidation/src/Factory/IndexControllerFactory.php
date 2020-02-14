@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JsValidation\Factory;
 
 use Interop\Container\ContainerInterface;

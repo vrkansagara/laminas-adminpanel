@@ -1,14 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AlbumTableGatwayTest\Controller;
 
 use AlbumTableGatway\Controller\AlbumController;
 use AlbumTableGatway\Model\Album;
 use AlbumTableGatway\Model\AlbumTable;
+use Laminas\ServiceManager\ServiceManager;
 use Laminas\Stdlib\ArrayUtils;
 use Laminas\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 use Prophecy\Argument;
-use Laminas\ServiceManager\ServiceManager;
 
 class AlbumControllerTest extends AbstractHttpControllerTestCase
 {

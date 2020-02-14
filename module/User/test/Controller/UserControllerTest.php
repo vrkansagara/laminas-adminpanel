@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace UserTest\Controller;
 
 use Laminas\Stdlib\ArrayUtils;

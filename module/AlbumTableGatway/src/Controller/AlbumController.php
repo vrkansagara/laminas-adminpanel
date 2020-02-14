@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AlbumTableGatway\Controller;
 
 use AlbumTableGatway\Form\AlbumForm;
@@ -115,7 +117,7 @@ JS;
     public function deleteAction()
     {
         $id = (int) $this->params()->fromRoute('id', 0);
-        if (!$id) {
+        if (! $id) {
             return $this->redirect()->toRoute('album');
         }
 

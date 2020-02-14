@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Blog\Model;
 
 use DomainException;
@@ -8,7 +10,7 @@ class PostRepository implements PostRepositoryInterface
 {
     private $data = [
         1 => [
-            'id'    => 1,
+            'id' => 1,
             'title' => 'Hello World #1',
             'text'  => 'This is our first blog post!',
         ],

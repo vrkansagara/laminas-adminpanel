@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Blog\Controller;
 
 use Blog\Model\PostRepositoryInterface;

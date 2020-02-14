@@ -1,6 +1,14 @@
 <div class="container">
     <?php
 
+    /**
+     * Example #3: Custom format
+     */
+
+    $helper = $this->formElementErrors();
+    $helper->setMessageOpenFormat('<div class="invalid-feedback">');
+    //    $helper->setMessageSeparatorString('</div><div class="invalid-feedback">');
+    $helper->setMessageCloseString('</div>');
     $this->headTitle()->prepend('Contact'); ?>
     <section class="contact">
         <h2>Contact Me</h2>
@@ -26,38 +34,49 @@
 
         echo $this->form()->openTag($form);
         ?>
-        <dl class="zend_form">
-            <dt><?php echo $this->formLabel($form->get('from')); ?></dt>
-            <dd><?php
-                echo $this->formInput($form->get('from'));
-                echo $this->formElementErrors($form->get('from'));
-                ?></dd>
+        <div class="form-group">
+            <?php echo $this->formLabel($form->get('from')); ?>
+            <?php
+            echo $this->formInput($form->get('from'));
+            echo $this->formElementErrors($form->get('from'), ['class' => 'invalid-feedback']);
+            ?>
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+            <?php echo $this->formLabel($form->get('subject')); ?>
 
-            <dt><?php echo $this->formLabel($form->get('subject')); ?></dt>
-            <dd><?php
-                echo $this->formInput($form->get('subject'));
-                echo $this->formElementErrors($form->get('subject'));
-                ?></dd>
+            <?php
+            echo $this->formInput($form->get('subject'));
+            echo $this->formElementErrors($form->get('subject'), ['class' => 'invalid-feedback']);
+            ?>
+        </div>
 
-            <dt><?php echo $this->formLabel($form->get('body')); ?></dt>
-            <dd><?php
-                echo $this->formTextarea($form->get('body'));
-                echo $this->formElementErrors($form->get('body'));
-                ?></dd>
+        <div class="form-group">
+            <?php echo $this->formLabel($form->get('body')); ?>
 
-            <dt><?php echo $this->formLabel($form->get('captcha')); ?></dt>
-            <dd><?php
-                echo $this->formCaptcha($form->get('captcha'));
-                echo $this->formElementErrors($form->get('captcha'));
-                ?></dd>
+            <?php
+            echo $this->formTextarea($form->get('body'));
+            echo $this->formElementErrors($form->get('body'), ['class' => 'invalid-feedback']);
+            ?>
+        </div>
 
-            <dd><?php
-                echo $this->formElement($form->get('csrf'));
-                echo $this->formInput($form->get('Send'));
-                echo $this->formElementErrors($form->get('Send'));
-                ?></dd>
+        <div class="form-group">
+            <?php echo $this->formLabel($form->get('captcha')); ?>
+            <?php
+            echo $this->formCaptcha($form->get('captcha'));
+            echo $this->formElementErrors($form->get('captcha'), ['class' => 'invalid-feedback']);
+            ?>
+        </div>
 
-        </dl>
+        <?php
+        echo $this->formElement($form->get('csrf'));
+        echo $this->formInput($form->get('Send'));
+        echo $this->formElementErrors($form->get('Send'), ['class' => 'invalid-feedback']);
+        ?>
         <?php echo $this->form()->closeTag() ?>
     </section>
 </div>
+
+<script>
+    window.onload = function () {}
+</script>

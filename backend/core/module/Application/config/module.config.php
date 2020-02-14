@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Application;
 
 use Application\Factory\ContactusControllerFactory;
@@ -17,57 +19,57 @@ $navigation = [
             'label' => 'Home',
             'route' => 'home'
         ],
-        [
-            'label' => 'Album',
-            'route' => 'album',
-            'pages' => [
-                [
-                    'label' => 'Add',
-                    'route' => 'album',
-                    'action' => 'add',
-                ],
-                [
-                    'label' => 'Edit',
-                    'route' => 'album',
-                    'action' => 'edit',
-                ],
-                [
-                    'label' => 'Delete',
-                    'route' => 'album',
-                    'action' => 'delete',
-                ], [
-                    'label' => 'Info',
-                    'route' => 'album',
-                    'action' => 'info',
-                ],
-            ],
-        ],
-        [
-            'label' => 'Blog',
-            'route' => 'blog',
-            'pages' => [
-                [
-                    'label' => 'Detail',
-                    'route' => 'blog',
-                    'action' => 'detail',
-                ],
-                [
-                    'label' => 'Add',
-                    'route' => 'blog/add',
-                    'action' => 'add',
-                ],
-                [
-                    'label' => 'Edit',
-                    'route' => 'blog/add',
-                    'action' => 'edit',
-                ],
-                [
-                    'label' => 'Delete',
-                    'route' => 'blog/add',
-                    'action' => 'delete',
-                ],
-            ],
-        ],
+//        [
+//            'label' => 'Album',
+//            'route' => 'album',
+//            'pages' => [
+//                [
+//                    'label' => 'Add',
+//                    'route' => 'album',
+//                    'action' => 'add',
+//                ],
+//                [
+//                    'label' => 'Edit',
+//                    'route' => 'album',
+//                    'action' => 'edit',
+//                ],
+//                [
+//                    'label' => 'Delete',
+//                    'route' => 'album',
+//                    'action' => 'delete',
+//                ], [
+//                    'label' => 'Info',
+//                    'route' => 'album',
+//                    'action' => 'info',
+//                ],
+//            ],
+//        ],
+//        [
+//            'label' => 'Blog',
+//            'route' => 'blog',
+//            'pages' => [
+//                [
+//                    'label' => 'Detail',
+//                    'route' => 'blog',
+//                    'action' => 'detail',
+//                ],
+//                [
+//                    'label' => 'Add',
+//                    'route' => 'blog/add',
+//                    'action' => 'add',
+//                ],
+//                [
+//                    'label' => 'Edit',
+//                    'route' => 'blog/add',
+//                    'action' => 'edit',
+//                ],
+//                [
+//                    'label' => 'Delete',
+//                    'route' => 'blog/add',
+//                    'action' => 'delete',
+//                ],
+//            ],
+//        ],
         [
             'label' => 'About',
             'route' => 'about'
@@ -76,14 +78,14 @@ $navigation = [
             'label' => 'Contact',
             'route' => 'contact'
         ],
-        [
-            'label' => 'JsValidation',
-            'route' => 'validation'
-        ],
-        [
-            'label' => 'Todo',
-            'route' => 'todo'
-        ],
+//        [
+//            'label' => 'JsValidation',
+//            'route' => 'validation'
+//        ],
+//        [
+//            'label' => 'Todo',
+//            'route' => 'todo'
+//        ],
         [
             'label' => 'Contributors',
             'route' => 'contributors'

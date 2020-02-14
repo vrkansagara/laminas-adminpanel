@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PhlyContact\Controller;
 
 use Laminas\Mail\Message as Message;
@@ -33,14 +35,19 @@ class ContactController extends AbstractActionController
 
     public function processAction()
     {
-        if (!$this->request->isPost()) {
+        if (! $this->request->isPost()) {
             return $this->redirect()->toRoute('contact');
         }
 
         $post = $this->request->getPost();
         $form = $this->form;
         $form->setData($post);
-        if (!$form->isValid()) {
+
+
+        if (!$this->form->isValid()) {
+//            $messages = $this->form->getMessages();
+//            echo '<pre>'; print_r($messages); echo __FILE__; echo __LINE__; exit;
+
             $model = new ViewModel([
                 'error' => true,
                 'form' => $form,
@@ -72,12 +79,11 @@ class ContactController extends AbstractActionController
     {
         $headers = $this->request->getHeaders();
         if (
-            !$headers->has('Referer')
-            || !preg_match('#/contact$#', $headers->get('Referer')->getFieldValue())
+            ! $headers->has('Referer')
+            || ! preg_match('#/contact$#', $headers->get('Referer')->getFieldValue())
         ) {
             return $this->redirect()->toRoute('contact');
         }
-
         return [];
     }
 

@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace User;
 
+use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
 use Laminas\Router\Http\Literal;
 use Laminas\Router\Http\Segment;
-use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
 use Laminas\ServiceManager\Factory\InvokableFactory;
 
 return [

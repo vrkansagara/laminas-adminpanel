@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 include __DIR__ . '/../autoload_register.php';
 
 set_include_path(implode(PATH_SEPARATOR, [

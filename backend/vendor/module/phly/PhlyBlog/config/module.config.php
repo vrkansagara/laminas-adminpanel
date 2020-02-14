@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'blog' => [
         'options' => [
@@ -23,14 +25,17 @@ return [
             'feed_title' => 'Blog Entries',
             'tag_feed_filename_template' => 'public/blog/tag/%s-%s.xml',
             'tag_feed_title_template' => 'Tag: %s',
-            'tag_cloud_options' => ['tagDecorator' => [
-                'decorator' => 'html_tag',
-                'options' => [
-                    'fontSizeUnit' => '%',
-                    'minFontSize' => 80,
-                    'maxFontSize' => 300,
+            'tag_cloud_options' =>
+                [
+                    'tagDecorator' => [
+                        'decorator' => 'html_tag',
+                        'options' => [
+                            'fontSizeUnit' => '%',
+                            'minFontSize' => 80,
+                            'maxFontSize' => 300,
+                        ],
+                    ]
                 ],
-            ]],
         ],
         'posts_path' => 'data/blog/',
         'view_callback' => 'PhlyBlog\Module::prepareCompilerView',
@@ -191,17 +196,20 @@ return [
     ],
 
     'console' => [
-        'router' => ['routes' => [
-            'phly-blog-compile' => [
-                'type' => 'Simple',
-                'options' => [
-                    'route' => 'blog compile [--all|-a] [--entries|-e] [--archive|-c] [--year|-y] [--month|-m] [--day|-d] [--tag|-t] [--author|-r]',
-                    'defaults' => [
-                        'controller' => 'PhlyBlog\CompileController',
-                        'action' => 'compile',
+        'router' =>
+            [
+                'routes' => [
+                    'phly-blog-compile' => [
+                        'type' => 'Simple',
+                        'options' => [
+                            'route' => 'blog compile [--all|-a] [--entries|-e] [--archive|-c] [--year|-y] [--month|-m] [--day|-d] [--tag|-t] [--author|-r]',
+                            'defaults' => [
+                                'controller' => 'PhlyBlog\CompileController',
+                                'action' => 'compile',
+                            ],
+                        ],
                     ],
-                ],
+                ]
             ],
-        ]],
     ],
 ];

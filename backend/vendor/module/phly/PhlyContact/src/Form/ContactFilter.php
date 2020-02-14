@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PhlyContact\Form;
 
 use Laminas\InputFilter\InputFilter;

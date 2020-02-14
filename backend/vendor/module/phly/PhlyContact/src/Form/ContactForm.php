@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PhlyContact\Form;
 
 use Laminas\Captcha\AdapterInterface as CaptchaAdapter;
@@ -31,41 +33,57 @@ class ContactForm extends Form
 
         $this->add([
             'name' => 'from',
-            'type' => 'Laminas\Form\Element\Text',
+            'type' => 'text',
             'options' => [
-                'label' => 'From:',
+                'label' => 'Email address :',
             ],
+            'attributes' => [
+                'class' => 'form-control',
+                'type' => 'email',
+            ]
         ]);
 
         $this->add([
             'name' => 'subject',
-            'type' => 'Laminas\Form\Element\Text',
+            'type' => 'Text',
             'options' => [
                 'label' => 'Subject:',
             ],
+            'attributes' => [
+                'class' => 'form-control',
+            ]
         ]);
 
 
         $this->add([
             'name' => 'body',
-            'type' => 'Laminas\Form\Element\Textarea',
+            'type' => 'Textarea',
             'options' => [
                 'label' => 'Your message:',
             ],
+            'attributes' => [
+                'class' => 'form-control'
+            ]
         ]);
 
         $captcha = new Element\Captcha('captcha');
         $captcha->setCaptcha($this->captchaAdapter);
-        $captcha->setOptions(['label' => 'Please verify you are human.']);
+        $captcha->setOptions([
+            'label' => 'Please verify you are human.'
+        ]);
+        $captcha->setAttributes([
+            'class' => 'form-control',
+        ]);
         $this->add($captcha);
 
         $this->add(new Element\Csrf('csrf'));
 
         $this->add([
             'name' => 'Send',
-            'type' => 'Laminas\Form\Element\Submit',
+            'type' => 'submit',
             'attributes' => [
                 'value' => 'Send',
+                'class' => 'btn btn-primary',
             ],
         ]);
     }

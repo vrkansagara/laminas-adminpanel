@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace User;
 
 use Laminas\Mvc\Controller\AbstractActionController;
@@ -77,7 +79,7 @@ class Module
         // (to avoid infinite redirect).
         if (
             $controllerName != AuthController::class &&
-            !$authManager->filterAccess($controllerName, $actionName)
+            ! $authManager->filterAccess($controllerName, $actionName)
         ) {
             // Remember the URL of the page the user tried to access. We will
             // redirect the user to that URL after successful login.

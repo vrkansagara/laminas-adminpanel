@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PhlyBlog\Compiler;
 
 use PHPUnit_Framework_TestCase as TestCase;
@@ -15,7 +17,7 @@ class FileWriterTest extends TestCase
 
     public function cleanup()
     {
-        if (!is_dir($this->basePath)) {
+        if (! is_dir($this->basePath)) {
             return;
         }
 

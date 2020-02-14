@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace EdpSuperluminal;
 
 use Laminas\Code\Reflection\ClassReflection;
@@ -50,7 +52,7 @@ class Module
             $this->reflectClassCache();
             $code = file_get_contents(ZF_CLASS_CACHE);
         } else {
-            $code = "<?php\n";
+            $code = "<?php  declare(strict_types=1);\n";
         }
 
         $classes = array_merge(get_declared_interfaces(), get_declared_classes());
@@ -138,7 +140,7 @@ class Module
 
         $declaration = '';
 
-        if ($r->isAbstract() && !$r->isInterface()) {
+        if ($r->isAbstract() && ! $r->isInterface()) {
             $declaration .= 'abstract ';
         }
 
@@ -150,7 +152,7 @@ class Module
             $declaration .= 'interface ';
         }
 
-        if (!$r->isInterface()) {
+        if (! $r->isInterface()) {
             $declaration .= 'class ';
         }
 
@@ -163,7 +165,7 @@ class Module
                 : ((0 === strpos($parent->getName(), $r->getNamespaceName()))
                     ? substr($parent->getName(), strlen($r->getNamespaceName()) + 1)
                     : '\\' . $parent->getName());
-        } elseif ($parent && !$r->getNamespaceName()) {
+        } elseif ($parent && ! $r->getNamespaceName()) {
             $parentName = '\\' . $parent->getName();
         }
 
