@@ -14,29 +14,33 @@ const sass = require("gulp-sass");
 
 var root = "assets/";
 var paths = {
-  distRoot: root + "dist"
+    distRoot: root + "dist"
 };
 var jSBundle = [
     root + "js/vendor/jquery/jquery-3.4.1.min.js",
+    root + "js/vendor/jquery-validation/jquery.validate.js",
+    root + "js/vendor/jquery-validation/jsvalidation.js",
     root + "css/vendor/bootstrap/js/bootstrap.js",
-    root + "js/vendor/MochiKit/MochiKit.js",
-    root + "js/vendor/MochiKit/Base.js",
-    root + "js/vendor/MochiKit/Iter.js",
-    root + "js/vendor/MochiKit/Logging.js",
-    root + "js/vendor/MochiKit/DateTime.js",
-    root + "js/vendor/MochiKit/Format.js",
-    root + "js/vendor/MochiKit/Async.js",
-    root + "js/vendor/MochiKit/DOM.js",
-    root + "js/vendor/MochiKit/Selector.js",
-    root + "js/vendor/MochiKit/Style.js",
-  root + "js/vendor/MochiKit/LoggingPane.js",
-  root + "js/vendor/MochiKit/Color.js",
-  root + "js/vendor/MochiKit/Signal.js",
-  root + "js/vendor/MochiKit/Position.js",
-  root + "js/vendor/MochiKit/Visual.js",
-  root + "js/vendor/MochiKit/DragAndDrop.js",
-  root + "js/vendor/MochiKit/Sortable.js"
-  // root + "js/interpreter.js"
+
+    // root + "js/vendor/MochiKit/MochiKit.js",
+    // root + "js/vendor/MochiKit/Base.js",
+    // root + "js/vendor/MochiKit/Iter.js",
+    // root + "js/vendor/MochiKit/Logging.js",
+    // root + "js/vendor/MochiKit/DateTime.js",
+    // root + "js/vendor/MochiKit/Format.js",
+    // root + "js/vendor/MochiKit/Async.js",
+    // root + "js/vendor/MochiKit/DOM.js",
+    // root + "js/vendor/MochiKit/Selector.js",
+    // root + "js/vendor/MochiKit/Style.js",
+    // root + "js/vendor/MochiKit/LoggingPane.js",
+    // root + "js/vendor/MochiKit/Color.js",
+    // root + "js/vendor/MochiKit/Signal.js",
+    // root + "js/vendor/MochiKit/Position.js",
+    // root + "js/vendor/MochiKit/Visual.js",
+    // root + "js/vendor/MochiKit/DragAndDrop.js",
+    // root + "js/vendor/MochiKit/Sortable.js"
+    //
+    // root + "js/interpreter.js"
 ];
 var cssBundle = [
     root + "css/vendor/skeleton/normalize.css",
@@ -48,69 +52,69 @@ var cssBundle = [
 ];
 
 function js() {
-  return (
-      gulp
-          .src(jSBundle)
-          .pipe(concat("app.min.js"))
-          .pipe(uglify())
-      .pipe(gulp.dest(paths.distRoot))
-      .pipe(browserSync.stream())
-  );
+    return (
+        gulp
+            .src(jSBundle)
+            .pipe(concat("app.min.js"))
+            // .pipe(uglify())
+            .pipe(gulp.dest(paths.distRoot))
+            .pipe(browserSync.stream())
+    );
 }
 
 function css() {
-  return gulp
-    .src(cssBundle)
-    .pipe(
-      sass({
-        compass: true,
-        bundleExec: true,
-        sourcemap: true,
-        sourcemapPath: "../src/sass"
-      }).on("error", sass.logError)
-    )
-    .pipe(concat("app.min.css"))
-    .pipe(
-      cleanCSS(
-        {
-          debug: true,
-          compatibility: "ie8"
-        },
-        details => {
-          console.log(`${details.name}: ${details.stats.originalSize}`);
-          console.log(`${details.name}: ${details.stats.minifiedSize}`);
-        }
-      )
-    )
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest(paths.distRoot))
-    .pipe(browserSync.stream());
+    return gulp
+        .src(cssBundle)
+        .pipe(
+            sass({
+                compass: true,
+                bundleExec: true,
+                sourcemap: true,
+                sourcemapPath: "../src/sass"
+            }).on("error", sass.logError)
+        )
+        .pipe(concat("app.min.css"))
+        .pipe(
+            cleanCSS(
+                {
+                    debug: true,
+                    compatibility: "ie8"
+                },
+                details => {
+                    console.log(`${details.name}: ${details.stats.originalSize}`);
+                    console.log(`${details.name}: ${details.stats.minifiedSize}`);
+                }
+            )
+        )
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest(paths.distRoot))
+        .pipe(browserSync.stream());
 }
 
 function watch() {
-  browserSync.init({
-    // browser: ["google-chrome", "firefox"],
-    notify: true,
-    // host: "192.168.1.1",
-    port: 4242,
-    https: false,
-    httpModule: "http",
-    server: {
-      baseDir: ".",
-      index: "index.html",
-      serveStaticOptions: {
-        extensions: ["html"]
-      }
-    }
-  });
-  gulp.watch(root + "css/**/*.css", css);
-  gulp.watch(root + "css/**/*.scss", css);
-  gulp.watch(root + "js/**/*.js", js);
+    browserSync.init({
+        // browser: ["google-chrome", "firefox"],
+        notify: true,
+        // host: "192.168.1.1",
+        port: 4242,
+        https: false,
+        httpModule: "http",
+        server: {
+            baseDir: ".",
+            index: "index.html",
+            serveStaticOptions: {
+                extensions: ["html"]
+            }
+        }
+    });
+    gulp.watch(root + "css/**/*.css", css);
+    gulp.watch(root + "css/**/*.scss", css);
+    gulp.watch(root + "js/**/*.js", js);
 
-  gulp.watch("./*.html").on("change", browserSync.reload);
-  gulp.watch(root + "css/**/*.css").on("change", browserSync.reload);
-  gulp.watch(root + "css/**/*.scss").on("change", browserSync.reload);
-  gulp.watch(root + "js/**/*.js").on("change", browserSync.reload);
+    gulp.watch("./*.html").on("change", browserSync.reload);
+    gulp.watch(root + "css/**/*.css").on("change", browserSync.reload);
+    gulp.watch(root + "css/**/*.scss").on("change", browserSync.reload);
+    gulp.watch(root + "js/**/*.js").on("change", browserSync.reload);
 }
 
 exports.css = css;

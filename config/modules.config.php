@@ -7,7 +7,7 @@ $applicationModules = [
     'PhlyContact',
     'EdpSuperluminal',
     'PhlySimplePage',
-    // 'Blog',
+     'Blog',
     'AlbumTableGatway',
 //    'User',
 //    'Event'

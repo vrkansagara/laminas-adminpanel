@@ -23,6 +23,12 @@
         ->prependStylesheet($this->basePath('assets/dist/app.min.css'))
 
     ?>
+
+    <!-- Scripts -->
+    <?= $this->headScript()
+        ->setAllowArbitraryAttributes(true)
+        ->prependFile($this->basePath('assets/dist/app.min.js'), null, ['defer' => true]) //
+    ?>
     <!--    github-fork-ribbon-css-->
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css"/>
@@ -54,11 +60,6 @@
             </span>
     </div>
 </footer>
-<!-- Scripts -->
-<?= $this->headScript()
-    ->setAllowArbitraryAttributes(true)
-    ->prependFile($this->basePath('assets/dist/app.min.js'), null, ['defer' => true])
-?>
 <?= $this->inlineScript() ?>
 </body>
 

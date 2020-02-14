@@ -42,7 +42,12 @@ class ContactController extends AbstractActionController
         $post = $this->request->getPost();
         $form = $this->form;
         $form->setData($post);
-        if (! $form->isValid()) {
+
+
+        if (!$this->form->isValid()) {
+//            $messages = $this->form->getMessages();
+//            echo '<pre>'; print_r($messages); echo __FILE__; echo __LINE__; exit;
+
             $model = new ViewModel([
                 'error' => true,
                 'form' => $form,
