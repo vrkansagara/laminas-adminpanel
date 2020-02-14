@@ -19,31 +19,31 @@ $navigation = [
             'label' => 'Home',
             'route' => 'home'
         ],
-        [
-            'label' => 'Album',
-            'route' => 'album',
-            'pages' => [
-                [
-                    'label' => 'Add',
-                    'route' => 'album',
-                    'action' => 'add',
-                ],
-                [
-                    'label' => 'Edit',
-                    'route' => 'album',
-                    'action' => 'edit',
-                ],
-                [
-                    'label' => 'Delete',
-                    'route' => 'album',
-                    'action' => 'delete',
-                ], [
-                    'label' => 'Info',
-                    'route' => 'album',
-                    'action' => 'info',
-                ],
-            ],
-        ],
+//        [
+//            'label' => 'Album',
+//            'route' => 'album',
+//            'pages' => [
+//                [
+//                    'label' => 'Add',
+//                    'route' => 'album',
+//                    'action' => 'add',
+//                ],
+//                [
+//                    'label' => 'Edit',
+//                    'route' => 'album',
+//                    'action' => 'edit',
+//                ],
+//                [
+//                    'label' => 'Delete',
+//                    'route' => 'album',
+//                    'action' => 'delete',
+//                ], [
+//                    'label' => 'Info',
+//                    'route' => 'album',
+//                    'action' => 'info',
+//                ],
+//            ],
+//        ],
 //        [
 //            'label' => 'Blog',
 //            'route' => 'blog',
@@ -78,14 +78,14 @@ $navigation = [
             'label' => 'Contact',
             'route' => 'contact'
         ],
-        [
-            'label' => 'JsValidation',
-            'route' => 'validation'
-        ],
-        [
-            'label' => 'Todo',
-            'route' => 'todo'
-        ],
+//        [
+//            'label' => 'JsValidation',
+//            'route' => 'validation'
+//        ],
+//        [
+//            'label' => 'Todo',
+//            'route' => 'todo'
+//        ],
         [
             'label' => 'Contributors',
             'route' => 'contributors'
