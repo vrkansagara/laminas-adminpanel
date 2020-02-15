@@ -1,76 +1,166 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Blog\Form;
 
-use Laminas\Filter\StringTrim;
-use Laminas\Filter\StripNewlines;
-use Laminas\Filter\StripTags;
 use Laminas\Form\Form;
 use Laminas\InputFilter\InputFilter;
-use Laminas\Validator\StringLength;
+use Blog\Entity\Post;
 
+/**
+ * This form is used to collect post data.
+ */
 class PostForm extends Form
 {
-    public function init()
+    /**
+     * Constructor.     
+     */
+    public function __construct()
     {
-//        $this->addInputFilter();
-        $this->add([
-            'name' => 'post',
-            'type' => PostFieldset::class,
-            'options' => [
-                'use_as_base_fieldset' => true,
-            ],
-        ]);
+        // Define form name
+        parent::__construct('post-form');
 
+        // Set POST method for this form
+        $this->setAttribute('method', 'post');
 
-
-        $this->add([
-            'type' => 'submit',
-            'name' => 'submit',
-            'attributes' => [
-                'value' => 'Insert new Post',
-            ],
-        ]);
-
+        $this->addElements();
+        $this->addInputFilter();
     }
 
+    /**
+     * This method adds elements to form (input fields and submit button).
+     */
+    protected function addElements()
+    {
 
+        // Add "title" field
+        $this->add([
+            'type'  => 'text',
+            'name' => 'title',
+            'attributes' => [
+                'id' => 'title'
+            ],
+            'options' => [
+                'label' => 'Title',
+            ],
+        ]);
 
+        // Add "content" field
+        $this->add([
+            'type'  => 'textarea',
+            'name' => 'content',
+            'attributes' => [
+                'id' => 'content'
+            ],
+            'options' => [
+                'label' => 'Content',
+            ],
+        ]);
+
+        // Add "tags" field
+        $this->add([
+            'type'  => 'text',
+            'name' => 'tags',
+            'attributes' => [
+                'id' => 'tags'
+            ],
+            'options' => [
+                'label' => 'Tags',
+            ],
+        ]);
+
+        // Add "status" field
+        $this->add([
+            'type'  => 'select',
+            'name' => 'status',
+            'attributes' => [
+                'id' => 'status'
+            ],
+            'options' => [
+                'label' => 'Status',
+                'value_options' => [
+                    Post::STATUS_PUBLISHED => 'Published',
+                    Post::STATUS_DRAFT => 'Draft',
+                ]
+            ],
+        ]);
+
+        // Add the submit button
+        $this->add([
+            'type'  => 'submit',
+            'name' => 'submit',
+            'attributes' => [
+                'value' => 'Create',
+                'id' => 'submitbutton',
+            ],
+        ]);
+    }
 
     /**
      * This method creates input filter (used for form filtering/validation).
      */
     private function addInputFilter()
     {
+
         $inputFilter = new InputFilter();
         $this->setInputFilter($inputFilter);
 
         $inputFilter->add([
-            'name' => 'post[title]',
+            'name'     => 'title',
             'required' => true,
-            'filters' => [
-                ['name' => StringTrim::class],
-                ['name' => StripTags::class],
-                ['name' => StripNewlines::class],
+            'filters'  => [
+                ['name' => 'StringTrim'],
+                ['name' => 'StripTags'],
+                ['name' => 'StripNewlines'],
             ],
             'validators' => [
-                ['name' => StringLength::class, 'options' => ['min' => 3, 'max' => 128],
+                [
+                    'name'    => 'StringLength',
+                    'options' => [
+                        'min' => 1,
+                        'max' => 1024
+                    ],
                 ],
             ],
         ]);
 
-        // Add input for "street_address" field
         $inputFilter->add([
-            'name' => 'post[text]',
+            'name'     => 'content',
             'required' => true,
-            'filters' => [
-                ['name' => StringTrim::class],
+            'filters'  => [
+                ['name' => 'StripTags'],
             ],
             'validators' => [
-                ['name' => StringLength::class, 'options' => ['min' => 3, 'max' => 255]]
+                [
+                    'name'    => 'StringLength',
+                    'options' => [
+                        'min' => 1,
+                        'max' => 9999999999
+                    ],
+                ],
             ],
         ]);
+
+        $inputFilter->add([
+            'name'     => 'tags',
+            'required' => true,
+            'filters'  => [
+                ['name' => 'StringTrim'],
+                ['name' => 'StripTags'],
+                ['name' => 'StripNewlines'],
+            ],
+            'validators' => [
+                [
+                    'name'    => 'StringLength',
+                    'options' => [
+                        'min' => 1,
+                        'max' => 1024
+                    ],
+                ],
+            ],
+        ]);
+
+        // We do not validate the 'status' field, because it is enough to use
+        // the default validator.
+        // https://github.com/olegkrivtsov/using-zf3-book-samples/issues/37
     }
 }

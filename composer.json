@@ -69,6 +69,7 @@
             "PhlyContact\\": "backend/vendor/module/phly/PhlyContact/src",
             "PhlyBlog\\": "backend/vendor/module/phly/PhlyBlog/src",
             "EdpSuperluminal\\": "module/EdpSuperluminal/src/",
+            "BlogSqlite\\": "module/BlogSqlite/src/",
             "Blog\\": "module/Blog/src/",
             "AlbumTableGatway\\": "module/AlbumTableGatway/src/",
             "AlbumTableGatwayTest\\": "module/AlbumTableGatway/test/",

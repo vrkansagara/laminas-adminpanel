@@ -1,113 +1,76 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Blog;
 
 use Laminas\Router\Http\Literal;
 use Laminas\Router\Http\Segment;
 use Laminas\ServiceManager\Factory\InvokableFactory;
+use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
 
 return [
-    'blog' => [
-        'db' => [
-            'driver' => 'Pdo',
-            'dsn' => sprintf('sqlite:%s/../data/Blog.db', realpath(__DIR__))
-        ]
-    ],
-    'controllers' => [
-        'factories' => [
-            Controller\ListController::class => Factory\ListControllerFactory::class,
-            Controller\WriteController::class => Factory\WriteControllerFactory::class,
-            Controller\DeleteController::class => Factory\DeleteControllerFactory::class,
-
-        ],
-    ],
-    'service_manager' => [
-        'aliases' => [
-            Model\PostRepositoryInterface::class => Model\LaminasDbSqlRepository::class,
-            Model\PostCommandInterface::class => Model\LaminasDbSqlCommand::class,
-
-        ],
-        'factories' => [
-            Model\PostRepository::class => InvokableFactory::class,
-            Model\LaminasDbSqlRepository::class => Factory\LaminasDbSqlRepositoryFactory::class,
-            Model\PostCommand::class => InvokableFactory::class,
-            Model\LaminasDbSqlCommand::class => Factory\LaminasDbSqlCommandFactory::class,
-
-        ],
-    ],
-    // This lines opens the configuration for the RouteManager
     'router' => [
-        // Open configuration for all possible routes
         'routes' => [
-            // Define a new route called "blog"
             'blog' => [
-                // Define a "literal" route type:
                 'type' => Literal::class,
-                // Configure the route itself
                 'options' => [
-                    // Listen to "/blog" as uri:
                     'route' => '/blog',
-                    // Define default Controller and action to be called when
-                    // this route is matched
                     'defaults' => [
-                        'controller' => Controller\ListController::class,
+                        'controller' => Controller\IndexController::class,
                         'action' => 'index',
                     ],
                 ],
+                // The following allows "/blog" to match on its own if no child routes match:
                 'may_terminate' => true,
                 'child_routes' => [
-                    'detail' => [
+                    'posts' => [
                         'type' => Segment::class,
                         'options' => [
-                            'route' => '/:id',
-                            'defaults' => [
-                                'action' => 'detail',
-                            ],
+                            'route' => '/posts[/:action[/:id]]',
                             'constraints' => [
-                                'id' => '[1-9]\d*',
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'id' => '[0-9]*'
+                            ],
+                            'defaults' => [
+                                'controller' => Controller\PostController::class,
+                                'action' => 'index',
                             ],
                         ],
                     ],
-                    'add' => [
+                    'about' => [
                         'type' => Literal::class,
                         'options' => [
-                            'route' => '/add',
+                            'route' => '/about',
                             'defaults' => [
-                                'controller' => Controller\WriteController::class,
-                                'action' => 'add',
+                                'controller' => Controller\IndexController::class,
+                                'action' => 'about',
                             ],
                         ],
                     ],
-                    'edit' => [
-                        'type' => Segment::class,
-                        'options' => [
-                            'route' => '/edit/:id',
-                            'defaults' => [
-                                'controller' => Controller\WriteController::class,
-                                'action' => 'edit',
-                            ],
-                            'constraints' => [
-                                'id' => '[1-9]\d*',
-                            ],
-                        ],
-                    ],
-                    'delete' => [
-                        'type' => Segment::class,
-                        'options' => [
-                            'route' => '/delete/:id',
-                            'defaults' => [
-                                'controller' => Controller\DeleteController::class,
-                                'action' => 'delete',
-                            ],
-                            'constraints' => [
-                                'id' => '[1-9]\d*',
-                            ],
-                        ],
-                    ],
-                ],
+                ]
             ],
+        ],
+    ],
+    'controllers' => [
+        'factories' => [
+            Controller\IndexController::class => Controller\Factory\IndexControllerFactory::class,
+            Controller\PostController::class => Controller\Factory\PostControllerFactory::class,
+        ],
+    ],
+    'service_manager' => [
+        'factories' => [
+            Service\PostManager::class => Service\Factory\PostManagerFactory::class,
+        ],
+    ],
+    // The following registers our custom view 
+    // helper classes in view plugin manager.
+    'view_helpers' => [
+        'factories' => [
+            View\Helper\Menu::class => InvokableFactory::class,
+            View\Helper\Breadcrumbs::class => InvokableFactory::class,
+        ],
+        'aliases' => [
+            'mainMenu' => View\Helper\Menu::class,
+            'pageBreadcrumbs' => View\Helper\Breadcrumbs::class,
         ],
     ],
     'view_manager' => [
@@ -115,14 +78,30 @@ return [
             __DIR__ . '/../view',
         ],
     ],
-//    'translator' => [
-//        'locale' => 'en_US',
-//        'translation_file_patterns' => [
-//            [
-//                'type' => 'gettext',
-//                'base_dir' => __DIR__ . '/../language',
-//                'pattern' => '%s.mo',
-//            ],
-//        ],
-//    ],
+    'doctrine' => [
+        'driver' => [
+            __NAMESPACE__ . '_driver' => [
+                'class' => AnnotationDriver::class,
+                'cache' => 'array',
+                'paths' => [__DIR__ . '/../src/Entity']
+            ],
+            'orm_default' => [
+                'drivers' => [
+                    __NAMESPACE__ . '\Entity' => __NAMESPACE__ . '_driver'
+                ]
+            ]
+        ]
+    ],
+    // The 'access_filter' key is used by the User module to restrict or permit
+    // access to certain controller actions for unauthorized visitors.
+    'access_filter' => [
+        'controllers' => [
+            Controller\IndexController::class => [
+                ['actions' => ['index', 'about'], 'allow' => '*'],
+            ],
+            Controller\PostController::class => [
+                ['actions' => ['delete'], 'allow' => '#']
+            ]
+        ]
+    ],
 ];

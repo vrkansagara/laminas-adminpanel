@@ -8,6 +8,7 @@ $applicationModules = [
     'EdpSuperluminal',
     'PhlySimplePage',
      'Blog',
+     'BlogSqlite',
     'AlbumTableGatway',
 //    'User',
 //    'Event'

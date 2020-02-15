@@ -1,0 +1,13 @@
+<div class="container">
+    <h1>Add a blog post</h1>
+    <?php
+
+    $form = $this->form;
+    $form->setAttribute('action', $this->url());
+    echo $this->partial('blog-sqlite/write/form', [
+        'form' => $form,
+        'submitLabel' => 'Insert new post',
+    ]);
+
+    ?>
+</div>
