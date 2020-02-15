@@ -11,9 +11,10 @@ interface PostRepositoryInterface
      *
      * Each entry should be a Post instance.
      *
+     * @param bool $isPaginated
      * @return Post[]
      */
-    public function findAllPosts();
+    public function findAllPosts($isPaginated = false);
 
     /**
      * Return a single blog post.

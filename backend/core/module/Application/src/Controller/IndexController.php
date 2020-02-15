@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Application\Controller;
 
 use Laminas\Mvc\Controller\AbstractActionController;
+use Laminas\Text\Figlet\Figlet;
 use Laminas\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController
@@ -27,7 +28,10 @@ class IndexController extends AbstractActionController
 
     public function indexAction()
     {
-        return new ViewModel();
+        $layoutData = [
+            'figlet'=> new Figlet()
+        ];
+        return new ViewModel($layoutData);
     }
     /**
      * The "settings" action displays the info about currently logged in user.

@@ -15,7 +15,7 @@ class PostForm extends Form
 {
     public function init()
     {
-        $this->addInputFilter();
+//        $this->addInputFilter();
         $this->add([
             'name' => 'post',
             'type' => PostFieldset::class,
@@ -34,9 +34,6 @@ class PostForm extends Form
             ],
         ]);
 
-//        $this->setValidationGroup([
-//            'csrf',
-//        ]);
     }
 
 

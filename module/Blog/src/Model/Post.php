@@ -33,6 +33,20 @@ class Post
         $this->id = $id;
     }
 
+    public function exchangeArray(array $data)
+    {
+        $this->id = ! empty($data['id']) ? $data['id'] : null;
+        $this->text = ! empty($data['text']) ? $data['text'] : null;
+        $this->title = ! empty($data['title']) ? $data['title'] : null;
+    }
+    public function getArrayCopy()
+    {
+        return [
+            'id'     => $this->id,
+            'text' => $this->text,
+            'title'  => $this->title,
+        ];
+    }
     /**
      * @return int|null
      */

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PhlyContact\Controller;
 
+use JsValidation\Controller\JsValidator;
 use Laminas\Mail\Message as Message;
 use Laminas\Mail\Transport;
 use Laminas\Mvc\Controller\AbstractActionController;
@@ -28,8 +29,10 @@ class ContactController extends AbstractActionController
 
     public function indexAction()
     {
+        $this->validator = new JsValidator($this->form);
         return [
             'form' => $this->form,
+            'validator' => $this->validator
         ];
     }
 

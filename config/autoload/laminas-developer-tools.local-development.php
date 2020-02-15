@@ -18,7 +18,7 @@ return [
              * Expects: bool
              * Default: true
              */
-            'enabled' => true,
+            'enabled' => false,
 
             /**
              * Enables or disables the strict mode. If the strict mode is enabled, any error will throw an exception,
@@ -27,7 +27,7 @@ return [
              * Expects: bool
              * Default: true
              */
-            'strict' => true,
+            'strict' => false,
 
             /**
              * If enabled, the profiler tries to flush the content before the it starts collecting data. This option
@@ -79,7 +79,7 @@ return [
              * Expects: bool
              * Default: false
              */
-            'enabled' => true,
+            'enabled' => false,
 
             /**
              * Contains a list with all event-level collectors that should run. Laminas\DeveloperTools ships with 'time'
@@ -110,7 +110,7 @@ return [
              * Expects: bool
              * Default: false
              */
-            'enabled' => true,
+            'enabled' => false,
 
             /**
              * If enabled, every empty collector will be hidden.
@@ -118,7 +118,7 @@ return [
              * Expects: bool
              * Default: false
              */
-            'auto_hide' => true,
+            'auto_hide' => false,
 
             /**
              * The Toolbar position.

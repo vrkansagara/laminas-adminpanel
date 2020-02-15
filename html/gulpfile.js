@@ -17,10 +17,11 @@ var paths = {
     distRoot: root + "dist"
 };
 var jSBundle = [
-    root + "js/vendor/jquery/jquery-3.4.1.min.js",
+    root + "js/vendor/jquery/jquery-3.4.1.js",
+    // root + "js/vendor/jquery/jquery-3.4.1.min.js",
+    root + "css/vendor/bootstrap/js/bootstrap.js",
     root + "js/vendor/jquery-validation/jquery.validate.js",
     root + "js/vendor/jquery-validation/jsvalidation.js",
-    root + "css/vendor/bootstrap/js/bootstrap.js",
 
     // root + "js/vendor/MochiKit/MochiKit.js",
     // root + "js/vendor/MochiKit/Base.js",
@@ -92,6 +93,8 @@ function css() {
 }
 
 function watch() {
+    css();
+    js();
     browserSync.init({
         // browser: ["google-chrome", "firefox"],
         notify: true,

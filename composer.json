@@ -55,7 +55,9 @@
         "league/commonmark": "^1.2",
         "phpunit/phpunit": "7.5.20",
         "laminas/laminas-mvc-i18n": "^1.1",
-        "laminas/laminas-recaptcha": "^3.2"
+        "laminas/laminas-recaptcha": "^3.2",
+        "laminas/laminas-permissions-acl": "^2.7",
+        "laminas/laminas-permissions-rbac": "^3.0"
     },
     "require-dev": {
         "laminas/laminas-test": "^3.3"

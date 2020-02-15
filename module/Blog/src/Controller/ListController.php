@@ -23,8 +23,21 @@ class ListController extends AbstractActionController
     // Add the following method:
     public function indexAction()
     {
+
+        // Grab the paginator from the AlbumTable:
+        $paginator = $this->postRepository->findAllPosts(true);
+
+        // Set the current page to what has been passed in query string,
+        // or to 1 if none is set, or the page is invalid:
+        $page = (int) $this->params()->fromQuery('page', 1);
+        $page = ($page < 1) ? 1 : $page;
+        $paginator->setCurrentPageNumber($page);
+
+        // Set the number of items per page to 10:
+        $paginator->setItemCountPerPage(2);
+
         return new ViewModel([
-            'posts' => $this->postRepository->findAllPosts(),
+            'paginator' => $paginator
         ]);
     }
 

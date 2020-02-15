@@ -4,11 +4,9 @@
             <div class="col-md-8 blog-main">
                 <h3 class="pb-3 mb-4 font-italic border-bottom">
                     From the Firehose
-                    <a class="btn btn-primary" href="<?= $this->url('blog/add') ?>">Write new post</a>
+                    <a class="btn btn-sm btn-primary" href="<?= $this->url('blog/add') ?>">+</a>
                 </h3>
-                <?php
-
-                foreach ($this->posts as $post) : ?>
+                <?php foreach ($this->paginator as $post) : ?>
                     <div class="blog-post">
                         <h2 class="blog-post-title">
                             <a href="<?= $this->url('blog/detail', ['id' => $post->getId()]) ?>">
@@ -21,16 +19,8 @@
                         <a class="btn btn-sm btn-danger"
                            href="<?= $this->url('blog/delete', ['id' => $post->getId()]) ?>">Delete</a>
                     </div>
-
                     <!-- /.blog-post -->
                 <?php endforeach ?>
-
-
-                <nav class="blog-pagination">
-                    <a class="btn btn-outline-primary" href="#">Older</a>
-                    <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
-                </nav>
-
             </div><!-- /.blog-main -->
 
             <aside class="col-md-4 blog-sidebar">
@@ -59,4 +49,6 @@
 
         </div><!-- /.row -->
     </main>
+    <?= $this->paginationControl($this->paginator, 'sliding', 'partial/paginator', ['route' => $this->url]) ?>
 </div>
+

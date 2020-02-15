@@ -29,16 +29,7 @@ class PostFieldset extends Fieldset
                 'label' => 'Post Title',
             ],
             'attributes' => [
-//                'required' => 'required',
-            ],
-            'validators' => [
-                [
-                    'name' => StringLength::class,
-                    'options' => [
-                        'min' => 3,
-                        'max' => 256
-                    ],
-                ],
+                'required' => 'required',
             ],
         ]);
 
@@ -48,16 +39,9 @@ class PostFieldset extends Fieldset
             'options' => [
                 'label' => 'Post Text',
             ],
+            'attributes' => [
+                'required' => 'required',
+            ],
         ]);
-
-//        $this->add([
-//            'type' => Csrf::class,
-//            'name' => 'csrf',
-//            'options' => [
-//                'csrf_options' => [
-//                    'timeout' => 600,
-//                ],
-//            ],
-//        ]);
     }
 }
