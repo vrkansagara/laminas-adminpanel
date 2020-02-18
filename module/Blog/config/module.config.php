@@ -94,14 +94,14 @@ return [
     ],
     // The 'access_filter' key is used by the User module to restrict or permit
     // access to certain controller actions for unauthorized visitors.
-    'access_filter' => [
-        'controllers' => [
-            Controller\IndexController::class => [
-                ['actions' => ['index', 'about'], 'allow' => '*'],
-            ],
-            Controller\PostController::class => [
-                ['actions' => ['delete'], 'allow' => '#']
-            ]
-        ]
-    ],
+//    'access_filter' => [
+//        'controllers' => [
+//            Controller\IndexController::class => [
+//                ['actions' => ['index', 'about'], 'allow' => '*'],
+//            ],
+//            Controller\PostController::class => [
+//                ['actions' => ['delete'], 'allow' => '#']
+//            ]
+//        ]
+//    ],
 ];

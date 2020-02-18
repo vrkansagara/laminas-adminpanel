@@ -195,6 +195,9 @@ class PostController extends AbstractActionController
      */
     public function deleteAction()
     {
+        //
+        return $this->redirect()->toRoute('blog/posts', ['action' => 'admin']);
+
         $postId = (int) $this->params()->fromRoute('id', -1);
 
         // Validate input parameter
