@@ -62,7 +62,7 @@ class PostController extends AbstractActionController
                 $this->postManager->addNewPost($data);
 
                 // Redirect the user to "index" page.
-                return $this->redirect()->toRoute('Blog');
+                return $this->redirect()->toRoute('blog');
             }
         }
 
@@ -116,7 +116,7 @@ class PostController extends AbstractActionController
                 $this->postManager->addCommentToPost($post, $data);
 
                 // Redirect the user again to "view" page.
-                return $this->redirect()->toRoute('Blog/posts', ['action' => 'view', 'id' => $postId]);
+                return $this->redirect()->toRoute('blog/posts', ['action' => 'view', 'id' => $postId]);
             }
         }
 
@@ -170,7 +170,7 @@ class PostController extends AbstractActionController
                 $this->postManager->updatePost($post, $data);
 
                 // Redirect the user to "admin" page.
-                return $this->redirect()->toRoute('Blog/posts', ['action' => 'admin']);
+                return $this->redirect()->toRoute('blog', ['action' => 'admin']);
             }
         } else {
             $data = [
@@ -196,7 +196,7 @@ class PostController extends AbstractActionController
     public function deleteAction()
     {
         //
-        return $this->redirect()->toRoute('blog/posts', ['action' => 'admin']);
+        return $this->redirect()->toRoute('blog', ['action' => 'admin']);
 
         $postId = (int) $this->params()->fromRoute('id', -1);
 
@@ -216,7 +216,7 @@ class PostController extends AbstractActionController
         $this->postManager->removePost($post);
 
         // Redirect the user to "admin" page.
-        return $this->redirect()->toRoute('Blog/posts', ['action' => 'admin']);
+        return $this->redirect()->toRoute('blog/posts', ['action' => 'admin']);
     }
 
     /**
