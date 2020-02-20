@@ -20,43 +20,50 @@
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <link rel="stylesheet" href=""/>
     <?= $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/png', 'href' => $this->basePath('/') . 'assets/images/favicon.png'])
-        ->prependStylesheet($this->basePath('assets/dist/app.min.css'))
+//        ->prependStylesheet($this->basePath('assets/dist/app.min.css'))
+            ->prependStylesheet($this->basePath('dist/css/app.css'))
 
     ?>
 
     <!-- Scripts -->
     <?= $this->headScript()
         ->setAllowArbitraryAttributes(true)
-        ->prependFile($this->basePath('assets/dist/app.min.js'), null, ['defer' => true])
+//        ->prependFile($this->basePath('dist/app.min.js'), null, ['defer' => true])
+        ->prependFile($this->basePath('dist/js/app.js'), null, ['defer' => true])
+        ->prependFile($this->basePath('dist/js/manifest.js'), null, ['defer' => true])
+        ->prependFile($this->basePath('dist/js/vendor.js'), null, ['defer' => true])
     ?>
 </head>
 
 <body class="d-flex flex-column h-100">
-<div class="container">
-    <?= $this->navigation('navigation')->menu()
-        ->setRenderParents(true)
-        ->setMinDepth(0)
-        ->setMaxDepth(0)
-        ->setUlClass('d-inline-flex')
+<div id="app">
+
+    <div class="container">
+        <?= $this->navigation('navigation')->menu()
+            ->setRenderParents(true)
+            ->setMinDepth(0)
+            ->setMaxDepth(0)
+            ->setUlClass('d-inline-flex')
 //        ->setPartial('partial/nav')
 //        ->renderSubMenu(null, 'sidebar', 4)
-        ->render();
-    ?>
-</div>
-<?php
+            ->render();
+        ?>
+    </div>
+    <?php
 
-// $this->navigation('navigation')->breadcrumbs()->setMinDepth(0)->setPartial('partial/breadcrumb') ?>
+    // $this->navigation('navigation')->breadcrumbs()->setMinDepth(0)->setPartial('partial/breadcrumb') ?>
 
-<?= $this->content ?>
+    <?= $this->content ?>
 
-<footer class="footer mt-auto py-3">
-    <div class="container">
+    <footer class="footer mt-auto py-3">
+        <div class="container">
                <span class="sticky-footer  text-muted">
                &copy; 2019 - <?= date('Y') ?> by <a href="https://github.com/vrkansagara/laminas-adminpanel">Laminas Admin Panel</a>. <?= $this->translate('All rights reserved.') ?>.
             </span>
-    </div>
-</footer>
-<?= $this->inlineScript() ?>
+        </div>
+    </footer>
+    <?= $this->inlineScript() ?>
+</div>
 </body>
 
 </html>

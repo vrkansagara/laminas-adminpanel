@@ -16,3 +16,7 @@ data/cache/*
 phpunit.xml
 .phpunit.result.cache
 Envoy.blade.php
+*.log
+*.lock
+mix-manifest.json
+.settings

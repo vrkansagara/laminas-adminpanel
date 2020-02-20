@@ -47,10 +47,6 @@ code {
   }
 }
 
-h1, h2, h3, h4, h5, h6, label {
-  font-family: 'Quicksand', sans-serif;
-}
-
 .d-inline-flex > li {
   margin-left: 1rem !important;
   margin-top: 3rem !important;
