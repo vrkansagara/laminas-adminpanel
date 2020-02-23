@@ -34,7 +34,11 @@ mix
 ;
 
 if (mix.inProduction()) {
-    mix.version();
+    mix.version()
+        .webpackConfig({
+            devtool: 'source-map',
+        })
+    ;
 } else {
     mix.browserSync('http://laminas-adminpanel.local/');
     // Development settings

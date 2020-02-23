@@ -100,10 +100,10 @@ $navigation = [
             'label' => 'About',
             'route' => 'about'
         ],
-        [
-            'label' => 'Contact',
-            'route' => 'contact'
-        ],
+//        [
+//            'label' => 'Contact',
+//            'route' => 'contact'
+//        ],
 //        [
 //            'label' => 'JsValidation',
 //            'route' => 'validation'
