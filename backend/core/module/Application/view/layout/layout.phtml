@@ -12,16 +12,12 @@
         ->appendName('description', 'getlaminas.in')
         ->appendName('author', 'getlaminas.in')
     ?>
-    <!-- FONT
-    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <link href="//fonts.googleapis.com/css?family=Fira+Code:400,300,600" rel="stylesheet" type="text/css"/>
-    <link href="https://fonts.googleapis.com/css?family=Quicksand:600&display=swap" rel="stylesheet">
     <!-- CSS
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <link rel="stylesheet" href=""/>
     <?= $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/png', 'href' => $this->basePath('/') . 'assets/images/favicon.png'])
 //        ->prependStylesheet($this->basePath('assets/dist/app.min.css'))
-            ->prependStylesheet($this->basePath('dist/css/app.css'))
+        ->prependStylesheet($this->basePath('dist/css/app.css'))
 
     ?>
 
@@ -36,34 +32,43 @@
 </head>
 
 <body class="d-flex flex-column h-100">
-<div id="app">
+<div id="page-loader" class="page-loader-wrapper">
+    <div class="loader">
+        <div>
+            <div class="lds-ripple">
+                <div></div>
+                <div></div>
+            </div>
+            <p>Please wait...</p></div>
+    </div>
+</div>
+<div id="app"></div>
 
-    <div class="container">
-        <?= $this->navigation('navigation')->menu()
-            ->setRenderParents(true)
-            ->setMinDepth(0)
-            ->setMaxDepth(0)
-            ->setUlClass('d-inline-flex')
+<div class="container">
+    <?= $this->navigation('navigation')->menu()
+        ->setRenderParents(true)
+        ->setMinDepth(0)
+        ->setMaxDepth(0)
+        ->setUlClass('d-inline-flex')
 //        ->setPartial('partial/nav')
 //        ->renderSubMenu(null, 'sidebar', 4)
-            ->render();
-        ?>
-    </div>
-    <?php
+        ->render();
+    ?>
+</div>
+<?php
 
-    // $this->navigation('navigation')->breadcrumbs()->setMinDepth(0)->setPartial('partial/breadcrumb') ?>
+// $this->navigation('navigation')->breadcrumbs()->setMinDepth(0)->setPartial('partial/breadcrumb') ?>
 
-    <?= $this->content ?>
+<?= $this->content ?>
 
-    <footer class="footer mt-auto py-3">
-        <div class="container">
+<footer class="footer mt-auto py-3">
+    <div class="container">
                <span class="sticky-footer  text-muted">
                &copy; 2019 - <?= date('Y') ?> by <a href="https://github.com/vrkansagara/laminas-adminpanel">Laminas Admin Panel</a>. <?= $this->translate('All rights reserved.') ?>.
             </span>
-        </div>
-    </footer>
-    <?= $this->inlineScript() ?>
-</div>
+    </div>
+</footer>
+<?= $this->inlineScript() ?>
 </body>
 
 </html>

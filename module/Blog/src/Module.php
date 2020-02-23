@@ -5,6 +5,7 @@ namespace Blog;
 use Laminas\ModuleManager\Feature\ConfigProviderInterface;
 use Laminas\ModuleManager\ModuleManager;
 use Laminas\Mvc\MvcEvent;
+use Laminas\View\Model\ViewModel;
 
 class Module implements ConfigProviderInterface
 {
@@ -36,10 +37,10 @@ class Module implements ConfigProviderInterface
         $moduleNamespace = substr($controllerClass, 0, strpos($controllerClass, '\\'));
 
         // Switch layout only for controllers belonging to our module.
-        // if ($moduleNamespace == __NAMESPACE__) {
-        //     $viewModel = $event->getViewModel();
-        //     $viewModel->setTemplate('layout/layout2');
-        // }
+//         if ($moduleNamespace == __NAMESPACE__) {
+//             $viewModel = $event->getViewModel();
+//             $viewModel->setTemplate('layout/blog');
+//         }
     }
 
     // Event listener method.

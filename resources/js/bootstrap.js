@@ -10,8 +10,14 @@ try {
     window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
 
-    require('bootstrap');
-} catch (e) {}
+    // require('bootstrap');
+    require('bootstrap-material-design')
+    require('../assets/vendor/prism/prism')
+    require('../assets/js/custom')
+} catch (e) {
+
+    console.log("e :::: ",e)
+}
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

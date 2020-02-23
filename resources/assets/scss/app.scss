@@ -1,12 +1,15 @@
 // Fonts
+@import url('https://fonts.googleapis.com/css?family=Fira+Code:400,300,600');
 @import url('https://fonts.googleapis.com/css?family=Quicksand:600&display=swap');
-//@import 'variables';
+@import 'variables';
 
 @import url('../vendor/skeleton/normalize.css');
 @import url('../css/custom.css');
+@import url('../vendor/prism/prism.css');
+//@import url('../css/material-custom.css');
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import '~bootstrap-material-design/scss/bootstrap-material-design';
 
 
 

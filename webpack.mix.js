@@ -8,8 +8,9 @@ mix
     .js('resources/js/app.js', 'public/dist/js')
     .extract(
         [
-            'bootstrap',
-            'vue',
+            // 'bootstrap',
+            'bootstrap-material-design',
+            // 'vue',
             'jquery'
         ]
     )

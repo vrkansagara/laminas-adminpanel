@@ -70,32 +70,32 @@ $navigation = [
                 ],
             ],
         ],
-        [
-            'label' => 'Blog lite',
-            'route' => 'blog-lite',
-            'pages' => [
-                [
-                    'label' => 'Detail',
-                    'route' => 'blog-lite',
-                    'action' => 'detail',
-                ],
-                [
-                    'label' => 'Add',
-                    'route' => 'blog-lite/add',
-                    'action' => 'add',
-                ],
-                [
-                    'label' => 'Edit',
-                    'route' => 'blog-lite/add',
-                    'action' => 'edit',
-                ],
-                [
-                    'label' => 'Delete',
-                    'route' => 'blog-lite/add',
-                    'action' => 'delete',
-                ],
-            ],
-        ],
+//        [
+//            'label' => 'Blog lite',
+//            'route' => 'blog-lite',
+//            'pages' => [
+//                [
+//                    'label' => 'Detail',
+//                    'route' => 'blog-lite',
+//                    'action' => 'detail',
+//                ],
+//                [
+//                    'label' => 'Add',
+//                    'route' => 'blog-lite/add',
+//                    'action' => 'add',
+//                ],
+//                [
+//                    'label' => 'Edit',
+//                    'route' => 'blog-lite/add',
+//                    'action' => 'edit',
+//                ],
+//                [
+//                    'label' => 'Delete',
+//                    'route' => 'blog-lite/add',
+//                    'action' => 'delete',
+//                ],
+//            ],
+//        ],
         [
             'label' => 'About',
             'route' => 'about'

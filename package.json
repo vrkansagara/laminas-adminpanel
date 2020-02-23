@@ -19,6 +19,7 @@
     "@babel/core": "^7.8.4",
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
+    "bootstrap-material-design": "^4.1.2",
     "browser-sync": "^2.26.7",
     "browser-sync-webpack-plugin": "^2.2.2",
     "closure-webpack-plugin": "^2.2.1",

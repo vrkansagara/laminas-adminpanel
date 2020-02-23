@@ -41,7 +41,8 @@ $form->prepare();
     </p>
 
     <p>
-        <?= $this->escapeHtml($post->getContent()); ?>
+        <?= $converter->convertToHtml($this->escapeHtml($post->getContent())); ?>
+
     </p>
 
     <h3><?= $this->escapeHtml($postManager->getCommentCountStr($post)); ?></h3>

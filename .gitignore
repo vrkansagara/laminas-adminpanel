@@ -20,3 +20,4 @@ Envoy.blade.php
 *.lock
 mix-manifest.json
 .settings
+DATA/

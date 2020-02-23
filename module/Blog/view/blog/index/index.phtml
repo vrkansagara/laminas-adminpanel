@@ -1,80 +1,71 @@
-<div class="container">
-    <?php
-    $this->headTitle('Posts');
-    ?>
-    <h1>Posts</h1>
+<?php
+$this->headTitle('Posts');
+?>
 
-    <a href="<?= $this->url('blog/posts', ['action' => 'add']); ?>">
-        Add
-    </a>
-</div>
-<div class="container">
+<main role="main" class="container">
     <div class="row">
-
-        <div class="col-md-8">
-
+        <div class="col-md-8 blog-main">
+            <h3 class="pb-3 mb-4 font-italic border-bottom">
+                Posts
+            </h3>
+            <p>
+                <a href="<?= $this->url('blog/posts', ['action' => 'add']); ?>">
+                    Add post
+                </a>
+            </p>
             <?php foreach ($posts as $post) : ?>
-
-                <h3>
+            <div class="blog-post">
+                <h2 class="blog-post-title">
                     <a href="<?= $this->url('blog/posts', ['action' => 'view', 'id' => $post->getId()]); ?>">
                         <?= $this->escapeHtml($post->getTitle()); ?>
                     </a>
-                </h3>
+                </h2>
+                <p class="blog-post-meta">Published: <?= $this->escapeHtml(date('jS \of F Y', strtotime($post->getDateCreated()))); ?>
+                    | Tags: <?= $this->escapeHtml($postManager->convertTagsToString($post)); ?></p>
 
-                <p>
-                    Published: <?= $this->escapeHtml(date('jS \of F Y', strtotime($post->getDateCreated()))); ?>
-                    | Tags: <?= $this->escapeHtml($postManager->convertTagsToString($post)); ?>
-                </p>
-
+                <?= $converter->convertToHtml($this->escapeHtml($post->getContent())); ?>
                 <p class="comments-header">
                     <?= $this->escapeHtml($postManager->getCommentCountStr($post)); ?> |
                     <a href="<?= $this->url(
-                                    'blog/posts',
-                                    ['action' => 'view', 'id' => $post->getId()],
-                                    ['fragment' => 'comment']
-                                ); ?>">
+                        'blog/posts',
+                        ['action' => 'view', 'id' => $post->getId()],
+                        ['fragment' => 'comment']
+                    ); ?>">
                         Add new comment
                     </a>
                 </p>
-
-                <p>
-                    <?= $converter->convertToHtml($this->escapeHtml($post->getContent())); ?>
-                </p>
-
+            </div>
+            <!-- /.blog-post -->
             <?php endforeach; ?>
+        </div><!-- /.blog-main -->
 
-            <?= $this->paginationControl(
-                $posts,
-                'Sliding',
-                'blog/partial/paginator',
-                array('route' => 'blog')
-            ); ?>
+        <aside class="col-md-4 blog-sidebar">
+            <div class="p-3 mb-3 bg-light rounded">
+                <h4 class="font-italic">About</h4>
+                <p class="mb-0">New updates.</p>
+            </div>
+            <div class="p-3">
+                <h4 class="font-italic">Popular Tags</h4>
+                <?php foreach ($this->tagCloud as $tagName => $frequency) : ?>
 
-        </div>
-
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Popular Tags</h3>
-                </div>
-                <div class="panel-body">
-                    <?php foreach ($this->tagCloud as $tagName => $frequency) : ?>
-
-                        <a href="<?= $this->url(
-                                        'blog',
-                                        ['action' => 'index'],
-                                        ['query' => ['tag' => $tagName]]
-                                    ); ?>">
+                    <a href="<?= $this->url(
+                        'blog',
+                        ['action' => 'index'],
+                        ['query' => ['tag' => $tagName]]
+                    ); ?>">
 
                             <span style="font-size:<?= $this->escapeHtml(0.9 + $frequency * 3) ?>em">
                                 <?= $this->escapeHtml($tagName); ?>
                             </span>
 
-                        </a>
+                    </a>
 
-                    <?php endforeach; ?>
-                </div>
+                <?php endforeach; ?>
             </div>
-        </div>
-    </div>
-</div>
+        </aside><!-- /.blog-sidebar -->
+
+    </div><!-- /.row -->
+    <?= $this->paginationControl($posts, 'sliding', 'partial/paginator', ['route' => $this->url]) ?>
+</main>
+
+

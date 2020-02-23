@@ -17,6 +17,8 @@ return [
                     'defaults' => [
                         'controller' => Controller\IndexController::class,
                         'action' => 'index',
+//                        'template' => 'application/pages/contributors',
+                        'layout' => 'layout/blog',
                     ],
                 ],
                 // The following allows "/blog" to match on its own if no child routes match:

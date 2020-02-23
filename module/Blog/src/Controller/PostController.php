@@ -7,6 +7,7 @@ use Laminas\View\Model\ViewModel;
 use Blog\Form\PostForm;
 use Blog\Entity\Post;
 use Blog\Form\CommentForm;
+use League\CommonMark\CommonMarkConverter;
 
 /**
  * This is the Post controller class of the Blog application. 
@@ -119,10 +120,14 @@ class PostController extends AbstractActionController
                 return $this->redirect()->toRoute('blog/posts', ['action' => 'view', 'id' => $postId]);
             }
         }
-
+        $converter = new CommonMarkConverter([
+            'html_input' => 'strip',
+            'allow_unsafe_links' => false,
+        ]);
         // Render the view template.
         return new ViewModel([
             'post' => $post,
+            'converter' => $converter,
             'form' => $form,
             'postManager' => $this->postManager
         ]);
