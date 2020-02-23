@@ -1,6 +1,6 @@
 # laminas-adminpanel
 
-># This project is NOT READY FOR PRODUCTION
+># THIS PROJECT IS UNDER DEVELOPMENT MODE
 
 #### Build up on...
 - HTML5
